@@ -1,1 +1,3 @@
-require('./dist/server.js');
+'use strict';
+
+module.exports = require('./lib/backroad');
