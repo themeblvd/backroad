@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const adminRouter = express.Router();
 const User = require('../models/user');
@@ -25,9 +26,8 @@ adminRouter.use('/', function(req, res, next) {
 /**
  * Handle admin request.
  */
-adminRouter.get('/', function(req, res) {
-  // ...
-  res.status(201).send('Admin route...');
-});
+const staticPath = process.argv.includes('backroadDev') ? '../../admin/public' : '../../dist/admin';
+
+adminRouter.use('/', express.static(path.join(__dirname, staticPath)));
 
 module.exports = adminRouter;

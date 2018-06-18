@@ -12,7 +12,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node ./example/basic/index.js backroadDev",
+    "watch:admin": "NODE_ENV=development webpack --config ./admin/webpack.config.js --watch",
+    "build:admin": "NODE_ENV=development webpack --config ./admin/webpack.config.js",
+    "build:admin:prod": "NODE_ENV=production webpack --config ./admin/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,43 @@
   "bugs": {
     "url": "https://github.com/themeblvd/backroad/issues"
   },
-  "homepage": "https://github.com/themeblvd/backroad#readme"
+  "homepage": "https://github.com/themeblvd/backroad#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.6.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^3.1.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-flowtype": "^2.49.3",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.9.1",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "sass-loader": "^7.0.3",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  }
 }
