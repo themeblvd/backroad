@@ -1,0 +1,27 @@
+{
+  "name": "backroad",
+  "version": "0.1.0",
+  "description": "Headless NodeJS CMS",
+  "main": "index.js",
+  "bin": {
+    "backroad": "backroad.js"
+  },
+  "directories": {
+    "doc": "doc",
+    "example": "example",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themeblvd/backroad.git"
+  },
+  "author": "Jason Bobich",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/themeblvd/backroad/issues"
+  },
+  "homepage": "https://github.com/themeblvd/backroad#readme"
+}
