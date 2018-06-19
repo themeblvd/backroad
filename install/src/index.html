@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+    </head>
+    <body>
+        <div class="register">
+            <form id="register-form">
+                <p>
+                    <label>Project Name</label>
+                    <input type="text" name="projectName">
+                    <span class="help-text">Give this project a name, like <em>My Project</em>. You can change this later through the admin panel.</span>
+                </p>
+                <p>
+                    <label>Username</label>
+                    <input name="username" type="text">
+                    <span class="help-text">Enter an admin username that you'll use to login with.</span>
+                </p>
+                <p>
+                    <label>Password</label>
+                    <input name="password" type="password">
+                    <span class="help-text">Password must be at least 8 characters.</span>
+                </p>
+                <p>
+                    <label>Email</label>
+                    <input name="email" type="email">
+                    <span class="help-text">Enter a valid email for system notifications.</span>
+                </p>
+                <p>
+                    <button id="btn-submit" class="btn btn-primary">Install Backroad</button>
+                </p>
+            </form>
+        </div><!-- .register -->
+    </body>
+</html>
