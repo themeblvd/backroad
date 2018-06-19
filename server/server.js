@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const adminRouter = require('./routes/admin');
-const installRouter = require('./routes/install');
+const createAdminRouter = require('./routes/admin');
+const createInstallRouter = require('./routes/install');
 
 /**
  * Initialize Express server instance.
  */
-function serverInit(options) {
+function createServer(options) {
   const server = express();
   addMiddleware(server, options);
   addRoutes(server, options);
@@ -33,8 +32,8 @@ function addMiddleware(server, options) {
  * @private
  */
 function addRoutes(server, options) {
-  server.use(`/${options.adminEndpoint}`, adminRouter);
-  server.use('/install', installRouter);
+  server.use(`/${options.adminEndpoint}`, createAdminRouter(options));
+  server.use(`/${options.installEndpoint}`, createInstallRouter(options));
 }
 
 /**
@@ -46,12 +45,13 @@ function addDatabase(server, options) {
   mongoose.connect(
     options.mongoURL,
     function(err) {
-      if (err) {
-        throw err;
-      }
+      if (err) throw err;
       console.log('🔗 Connected to the database.');
     }
   );
 }
 
-module.exports = serverInit;
+/**
+ * Export server factory function.
+ */
+module.exports = createServer;

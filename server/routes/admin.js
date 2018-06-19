@@ -1,33 +1,46 @@
 const path = require('path');
 const express = require('express');
-const adminRouter = express.Router();
+const bodyParser = require('body-parser');
 const User = require('../models/user');
 
 /**
- * Redirect to installation, when no users
- * exist.
+ * Creates an Express router for the
+ * admin client.
+ *
+ * @param {Object} options
+ * @return {Object} Express.Router() instance.
  */
-adminRouter.use('/', function(req, res, next) {
-  User.find({}, function(err, users) {
-    if (err) {
-      return res.status(500).send(err);
-    }
+function createAdminRouter(options) {
+  const router = express.Router();
+  const { installEndpoint } = options;
 
-    /* @TODO Uncomment after we have installation in place, to create a first user.
-    if (!users.length) {
-      res.redirect('/install');
-    }
-    */
-
-    next();
+  /**
+   * Check for an admin user.
+   *
+   * If no admin user exists yet, redirect
+   * to the installation page.
+   */
+  router.use('/', function(req, res, next) {
+    User.find({ role: 'admin' }, function(err, users) {
+      if (err) return res.status(500).send(err);
+      if (!users.length) return res.redirect(`/${installEndpoint}`);
+      next();
+    });
   });
-});
+
+  /**
+   * Handle admin request.
+   */
+  const staticPath = process.argv.includes('backroadDev')
+    ? '../../admin/public'
+    : '../../dist/admin'; // prettier-ignore
+
+  router.use('/', express.static(path.join(__dirname, staticPath)));
+
+  return router;
+}
 
 /**
- * Handle admin request.
+ * Export factory function.
  */
-const staticPath = process.argv.includes('backroadDev') ? '../../admin/public' : '../../dist/admin';
-
-adminRouter.use('/', express.static(path.join(__dirname, staticPath)));
-
-module.exports = adminRouter;
+module.exports = createAdminRouter;
