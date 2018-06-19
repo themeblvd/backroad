@@ -1,0 +1,148 @@
+// --------------------------------------------------
+// Buttons
+// --------------------------------------------------
+
+@include fs-btn-selector {
+    @include fs-btn-styles;
+}
+
+//
+// Button Sizes
+//
+
+@include fs-min-width(sm) {
+    @each $size, $map in $fs-btn-sizes {
+        .btn-#{$size} {
+            font-size: map-get($map, font-size);
+            letter-spacing: map-get($map, letter-spacing);
+            line-height: map-get($map, line-height);
+            padding: fs-padding-y(
+                    map-get($map, height),
+                    map-get($map, line-height),
+                    $fs-btn-border-width
+                )
+                map-get($map, padding);
+        }
+    }
+}
+
+//
+// Default color
+//
+
+@include fs-button-variant(
+    "default",
+    $fs-clr-text-darken,
+    $fs-clr-bg-btn,
+    darken($fs-clr-bg-btn, 2%)
+);
+
+@include fs-button-variant(
+    "light",
+    $fs-clr-text-darken,
+    darken($fs-clr-bg-light, 2%),
+    darken(darken($fs-clr-bg-light, 2%), 2%)
+);
+
+//
+// Branding Colors
+//
+
+@each $clr, $map in $fs-clr-branding {
+    @include fs-button-variant(
+        $clr,
+        map-get($map, contrast),
+        map-get($map, base)
+    );
+}
+
+//
+// Contextual Colors
+//
+
+@each $clr, $map in $fs-clr-contextual {
+    @include fs-button-variant(
+        $clr,
+        map-get($map, contrast),
+        map-get($map, base)
+    );
+}
+
+//
+// Block button
+//
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+    margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.btn-block {
+        width: 100%;
+    }
+}
+
+//
+// Buttons w/Icons
+//
+
+.btn > .fa.before {
+    margin-right: 0.8em;
+}
+.btn > .fa.after {
+    margin-left: 0.8em;
+}
+
+//
+// Loading Buttons
+//
+
+$gradient-width: $fs-btn-loading-gradient-size;
+$total-width: $gradient-width + ($gradient-width / 2);
+$key-frame-offset: $gradient-width / 10;
+
+.btn.loading {
+    cursor: wait;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+        content: "";
+        animation-name: fs-btn-loading;
+        animation-duration: $fs-btn-loading-animation-duration;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.25) 0,
+            rgba(255, 255, 255, 0.25) ($gradient-width/2),
+            rgba(0, 0, 0, 0) ($gradient-width/2),
+            rgba(0, 0, 0, 0) $gradient-width
+        );
+        display: block;
+        position: absolute;
+        left: -$total-width;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+}
+
+@keyframes fs-btn-loading {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate($total-width - $key-frame-offset, 0);
+    }
+}

@@ -1,0 +1,81 @@
+////
+/// Mixins: Responsive Breakpoints
+///
+/// @access public
+/// @group fs-mixins
+/// @author Jason Bobich
+////
+
+///
+/// Max-width media query.
+///
+/// @since 1.0.0
+///
+/// @param {String} $size - Size of breakpoint.
+///
+@mixin fs-max-width($size) {
+    @if ($size == "xl") {
+        @media (max-width: fs-em(map-get($fs-breakpoints, xl) - 1, $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "lg") {
+        @media (max-width: fs-em(map-get($fs-breakpoints, lg) - 1, $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "md") {
+        @media (max-width: fs-em(map-get($fs-breakpoints, md) - 1, $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "sm") {
+        @media (max-width: fs-em(map-get($fs-breakpoints, sm) - 1, $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "xs") {
+        @media (max-width: fs-em(map-get($fs-breakpoints, xs) - 1, $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "") {
+        @content;
+    } @else {
+        @media (max-width: fs-em($size, $fs-font-size-base)) {
+            @content;
+        }
+    }
+}
+
+///
+/// Min-width media query.
+///
+/// @since 1.0.0
+///
+/// @param {String} $size - Size of breakpoint.
+///
+@mixin fs-min-width($size) {
+    @if ($size == "xl") {
+        @media (min-width: fs-em(map-get($fs-breakpoints, xl), $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "lg") {
+        @media (min-width: fs-em(map-get($fs-breakpoints, lg), $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "md") {
+        @media (min-width: fs-em(map-get($fs-breakpoints, md), $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "sm") {
+        @media (min-width: fs-em(map-get($fs-breakpoints, sm), $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "xs") {
+        @media (min-width: fs-em(map-get($fs-breakpoints, xs), $fs-font-size-base)) {
+            @content;
+        }
+    } @else if ($size == "") {
+        @content;
+    } @else {
+        @media (min-width: fs-em($size, $fs-font-size-base)) {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+// --------------------------------------------------
+// Button Groups
+// --------------------------------------------------
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: $fs-margin-btn-group;
+    padding: 0;
+    @include fs-margin-vert-flush;
+
+    > .btn {
+        margin: $fs-margin-btn-group-btn;
+    }
+}
+
+//
+// Tight Button Groups
+//
+
+.btn-group-tight {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .btn {
+        margin: 0;
+    }
+}
+
+//
+// Justified Button Groups
+//
+
+.btn-group-justified {
+    > .btn {
+        flex: 1;
+    }
+}
+
+//
+// Alignment
+//
+
+.btn-group-align-center {
+    justify-content: center;
+}
+.btn-group-align-end {
+    justify-content: flex-end;
+}
+
+//
+// Pagination
+//
+
+.pagination .btn {
+    padding: 6px 12px;
+}

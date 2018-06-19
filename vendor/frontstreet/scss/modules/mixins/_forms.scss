@@ -1,0 +1,149 @@
+////
+/// Mixins: Forms & Buttons
+///
+/// @access public
+/// @group fs-mixins
+/// @author Jason Bobich
+////
+
+///
+/// Generate input selectors.
+///
+/// @since 1.0.0
+///
+@mixin fs-field-selector {
+    #{$fs-field-selector} {
+        @content;
+    }
+}
+
+///
+/// Generate button selectors.
+///
+/// @since 1.0.0
+///
+@mixin fs-btn-selector {
+    #{$fs-btn-selector} {
+        @content;
+    }
+}
+
+///
+/// Generate button styles.
+///
+/// @since 1.0.0
+///
+@mixin fs-btn-styles {
+    background-color: $fs-clr-bg-btn;
+    border: $fs-btn-border-width solid transparent;
+    color: $fs-clr-text-darken;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $fs-font-size-btn;
+    font-weight: $fs-font-weight-btn;
+    letter-spacing: $fs-font-ls-btn;
+    line-height: $fs-btn-base-lh;
+    margin-bottom: 0; // For input.btn
+    padding: fs-padding-y(
+            $fs-btn-base-height,
+            $fs-btn-base-lh,
+            $fs-btn-border-width
+        )
+        $fs-btn-base-padding;
+    text-align: center;
+    text-transform: $fs-font-transform-btn;
+    touch-action: manipulation;
+    transition: $fs-btn-transition;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:active,
+    &.active {
+        &:focus {
+            @include fs-tab-focus;
+        }
+    }
+    &:hover,
+    &:focus {
+        background-color: darken($fs-clr-bg-btn, 2%);
+        color: $fs-clr-text-base;
+        text-decoration: none;
+    }
+    &:active,
+    &.active {
+        outline: 0;
+    }
+    &.active {
+        border-color: transparent;
+    }
+}
+
+///
+/// Style buttons color variations.
+///
+/// @since 1.0.0
+///
+/// @param {String} $clr - Color name like `teal`.
+/// @param {String} $text - Text color hex value.
+/// @param {Color} $bg - Background color hex value.
+/// @param {Color} $bg-hover - Background color hex value when hovered.
+///
+@mixin fs-button-variant($clr, $text, $bg, $bg-hover: null) {
+    // Standard Buttons
+
+    $clr-selector: fs-str-replace($fs-btn-selector, ",", ".btn-#{$clr},");
+    $clr-selector: "#{$clr-selector}.btn-#{$clr}";
+
+    #{$clr-selector} {
+        background-color: $bg;
+        color: $text;
+
+        &:hover,
+        &:focus {
+            @if $bg-hover != null {
+                background-color: $bg-hover;
+            } @else {
+                background-color: darken($bg, 10%);
+            }
+        }
+
+        &:active,
+        &.active,
+        &.loading {
+            @if $bg-hover != null {
+                background-color: darken($bg-hover, 5%);
+            } @else {
+                background-color: darken($bg, 15%);
+            }
+        }
+    }
+
+    // Transparent Buttons
+
+    $trans-selector: fs-str-replace(
+        $clr-selector,
+        "#{$clr}",
+        "#{$clr}.btn-trans"
+    );
+
+    #{$trans-selector} {
+        background-color: transparent;
+        border-color: $bg;
+
+        @if $clr == white {
+            color: $bg;
+        }
+        @elseif $text != #fff or $clr == info or $clr == success or $clr == warning or $clr == danger {
+            color: $text;
+        } @else {
+            color: $bg;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: $bg;
+            color: $text;
+        }
+    }
+}

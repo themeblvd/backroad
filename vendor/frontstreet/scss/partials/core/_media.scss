@@ -1,0 +1,190 @@
+// --------------------------------------------------
+// Media
+// --------------------------------------------------
+
+//
+// Responsive Embeds
+//
+
+.fs-embed {
+    display: block;
+    height: 0;
+    margin: $fs-margin-embed;
+    padding: 0;
+    padding-bottom: fs-ratio-to-percentage($fs-embed-default-ratio);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    @include fs-margin-vert-flush;
+
+    @each $name, $ratio in $fs-embed-ratios {
+        &.#{$name} {
+            padding-bottom: fs-ratio-to-percentage($ratio);
+        }
+    }
+
+    iframe,
+    object,
+    embed,
+    video,
+    .embed-item {
+        border: 0;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+//
+// Captions
+//
+
+.fs-caption {
+    text-align: center;
+
+    img {
+        display: block;
+        width: 100%;
+    }
+    .caption-text {
+        background: $fs-clr-bg-caption;
+        font-size: $fs-font-size-caption;
+        line-height: $fs-font-lh-caption;
+        padding: $fs-padding-caption;
+    }
+    .fs-embed {
+        margin: 0;
+    }
+}
+@if ($version == "full") {
+    .text-light .fs-caption .caption-text {
+        background: $fs-clr-bg-inv-caption;
+    }
+    .text-dark .fs-caption .caption-text {
+        background: $fs-clr-bg-caption;
+    }
+}
+
+//
+// Thumbnail Links
+//
+
+.fs-thumb-link {
+    display: inline-block;
+    margin: $fs-margin-thumb;
+    max-width: 100%; // Needed for IE 10-11
+    outline: 0;
+    position: relative;
+
+    @include fs-margin-vert-flush;
+    @include fs-font-icon;
+
+    &:before {
+        background: $fs-thumb-link-icon-bg-clr;
+        border-radius: $fs-thumb-link-icon-radius;
+        color: $fs-thumb-link-icon-clr;
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.9, 0.9);
+        transition: opacity 0.25s ease-in-out, transform 0.15s ease-in-out;
+        z-index: 2;
+
+        @include fs-thumb-link-size(
+            $fs-thumb-link-icon-size,
+            $fs-thumb-link-icon-w,
+            $fs-thumb-link-icon-h
+        );
+    }
+    img,
+    .img {
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.25s ease;
+        z-index: 1;
+    }
+    &:hover,
+    &:focus {
+        &:before {
+            opacity: 1;
+            transform: scale(1, 1);
+        }
+        img,
+        .img {
+            opacity: 0.4;
+        }
+    }
+}
+
+//
+// Gallery
+//
+
+.fs-modal-gallery {
+    margin: $fs-margin-element;
+    @include fs-margin-vert-flush;
+}
+
+.fs-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: ($fs-spacing-element - ($fs-gallery-gutters / 2));
+    margin-right: ($fs-gallery-gutters / -2);
+    margin-bottom: ($fs-spacing-element - ($fs-gallery-gutters / 2));
+    margin-left: ($fs-gallery-gutters / -2);
+
+    .gallery-item {
+        margin: 0;
+        padding: ($fs-gallery-gutters / 2);
+    }
+    &.gallery-columns-1 .gallery-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    &.gallery-columns-2 .gallery-item,
+    &.gallery-columns-3 .gallery-item,
+    &.gallery-columns-4 .gallery-item,
+    &.gallery-columns-6 .gallery-item,
+    &.gallery-columns-7 .gallery-item,
+    &.gallery-columns-8 .gallery-item,
+    &.gallery-columns-9 .gallery-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .gallery-icon {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .gallery-caption {
+        background: $fs-clr-bg-caption;
+        font-size: $fs-font-size-caption-gallery;
+        font-weight: $fs-font-weight-base;
+        line-height: $fs-font-lh-caption;
+        padding: $fs-padding-caption-gallery;
+        text-align: center;
+    }
+    .fs-thumb-link:before {
+        @include fs-thumb-link-size(
+            $fs-gallery-thumb-link-icon-size,
+            $fs-gallery-thumb-link-icon-w,
+            $fs-gallery-thumb-link-icon-h
+        );
+    }
+}
+
+@include fs-min-width(xs) {
+    @for $i from 1 through 9 {
+        .fs-gallery.gallery-columns-#{$i} .gallery-item {
+            flex: 0 0 (100% / $i);
+            max-width: (100% / $i);
+        }
+    }
+}

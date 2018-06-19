@@ -1,0 +1,29 @@
+/*!
+ * Front Street v1.0.0 (http://frontstreet.io)
+ * Core Library Only, for minimal integration.
+ * Direction: Right-to-Left
+ * Copyright 2017 Theme Blvd
+ * Copyright 2017 Jason Bobich
+ */
+
+$direction: "rtl";
+$version: "core";
+
+//
+// Functions, Variables and Mixins
+//
+
+@import "modules/index";
+
+//
+// Reset and Dependencies
+//
+
+@import "partials/normalize";
+@import "partials/print";
+
+//
+// Core Styles
+//
+
+@import "partials/core/index";

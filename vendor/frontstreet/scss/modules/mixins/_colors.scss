@@ -1,0 +1,104 @@
+////
+/// Mixins: Colors
+///
+/// @access public
+/// @group fs-mixins
+/// @author Jason Bobich
+////
+
+///
+/// Text coloring.
+///
+/// @since 1.0.0
+///
+/// @param {String} $parent - Parent selector.
+/// @param {Color} $clr - Color of text.
+///
+@mixin fs-text-emphasis-variant($parent, $clr) {
+    #{$parent} {
+        color: $clr;
+    }
+    a#{$parent}:hover,
+    a#{$parent}:focus {
+        color: darken($clr, 10%);
+    }
+}
+
+///
+/// Background coloring.
+///
+/// @since 1.0.0
+///
+/// @param {String} $parent - Parent selector.
+/// @param {Color} $clr - Color of backgrounds.
+/// @param {Color} $text - Color of text.
+///
+@mixin fs-bg-variant($parent, $clr, $text: null) {
+    #{$parent},
+    #{$parent}.over-bg-content,
+    #{$parent}.panel-classic .widget-title,
+    #{$parent}.panel-color .widget-title {
+        background-color: $clr;
+
+        @if $parent ==
+            ".info" or
+            $parent ==
+            ".success" or
+            $parent ==
+            ".warning" or
+            $parent ==
+            ".danger"
+        {
+            border-color: darken(adjust-hue($clr, -10), 50%);
+        } @else if $parent == ".bg-light" {
+            border-color: $fs-clr-border;
+        } @else if $parent == ".bg-dark" {
+            border-color: $fs-clr-border-inv;
+        } @else {
+            border-color: darken($clr, 20%);
+        }
+
+        @if $text != null and $parent != ".bg-light" {
+            color: $text;
+        }
+    }
+    #{$parent}.panel-color .widget-title {
+        @if $parent ==
+            info or
+            $parent ==
+            success or
+            $parent ==
+            warning or
+            $parent ==
+            danger
+        {
+            background-color: darken(adjust-hue($clr, -10), 30%);
+        } @else if $parent == ".bg-light" {
+            background-color: darken($fs-clr-bg-light, 2%); // @TODO
+        } @else if $parent == ".bg-dark" {
+            background-color: $fs-clr-border-inv; // @TODO
+        } @else {
+            background-color: darken($clr, 10%);
+        }
+    }
+    .testimonial-sm #{$parent}:before {
+        border-top-color: $clr;
+    }
+    .testimonial-md #{$parent}:before {
+        border-right-color: $clr;
+        border-left-color: $clr;
+    }
+    @if $text != null and $text != $fs-clr-text-base {
+        #{$parent} h1,
+        #{$parent} h2,
+        #{$parent} h3,
+        #{$parent} h4,
+        #{$parent} h5,
+        #{$parent} h6 {
+            color: $text;
+        }
+    }
+    #{$parent}.mobile-menu-bar ul {
+        background-color: $clr;
+    }
+}

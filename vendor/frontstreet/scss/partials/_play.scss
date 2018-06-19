@@ -1,0 +1,44 @@
+// --------------------------------------------------
+// Play Button
+// --------------------------------------------------
+
+.fs-play {
+    background-color: transparent;
+    border: none;
+    @include fs-background-play($fs-clr-svg);
+    background-size: map-get($fs-btn-close, md) map-get($fs-btn-close, md);
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    outline: none !important;
+    width: (map-get($fs-btn-play, md) + 4px);
+    height: (map-get($fs-btn-play, md) + 4px);
+
+    @include fs-hide-text;
+
+    &:hover,
+    &:focus {
+        background-color: transparent; // Override default <button> styling.
+        @include fs-background-play($fs-clr-svg-hover);
+    }
+}
+.text-light .fs-play,
+.fs-play.play-light {
+    @include fs-background-play($fs-clr-svg-inv);
+    border: none;
+
+    &:hover,
+    &:focus {
+        @include fs-background-play($fs-clr-svg-inv-hover);
+    }
+}
+
+@each $size, $val in $fs-btn-play {
+    @include fs-min-width(sm) {
+        .fs-play.play-#{$size} {
+            background-size: $val $val;
+            width: $val;
+            height: $val;
+        }
+    }
+}

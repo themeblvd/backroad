@@ -1,0 +1,91 @@
+// --------------------------------------------------
+// Toggles
+// --------------------------------------------------
+
+.fs-toggle {
+    border-style: solid;
+    border-width: $fs-toggle-border-width 0;
+    margin: $fs-margin-toggle;
+
+    .toggle-title {
+        cursor: pointer;
+        display: block;
+        margin: 0;
+        padding: $fs-toggle-vert-space $fs-toggle-horz-space;
+
+        @if ($direction == "rtl") {
+            padding-left: $fs-toggle-icon-size +
+                (2 * $fs-toggle-horz-space) +
+                (2 * $fs-toggle-icon-buffer);
+        } @else {
+            padding-right: $fs-toggle-icon-size +
+                (2 * $fs-toggle-horz-space) +
+                (2 * $fs-toggle-icon-buffer);
+        }
+
+        position: relative;
+
+        &.heading-lg,
+        &.heading-xl,
+        &.heading-xxl,
+        &.heading-xxxl {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        &:after {
+            content: "";
+            background-size: $fs-toggle-icon-size $fs-toggle-icon-size;
+            display: block;
+            position: absolute;
+            top: 50%;
+            @if ($direction == "rtl") {
+                left: $fs-toggle-horz-space + $fs-toggle-icon-buffer;
+            } @else {
+                right: $fs-toggle-horz-space + $fs-toggle-icon-buffer;
+            }
+            transform: translate3D(0, -50%, 0) rotate(45deg);
+            transition: transform 0.1s ease;
+            width: $fs-toggle-icon-size;
+            height: $fs-toggle-icon-size;
+        }
+    }
+    &.toggle-expanded .toggle-title:after {
+        transform: translate3D(0, -50%, 0) rotate(0);
+    }
+    .toggle-content {
+        display: none;
+        padding: $fs-toggle-vert-space $fs-toggle-horz-space;
+        padding-top: 0;
+    }
+
+    @include fs-margin-vert-flush;
+}
+
+@include toggle-variant;
+
+.text-light {
+    @include toggle-variant("inverse");
+}
+.text-dark {
+    @include toggle-variant;
+}
+
+//
+// Groups
+//
+
+.toggle-group {
+    margin: $fs-margin-toggle-group;
+
+    @include fs-margin-vert-flush;
+
+    .fs-toggle {
+        border-bottom-width: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &:last-child {
+            border-bottom-width: $fs-toggle-border-width;
+        }
+    }
+}

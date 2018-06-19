@@ -1,0 +1,80 @@
+// --------------------------------------------------
+// Lists
+// --------------------------------------------------
+
+ul,
+ol {
+    margin: $fs-margin-list;
+    padding: if(
+        $direction == "rtl",
+        0 $fs-padding-list 0 0,
+        0 0 0 $fs-padding-list
+    );
+    @include fs-margin-vert-flush;
+}
+ul {
+    list-style: disc;
+}
+ol {
+    list-style: decimal;
+}
+li > ul,
+li > ol {
+    margin-bottom: 0;
+}
+
+//
+// Description Lists
+//
+
+dt {
+    font-weight: $fs-font-weight-bold;
+}
+dd {
+    margin: $fs-margin-list;
+    margin-left: 1.5em;
+    @include fs-margin-vert-flush;
+}
+
+//
+// Unstyled Lists
+//
+
+.list-unstyled {
+    @include fs-list-unstyled;
+}
+
+//
+// Inline Lists
+//
+
+.list-inline {
+    margin: 0 -5px;
+    @include fs-list-unstyled;
+
+    li {
+        display: inline-block;
+        padding: 0 5px;
+    }
+}
+
+//
+// Icon Lists
+//
+// Note: Requires FontAwesome. Meant to be an
+// extension of fa-ul and fa-li classes.
+//
+
+.list-icon.fa-ul li {
+    line-height: $fs-font-lh-base;
+}
+.list-icon.fa-ul li > .fa-li {
+    top: 50%;
+    @if ($direction == "rtl") {
+        right: (-30em / fs-strip-unit($fs-font-size-base));
+    } @else {
+        left: (-30em / fs-strip-unit($fs-font-size-base));
+    }
+    width: 30em / fs-strip-unit($fs-font-size-base);
+    transform: translate(0, -50%);
+}

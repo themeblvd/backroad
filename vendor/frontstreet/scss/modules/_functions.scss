@@ -1,0 +1,159 @@
+////
+/// Functions
+///
+/// @access public
+/// @group fs-functions
+/// @author Jason Bobich
+////
+
+///
+/// Convert px to em units.
+///
+/// @since 1.0.0
+///
+/// @param {String} $target - Initial value in px
+/// @param {String} $context - Closest specified font size in px
+///
+@function fs-em($target, $context) {
+    @return ($target / $context) * 1em;
+}
+
+///
+/// Convert px to rem units.
+///
+/// @since 1.0.0
+///
+/// @param {String} $target - Initial value in px
+///
+@function fs-rem($target, $context) {
+    @return ($target / $context) * 1rem;
+}
+
+///
+/// Get value from map within map.
+///
+/// @since 1.0.0
+///
+/// @param {Map} $map - Top-level map
+/// @param {String} $keys - Keys where nested maps are located
+///
+@function fs-map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+
+///
+/// Remove units from number value.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $val - Number value with unit suffix
+/// @return {Number} $val - Original number with unit suffix removed
+///
+@function fs-strip-unit($val) {
+    @if type-of($val) == "number" and not unitless($val) {
+        @return $val / ($val * 0 + 1);
+    }
+
+    @return $val;
+}
+
+///
+/// Replace `$search` with `$replace` in `$string`.
+/// @author Hugo Giraudel
+///
+/// @since 1.0.0
+///
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace - New value
+/// @return {String} - Updated string
+///
+@function fs-str-replace($string, $search, $replace: "") {
+    $string: "#{$string}";
+    $search: "#{$search}";
+    $replace: "#{$replace}";
+
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace +
+            fs-str-replace(
+                str-slice($string, $index + str-length($search)),
+                $search,
+                $replace
+            );
+    }
+
+    @return $string;
+}
+
+///
+/// When given a color hex like #000, the `#` will
+/// be replaced by a `%23` for using withing a
+/// URL string.
+///
+/// @since 1.0.0
+///
+/// @param {Color} $clr - Color hex.
+/// @return {String} - Color hex code with '#' replaced with `%23`.
+///
+@function fs-url-friendly-clr($clr) {
+    @return fs-str-replace($clr, "#", "%23");
+}
+
+///
+/// Calculate vertical padding values based
+/// on desired height and other paramters.
+///
+/// @since 1.0.0
+///
+/// @param {Number} $height - Destired height of element.
+/// @param {Number} $line-height - Line height of element.
+/// @param {Number} $border-width - Width of border around element.
+/// @return {Number} - Padding used for top and bottom of element.
+///
+@function fs-padding-y($height, $line-height, $border-width: 0) {
+    @return (($height - $line-height - ($border-width * 2)) / 2);
+}
+
+///
+/// Get the next largest breakpoint name.
+///
+/// For example, if given "xs" the returned value
+/// would be "sm".
+///
+/// @since 1.0.0
+///
+/// @param {String} $name - Name of breakpoint.
+/// @param {Map} $breakpoints - Defined map of breakpoints.
+/// @return {String} - Next largest breakpoint name.
+///
+@function fs-breakpoint-next($name, $breakpoints) {
+    $breakpoint-names: map-keys($breakpoints);
+
+    $n: index($breakpoint-names, $name);
+
+    @return if(
+        $n < length($breakpoint-names),
+        nth($breakpoint-names, $n + 1),
+        ""
+    );
+}
+
+///
+/// Convert ratio to percentage.
+///
+/// For example given "16 9", will return 56.25%.
+///
+/// @since 1.0.0
+///
+/// @param {List} $ratio - Ratio to convert to percentage.
+/// @return {Number} - Next largest breakpoint name.
+///
+@function fs-ratio-to-percentage($ratio: 1 1) {
+    @return percentage(nth($ratio, 2) / nth($ratio, 1));
+}

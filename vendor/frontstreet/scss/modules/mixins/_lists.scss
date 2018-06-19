@@ -1,0 +1,22 @@
+////
+/// Mixins: Lists
+///
+/// @access public
+/// @group fs-mixins
+/// @author Jason Bobich
+////
+
+///
+/// Inner styling for an unstyled unordered list.
+///
+/// @since 1.0.0
+///
+@mixin fs-list-unstyled {
+    list-style: none;
+
+    @if ($direction == "rtl") {
+        padding-right: 0;
+    } @else {
+        padding-left: 0;
+    }
+}

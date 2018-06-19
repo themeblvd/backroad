@@ -1,0 +1,1074 @@
+// ==========================================================================
+// Responsive Breakpoints
+// ==========================================================================
+
+$fs-breakpoints : (
+	xs									: 576px,
+	sm									: 768px,
+	md									: 992px,
+	lg									: 1200px,
+	xl									: 1600px
+) !default;
+
+// ==========================================================================
+// Grid System
+// ==========================================================================
+
+$fs-grid-gutters						: 30px !default; // @TODO multiple gutter sizes
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+// Font Families
+
+$fs-font-fam-base						: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !default;
+$fs-font-fam-headings					: $fs-font-fam-base !default;
+$fs-font-fam-code						: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace !default;
+
+// Font Sizes
+
+$fs-font-size-xxxl						: 64px !default;
+$fs-font-size-xxl						: 40px !default;
+$fs-font-size-xl						: 24px !default;
+$fs-font-size-lg						: 20px !default;
+$fs-font-size-base 						: 16px !default;
+$fs-font-size-md						: $fs-font-size-base - 1px !default; // 15px
+$fs-font-size-sm						: $fs-font-size-base - 2px !default; // 14px
+$fs-font-size-xs						: $fs-font-size-base - 3px !default; // 13px
+$fs-font-size-xxs						: $fs-font-size-base - 4px !default; // 12px
+$fs-font-size-xxxs						: $fs-font-size-base - 5px !default; // 11px
+$fs-font-size-micro						: $fs-font-size-base - 6px !default; // 10px
+
+// Font Size Usage
+
+$fs-font-size-headings : (
+	h1 : (
+		base							: 2.75rem,
+		mobile							: 28px
+	),
+	h2 : (
+		base							: 2.25rem,
+		mobile							: 22px
+	),
+	h3 : (
+		base							: 1.75rem,
+		mobile							: 20px
+	),
+	h4 : (
+		base							: 1.5rem,
+		mobile							: 18px
+	),
+	h5 : (
+		base							: 1.25rem,
+		mobile							: 17px
+	),
+	h6 : (
+		base							: 1rem,
+		mobile							: $fs-font-size-base
+	)
+) !default;
+
+$fs-font-size-headings-bigger : (
+	lg : (
+		base							: 3rem,
+		mobile							: 28px // Match mobile <h1>.
+	),
+	xl : (
+		base							: 4rem,
+		mobile							: 30px
+	),
+	xxl : (
+		base							: 5rem,
+		mobile							: 32px
+	),
+	xxxl : (
+		base							: 6rem,
+		mobile							: 34px
+	)
+) !default;
+
+$fs-font-size-headings-smaller : (
+	sm : (
+		base							: $fs-font-size-base,
+		mobile							: $fs-font-size-base
+	),
+	xs : (
+		base							: $fs-font-size-md,
+		mobile							: $fs-font-size-md
+	),
+	xxs : (
+		base							: $fs-font-size-sm,
+		mobile							: $fs-font-size-sm
+	),
+	xxxs : (
+		base							: $fs-font-size-xs,
+		mobile							: $fs-font-size-xs
+	)
+) !default;
+
+$fs-font-size-subtitle					: .45em !default;
+$fs-font-size-subtitle-sm				: $fs-font-size-xxs !default;
+
+$fs-font-size-lead						: $fs-font-size-lg !default;
+$fs-font-size-small						: .8em !default;
+$fs-font-size-big						: 1.25em !default;
+$fs-font-size-cite						: $fs-font-size-xxs !default;
+$fs-font-size-code						: $fs-font-size-sm !default;
+$fs-font-size-pre						: $fs-font-size-md !default;
+$fs-font-size-caption					: $fs-font-size-sm !default;
+$fs-font-size-caption-gallery			: $fs-font-size-xxs !default;
+$fs-font-size-quote						: 1.3rem !default;
+$fs-font-size-alert						: 0.9375rem !default;
+$fs-font-size-btn						: $fs-font-size-xxxs !default;
+$fs-font-size-menu-bar-btn				: $fs-font-size-sm !default;
+$fs-font-size-submenu-btn				: $fs-font-size-btn !default;
+$fs-font-size-tabs						: $fs-font-size-sm !default;
+$fs-font-size-pills						: $fs-font-size-xxs !default;
+$fs-font-size-mobile-menu-bar-btn		: $fs-font-size-sm !default;
+$fs-font-size-dropdown					: $fs-font-size-xs !default;
+$fs-font-size-field						: $fs-font-size-sm !default;
+$fs-font-size-field-label				: $fs-font-size-field !default;
+$fs-font-size-field-legend				: $fs-font-size-base !default;
+$fs-font-size-field-help				: $fs-font-size-small !default;
+$fs-font-size-breadcrumbs				: $fs-font-size-sm !default;
+$fs-font-size-widget					: $fs-font-size-sm !default;
+$fs-font-size-label						: $fs-font-size-micro !default;
+$fs-font-size-caption					: $fs-font-size-sm !default;
+$fs-font-size-slider-caption			: $fs-font-size-md !default;
+$fs-font-size-progress					: $fs-font-size-xs !default;
+$fs-font-size-tooltip					: $fs-font-size-xxs !default;
+
+// Font Line Heights
+
+$fs-font-lh-base 						: 1.6 !default;
+$fs-font-lh-caption						: 1.4 !default;
+$fs-font-lh-cite						: 1.4 !default;
+$fs-font-lh-heading 					: 1.2 !default;
+$fs-font-lh-heading-sm 					: 1.4 !default;
+$fs-font-lh-lead						: 1.4 !default;
+$fs-font-lh-quote						: 1.4 !default;
+$fs-font-lh-header-menu					: 1.25 !default;
+$fs-font-lh-header-menu-dropdown		: 1.4 !default;
+
+// Font Style
+
+$fs-font-style-quote					: italic !default;
+$fs-font-style-address					: normal !default;
+
+// Font Weights
+
+$fs-font-weight-base					: 300 !default;
+$fs-font-weight-bold					: 700 !default;
+$fs-font-weight-heading					: $fs-font-weight-bold !default;
+$fs-font-weight-heading-lg				: $fs-font-weight-bold !default;
+$fs-font-weight-heading-sm				: $fs-font-weight-bold !default;
+$fs-font-weight-btn						: $fs-font-weight-bold !default;
+$fs-font-weight-menu-bar-btn			: $fs-font-weight-base !default;
+$fs-font-weight-submenu-btn				: $fs-font-weight-btn !default;
+$fs-font-weight-mobile-menu-bar-btn		: $fs-font-weight-menu-bar-btn !default;
+
+// Text Transform
+
+$fs-font-transform-heading				: none !default;
+$fs-font-transform-heading-lg			: none !default;
+$fs-font-transform-heading-sm			: uppercase !default;
+$fs-font-transform-subtitles			: none !default;
+$fs-font-transform-quote				: none !default;
+$fs-font-transform-btn					: uppercase !default;
+$fs-font-transform-menu-bar-btn			: none !default;
+$fs-font-transform-submenu-btn			: $fs-font-transform-btn !default;
+$fs-font-transform-mobile-menu-bar-btn 	: $fs-font-transform-menu-bar-btn !default;
+$fs-font-transform-label				: $fs-font-transform-btn !default;
+
+// Letter Spacing
+
+$fs-font-ls-heading						: 0 !default;
+$fs-font-ls-heading-lg					: 1px !default;
+$fs-font-ls-heading-sm					: 1px !default;
+$fs-font-ls-subtitles					: 0 !default;
+$fs-font-ls-btn							: .12em !default;
+$fs-font-ls-menu-bar-btn				: 0 !default;
+$fs-font-ls-submenu-btn					: $fs-font-ls-btn !default;
+$fs-font-ls-mobile-menu-bar-btn			: $fs-font-ls-menu-bar-btn !default;
+$fs-font-ls-label						: 1px !default;
+
+// Components
+
+$fs-heading-underline-w					: 75px !default;
+$fs-heading-underline-h					: 2px !default;
+
+// ==========================================================================
+// Colors
+// ==========================================================================
+
+// Greyscale
+
+$fs-clr-white							: #fff !default;
+
+$fs-clr-light							: #ccc !default;
+$fs-clr-lighter							: #ddd !default;
+$fs-clr-lightest						: #f8f8f8 !default;
+
+$fs-clr-grey							: #999 !default;
+$fs-clr-greyer							: #666 !default;
+$fs-clr-greyest							: #444 !default;
+
+$fs-clr-dark							: #333 !default;
+$fs-clr-darker							: #1b1b1b !default;
+$fs-clr-darkest							: #101010 !default;
+
+$fs-clr-black							: #000 !default;
+
+// Transparent Greyscale
+
+$fs-clr-trans-light 					: rgba(97, 97, 97, .4) !default;     // On white BG ≈ #ccc
+$fs-clr-trans-lighter 					: rgba(176, 176, 176, .4) !default;  // On white BG ≈ #ddd
+$fs-clr-trans-lightest 					: rgba(237, 237, 237, .4) !default;  // On white BG ≈ #f8f8f8
+
+$fs-clr-trans-grey						: rgba(110, 110, 110, .7) !default;  // On white BG ≈ #999
+$fs-clr-trans-greyer					: rgba(50, 50, 50, .7) !default;     // On white BG ≈ #666
+$fs-clr-trans-greyest					: rgba(0, 0, 0, .7) !default;        // On white BG ≈ #444
+
+// Action Colors
+
+$fs-clr-highlight						: #fcf8e3 !default;
+
+// Text Colors
+
+$fs-clr-text-base-fallback				: $fs-clr-greyer !default;
+$fs-clr-text-base						: $fs-clr-trans-greyer !default;
+$fs-clr-text-lighten					: $fs-clr-trans-grey !default;
+$fs-clr-text-darken						: $fs-clr-dark !default;
+
+$fs-clr-text-inv-base					: $fs-clr-white !default;
+$fs-clr-text-inv-lighten				: $fs-clr-light !default;
+$fs-clr-text-inv-darken					: $fs-clr-white !default;
+
+// Vector Colors
+
+$fs-clr-svg								: $fs-clr-greyer !default;
+$fs-clr-svg-hover						: $fs-clr-dark !default;
+
+$fs-clr-svg-inv							: $fs-clr-light !default;
+$fs-clr-svg-inv-hover					: $fs-clr-white !default;
+
+// Links
+
+$fs-clr-link							: #428bca !default;
+$fs-clr-link-hover						: #2a6496 !default;
+
+// Branding
+
+$fs-clr-branding : (
+	primary : (
+		base							: $fs-clr-darker,
+		contrast						: $fs-clr-text-inv-base
+	),
+	secondary : (
+		base							: #2ea3f2,
+		contrast						: $fs-clr-text-inv-base
+	)
+) !default;
+
+// Color Library
+
+$fs-clr-library : (
+	asphalt : (
+		base 							: #34495e,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	blue : (
+		base 							: #00437f,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	black : (
+		base 							: $fs-clr-black,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	brown : (
+		base 							: #825a2c,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	concrete : (
+		base 							: #95a5a6,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	cream : (
+		base 							: #f5d76e,
+		contrast 						: $fs-clr-text-base
+	),
+	crimson : (
+		base 							: #c3272b,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	dark-blue : (
+		base 							: #153f5a,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	dark-brown : (
+		base 							: #572f05,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	dark-green : (
+		base 							: #485a21,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	dark-purple : (
+		base 							: #5d3f6A,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	forest : (
+		base 							: #006442,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	green : (
+		base 							: #26a65b,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	jungle : (
+		base 							: #36b3a8,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	mauve : (
+		base 							: #7b726c,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	orange : (
+		base 							: #ff9624,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	peach : (
+		base 							: #f47983,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	pearl : (
+		base 							: #bca89d,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	pink : (
+		base 							: #de2e81,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	pomegranate : (
+		base 							: #e74c3c,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	purple : (
+		base 							: #78498e,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	red : (
+		base 							: #8f1d21,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	royal : (
+		base 							: #428bca,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	slate-grey : (
+		base 							: #7f8d9c,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	silver : (
+		base 							: #bdc3c7,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	steel-blue : (
+		base 							: #4b77Be,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	teal : (
+		base 							: #008080,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	turquoise : (
+		base 							: #36d7b7,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	yellow : (
+		base 							: #ecc11B,
+		contrast 						: $fs-clr-text-base
+	),
+	wheat : (
+		base 							: #b4ad8b,
+		contrast 						: $fs-clr-text-inv-base
+	),
+	white : (
+		base 							: $fs-clr-white,
+		contrast 						: $fs-clr-text-base
+	)
+) !default;
+
+// Contextual
+
+$fs-clr-contextual : (
+	success : (
+		base							: #dff0d8,
+		contrast						: #3c763d
+	),
+	info : (
+		base							: #d9edf7,
+		contrast						: #31708f
+	),
+	warning : (
+		base							: $fs-clr-highlight,
+		contrast						: #8a6d3b
+	),
+	danger : (
+		base							: #f2dede,
+		contrast						: #a94442
+	)
+) !default;
+
+// Border Colors
+
+$fs-clr-border							: $fs-clr-trans-lighter !default;
+$fs-clr-border-active					: $fs-clr-trans-light !default;
+
+$fs-clr-border-inv						: $fs-clr-black !default;
+$fs-clr-border-inv-active				: $fs-clr-black !default;
+
+// Background Colors
+
+$fs-clr-bg-white						: $fs-clr-white !default;
+$fs-clr-bg-light						: $fs-clr-lightest !default;
+$fs-clr-bg-dark							: $fs-clr-darker !default;
+$fs-clr-bg-black						: $fs-clr-black !default;
+
+$fs-clr-bg-content						: $fs-clr-bg-white !default;
+$fs-clr-bg-inv-content					: $fs-clr-bg-dark !default;
+
+$fs-clr-bg-body							: $fs-clr-lightest !default;
+$fs-clr-bg-inv-body						: $fs-clr-darkest !default;
+$fs-clr-bg-hr							: $fs-clr-trans-lighter !default;
+$fs-clr-bg-inv-hr						: rgba($fs-clr-bg-black, 0.8) !default;
+$fs-clr-bg-code							: $fs-clr-bg-light !default;
+$fs-clr-bg-inv-code						: $fs-clr-bg-black !default;
+$fs-clr-bg-kbd							: $fs-clr-bg-dark !default;
+$fs-clr-bg-btn							: darken($fs-clr-bg-light, 2%) !default;
+$fs-clr-bg-field						: rgba($fs-clr-white, 0.8) !default;
+$fs-clr-bg-inv-field					: transparent !default;
+$fs-clr-bg-widget						: $fs-clr-bg-content !default;
+$fs-clr-bg-inv-widget					: $fs-clr-bg-inv-content !default;
+$fs-clr-bg-label						: $fs-clr-greyer !default;
+$fs-clr-bg-caption						: $fs-clr-bg-light !default;
+$fs-clr-bg-inv-caption					: $fs-clr-darkest !default;
+
+// ==========================================================================
+// Animations
+// ==========================================================================
+
+$fs-transition-fade						: opacity .2s linear !default;
+
+// ==========================================================================
+// Utilities
+// ==========================================================================
+
+// Borders
+
+$fs-border-utils : (
+	xs : (
+		width							: 1px,
+		style 							: solid,
+		color							: $fs-clr-lighter
+	),
+	sm : (
+		width							: 2px,
+		style 							: solid,
+		color							: $fs-clr-lighter
+	),
+	md : (
+		width							: 5px,
+		style 							: solid,
+		color							: $fs-clr-lighter
+	),
+	lg : (
+		width							: 10px,
+		style 							: solid,
+		color							: $fs-clr-lighter
+	),
+	xl : (
+		width							: 15px,
+		style 							: solid,
+		color							: $fs-clr-lighter
+	)
+) !default;
+
+// ==========================================================================
+// Spacing
+// ==========================================================================
+
+// General
+
+$fs-spacing-element						: 30px !default;
+$fs-spacing-paragraph					: 24px !default;
+
+// Margins
+
+$fs-margin-element						: $fs-spacing-element 0 !default;
+$fs-margin-paragraph					: 0 0 $fs-spacing-paragraph 0 !default;
+
+$fs-margin-divider						: $fs-spacing-element !default;
+$fs-margin-figure						: $fs-margin-paragraph !default;
+$fs-margin-heading						: $fs-spacing-element 0 $fs-spacing-paragraph 0 !default;
+$fs-margin-heading-lg					: $fs-margin-paragraph !default;
+$fs-margin-heading-sm					: $fs-margin-paragraph !default;
+$fs-margin-column						: $fs-spacing-element !default;
+$fs-margin-lead							: $fs-margin-element !default;
+$fs-margin-list							: $fs-margin-paragraph !default;
+$fs-margin-quote						: 40px 30px !default;
+$fs-margin-table						: $fs-margin-element !default;
+$fs-margin-alert						: $fs-margin-element !default;
+$fs-margin-btn-group-btn				: 2px !default;
+$fs-margin-btn-group					: $fs-spacing-paragraph (-$fs-margin-btn-group-btn) !default;
+$fs-margin-pagination					: $fs-margin-element !default;
+$fs-margin-form							: $fs-margin-element !default;
+$fs-margin-field						: 0 0 ($fs-spacing-element / 2) 0 !default;
+$fs-margin-field-label					: 0 4px ($fs-spacing-element / 2) 4px !default;
+$fs-margin-field-group					: 0 4px !default;
+$fs-margin-field-legend					: 0 0 ($fs-spacing-element / 2) 0 !default;
+$fs-margin-field-help					: $fs-margin-field-label !default;
+$fs-margin-fieldset						: $fs-margin-element !default;
+$fs-margin-tabs							: $fs-margin-element !default;
+$fs-margin-toggle						: $fs-margin-element !default;
+$fs-margin-toggle-group					: $fs-margin-toggle !default;
+$fs-margin-modal						: $fs-spacing-element auto !default;
+$fs-margin-modal-mobile					: 0 auto !default;
+$fs-margin-widget						: $fs-margin-element !default;
+$fs-margin-embed						: $fs-margin-paragraph !default;
+$fs-margin-thumb						: $fs-margin-paragraph !default;
+$fs-margin-slider						: $fs-margin-element !default;
+$fs-margin-slider-caption-elem			: 10px 0 !default;
+$fs-margin-testimonial					: $fs-margin-element !default;
+$fs-margin-progress						: $fs-margin-element !default;
+
+// Padding
+
+$fs-padding-list						: 40px !default;
+$fs-padding-alert						: 15px !default;
+$fs-padding-submenu						: 12px !default;
+$fs-padding-breadcrumbs					: 20px !default;
+$fs-padding-tabs						: 14px 18px !default;
+$fs-padding-pills						: 10px 14px !default;
+$fs-padding-tab-content					: 30px !default;
+$fs-padding-modal-bg					: 10px !default;
+$fs-padding-modal-bg-mobile				: 6px !default;
+$fs-padding-widget						: 30px !default;
+$fs-padding-label						: 6px 10px !default;
+$fs-padding-caption						: 20px !default;
+$fs-padding-caption-gallery				: 15px !default;
+$fs-padding-slider-caption				: 30px 0 !default;
+
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+
+$fs-field-base-height					: 50px !default;
+$fs-field-base-lh						: $fs-font-size-base !default;
+$fs-field-base-padding					: 18px !default;
+
+$fs-field-border-width					: 1px !default;
+$fs-field-radius						: 0;
+
+$fs-clr-text-placeholder				: lighten($fs-clr-text-base, 40%) !default;
+$fs-clr-text-inv-placeholder			: rgba($fs-clr-text-inv-base, 0.4) !default;
+
+$fs-field-selector						: "input[type=date],
+										  input[type=datetime-local],
+										  input[type=email],
+										  input[type=month],
+										  input[type=number],
+										  input[type=password],
+										  input[type=range],
+										  input[type=search],
+										  input[type=tel],
+										  input[type=text],
+										  input[type=time],
+										  input[type=url],
+										  input[type=week],
+										  textarea,
+										  select" !default;
+
+// Field Sizes
+
+$fs-field-sizes : (
+	xs : (
+		font-size						: $fs-font-size-xxs,
+		height							: 32px,
+		line-height						: $fs-font-size-xxs + 2, // Must be even number.
+		padding							: 10px
+	),
+	sm : (
+		font-size						: $fs-font-size-xs,
+		height							: 38px,
+		line-height						: $fs-font-size-xs + 3, // Must be even number.
+		padding							: 12px
+	),
+	lg : (
+		font-size						: $fs-font-size-md,
+		height							: 56px,
+		line-height						: $fs-font-size-md + 3, // Must be even number.
+		padding							: 22px
+	),
+	xl : (
+		font-size						: $fs-font-size-base,
+		height							: 60px,
+		line-height						: $fs-font-size-base + 2, // Must be even number.
+		padding							: 24px
+	),
+	xxl : (
+		font-size						: $fs-font-size-lg,
+		height							: 64px,
+		line-height						: $fs-font-size-lg + 6, // Must be even number.
+		padding							: 26px
+	),
+	xxxl : (
+		font-size						: $fs-font-size-xl,
+		height							: 76px,
+		line-height						: $fs-font-size-xl + 6, // Must be even number.
+		padding							: 28px
+	)
+) !default;
+
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+$fs-btn-base-height						: $fs-field-base-height !default;
+$fs-btn-base-lh							: $fs-field-base-lh !default;
+$fs-btn-base-padding					: $fs-field-base-padding + 4 !default;
+
+$fs-btn-transition						: background-color 0.2s ease-out !default;
+$fs-btn-border-width					: 2px !default; // Transparent on standard .btn
+
+$fs-btn-selector						: ".btn, [type=submit]" !default;
+
+$fs-btn-loading-gradient-size			: 20px;
+$fs-btn-loading-animation-duration		: 1s;
+
+// Button Sizes
+
+$fs-btn-sizes : (
+	xs : (
+		font-size						: 10px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 10px,
+		height							: fs-map-deep-get($fs-field-sizes, xs, height)
+	),
+	sm : (
+		font-size						: 10px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 15px,
+		height							: fs-map-deep-get($fs-field-sizes, sm, height)
+	),
+	lg : (
+		font-size						: 12px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 30px,
+		height							: fs-map-deep-get($fs-field-sizes, lg, height)
+	),
+	xl : (
+		font-size						: 14px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 40px,
+		height							: fs-map-deep-get($fs-field-sizes, xl, height)
+	),
+	xxl : (
+		font-size						: 15px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 50px,
+		height							: fs-map-deep-get($fs-field-sizes, xxl, height)
+	),
+	xxxl : (
+		font-size						: 16px,
+		letter-spacing 					: $fs-font-ls-btn,
+		line-height						: $fs-btn-base-lh,
+		padding							: 64px,
+		height							: fs-map-deep-get($fs-field-sizes, xxxl, height)
+	)
+) !default;
+
+// Close Buttons
+
+$fs-btn-close : (
+	sm									: 20px,
+	md									: 32px,
+	lg									: 44px,
+	xl									: 56px
+) !default;
+
+// Play Buttons
+
+$fs-btn-play : (
+	sm									: 60px,
+	md									: 80px,
+	lg									: 110px,
+	xl									: 150px
+) !default;
+
+// ==========================================================================
+// Tables
+// ==========================================================================
+
+$fs-table-cell-padding					: .75rem !default;
+
+$fs-table-bg							: transparent !default;
+$fs-table-inv-bg						: $fs-clr-bg-dark !default;
+
+$fs-table-bg-accent						: rgba($fs-clr-black, .025) !default;
+$fs-table-bg-inv-accent					: rgba($fs-clr-black, .2) !default;
+$fs-table-bg-hover						: $fs-table-bg-accent !default;
+$fs-table-bg-inv-hover					: $fs-table-bg-inv-accent !default;
+$fs-table-bg-active						: $fs-clr-light !default;
+
+$fs-table-border-width					: 1px !default;
+$fs-table-border-color					: $fs-clr-lighter !default;
+$fs-table-border-inv-color				: $fs-clr-darkest !default;
+
+// Condensed Tables
+
+$fs-table-sm-cell-padding				: .5rem !default;
+$fs-table-sm-font-size					: $fs-font-size-sm !default;
+
+// ==========================================================================
+// Menus
+// ==========================================================================
+
+// Tabs
+
+$fs-tabs-border-width					: 1px !default;
+$fs-tabs-border-color					: $fs-clr-border !default;
+$fs-tabs-border-inv-color				: $fs-clr-border-inv !default;
+
+$fs-tabs-bg								: $fs-clr-bg-light !default;
+$fs-tabs-inv-bg							: rgba($fs-clr-black, 0.2) !default;
+
+$fs-tabs-hover-bg						: darken($fs-tabs-bg, 4%) !default;
+$fs-tabs-hover-inv-bg					: rgba($fs-clr-black, 0.5) !default;
+
+$fs-tabs-active-bg						: $fs-clr-bg-white !default;
+$fs-tabs-active-inv-bg					: $fs-clr-bg-dark !default;
+
+// Pills
+
+$fs-pills-border-width					: 2px !default;
+$fs-pills-border-color					: $fs-clr-border !default;
+$fs-pills-border-inv-color				: $fs-clr-border-inv !default;
+
+$fs-pills-bg							: transparent !default;
+
+$fs-pills-hover-bg						: $fs-tabs-hover-bg !default;
+$fs-pills-hover-inv-bg					: $fs-tabs-hover-inv-bg !default;
+
+$fs-pills-active-bg						: fs-map-deep-get($fs-clr-branding, primary, base) !default;
+$fs-pills-active-text					: fs-map-deep-get($fs-clr-branding, primary, contrast) !default;
+
+$fs-pills-spacing						: 2px !default;
+
+$fs-pills-flyout-bg						: $fs-clr-bg-white !default;
+$fs-pills-flyout-inv-bg					: $fs-clr-bg-dark !default;
+
+// General flyout menus
+
+$fs-flyout-vert-spacing					: .85em !default;
+$fs-flyout-horz-spacing					: 20px !default;
+$fs-flyout-width						: 200px !default;
+$fs-flyout-shadow						: 0 2px 5px rgba($fs-clr-black, 0.05) !default;
+
+// Mega Menus
+
+$fs-mega-menu-padding					: 24px 10px !default;
+
+// ==========================================================================
+// Tabs and Toggles
+// ==========================================================================
+
+// Tabs
+
+$fs-tab-content-border-width			: $fs-tabs-border-width !default;
+$fs-tab-content-border-color			: $fs-tabs-border-color !default;
+$fs-tab-content-border-inv-color		: $fs-tabs-border-inv-color !default;
+
+$fs-tab-content-bg						: $fs-tabs-active-bg !default;
+$fs-tab-content-inv-bg					: $fs-tabs-active-inv-bg !default;
+
+// Toggles
+
+$fs-toggle-border-width					: 1px !default;
+$fs-toggle-border-color					: $fs-clr-border !default;
+$fs-toggle-border-inv-color				: $fs-clr-border-inv !default;
+
+$fs-toggle-vert-space					: 24px !default;
+$fs-toggle-horz-space					: 10px !default;
+
+$fs-toggle-icon-size					: $fs-font-size-base !default;
+$fs-toggle-icon-buffer					: 4px !default;
+
+// ==========================================================================
+// Modal
+// ==========================================================================
+
+// General
+
+$fs-modal-overlay-color					: $fs-clr-black !default;
+$fs-modal-overlay-opacity				: 0.9 !default;
+$fs-modal-shadow						: 0 0 20px rgba($fs-clr-black, 0.4) !default;
+$fs-modal-z-index-base					: 100000 !default;
+
+$fs-modal-caption-text-color			: $fs-clr-text-inv-base !default;
+$fs-modal-caption-font-size				: $fs-font-size-sm !default;
+$fs-modal-caption-spacing				: 4px !default;
+
+$fs-modal-controls-text-color			: $fs-clr-text-inv-lighten !default;
+$fs-modal-controls-text-color-hover		: $fs-clr-text-inv-base !default;
+
+$fs-modal-close-btn-size				: 14px !default;
+
+$fs-modal-arrow-btn-size				: 40px !default;
+$fs-modal-arrow-btn-img-size			: 34px 38px !default;
+
+// Iframes / Video
+
+$fs-modal-iframe-bg						: $fs-clr-black !default;
+$fs-modal-iframe-spacing				: 40px !default;
+$fs-modal-iframe-width					: 900px !default;
+$fs-modal-iframe-ratio					: 9/16 !default;
+
+// Images
+
+$fs-modal-img-bg						: $fs-clr-black !default;
+$fs-modal-img-spacing					: 50px !default;
+
+// Inline Content
+
+$fs-modal-content-border-width			: 1px !default;
+$fs-modal-content-border-color			: rgba($fs-clr-black, 0.5) !default;
+
+$fs-modal-header-border-width			: 1px !default;
+$fs-modal-header-border-color			: $fs-clr-border !default;
+
+$fs-modal-sizes : (
+	xs : ( // Mobile viewport version for all sizes
+		font-size						: $fs-font-size-base,
+		padding-content					: 30px, // top/bottom
+		padding-header					: 20px, // top/bottom
+		padding-horz					: 40px,
+		width 							: 100%
+	),
+	sm : (
+		font-size						: $fs-font-size-sm,
+		padding-content					: 20px, // top/bottom
+		padding-header					: 15px, // top/bottom
+		padding-horz					: 15px,
+		width 							: 300px
+	),
+	md : (
+		font-size						: $fs-font-size-base,
+		padding-content					: 30px, // top/bottom
+		padding-header					: 20px, // top/bottom
+		padding-horz					: 40px,
+		width 							: 600px
+	),
+	lg : (
+		font-size						: $fs-font-size-base,
+		padding-content					: 50px, // top/bottom
+		padding-header					: 30px, // top/bottom
+		padding-horz					: 70px,
+		width 							: 900px
+	)
+) !default;
+
+// Search Modal
+
+$fs-modal-search-border-clr				: fs-map-deep-get($fs-clr-branding, secondary, base) !default;
+
+// ==========================================================================
+// Widgets
+// ==========================================================================
+
+// Default
+
+$fs-widget-default-title-size			: fs-em(18px, $fs-font-size-widget) !default;
+$fs-widget-default-sm-title-size		: fs-em(15px, $fs-font-size-widget) !default;
+
+// Classic Panel
+
+$fs-widget-panel-classic-title-size		: fs-em(16px, $fs-font-size-widget) !default;
+$fs-widget-panel-classic-sm-title-size	: fs-em(15px, $fs-font-size-widget) !default;
+
+$fs-widget-classic-panel-title-bg-clr	: darken($fs-clr-lightest, 2%) !default;
+
+// Modern Panel
+
+$fs-widget-panel-modern-title-size		: fs-em(15px, $fs-font-size-widget) !default;
+$fs-widget-panel-modern-sm-title-size	: fs-em(13px, $fs-font-size-widget) !default;
+
+// ==========================================================================
+// Media
+// ==========================================================================
+
+// Responsive Embeds
+
+$fs-embed-default-ratio					: 16 9 !default;
+
+$fs-embed-ratios : (
+	academy								: 4 3,
+	widescreen							: 16 9,
+	ultrawide							: 21 9,
+) !default;
+
+
+// Thumbnail Links
+
+$fs-thumb-link-icon-size				: 20px !default;
+$fs-thumb-link-icon-w					: 4em !default;
+$fs-thumb-link-icon-h					: 4em !default;
+$fs-thumb-link-icon-radius				: 100% !default;
+
+$fs-thumb-link-icon-clr					: fs-map-deep-get($fs-clr-branding, primary, contrast) !default;
+$fs-thumb-link-icon-bg-clr				: fs-map-deep-get($fs-clr-branding, primary, base) !default;
+
+// Gallery
+
+$fs-gallery-gutters						: 10px !default;
+$fs-gallery-thumb-link-icon-size		: 18px !default;
+$fs-gallery-thumb-link-icon-w			: 3em !default;
+$fs-gallery-thumb-link-icon-h			: 3em !default;
+
+// ==========================================================================
+// Sliders
+// ==========================================================================
+
+$fs-slider-loading-height				: 200px !default;
+$fs-slider-loading-clr					: $fs-clr-bg-light !default;
+
+$fs-slider-caption-z-index				: 1 !default;
+$fs-slider-nav-z-index					: 2 !default;
+
+$fs-slider-nav-bottom-pos				: 40px !default;
+$fs-slider-nav-gallery-bottom-pos		: 40px !default;
+$fs-slider-nav-block-bottom-pos			: 10px !default;
+$fs-slider-nav-btn-size					: 12px !default;
+
+$fs-slider-caption-shadow				: 0 1px 2px rgba($fs-clr-black, 0.7) !default;
+$fs-slider-caption-inv-shadow			: 0 1px 1px rgba($fs-clr-white, 0.8) !default;
+
+$fs-slider-arrow-bg						: rgba($fs-clr-black, 0.5) !default;
+$fs-slider-arrow-hover-bg				: rgba($fs-clr-black, 0.7) !default;
+$fs-slider-arrow-w						: 50px !default;
+$fs-slider-arrow-h						: 80px !default;
+$fs-slider-arrow-radius					: 4px !default;
+$fs-slider-arrow-icon-size				: 20px 22px !default;
+
+$fs-slider-arrow-mini-w					: 24px !default;
+$fs-slider-arrow-mini-h					: 24px !default;
+$fs-slider-arrow-mini-icon-size			: 12px 14px !default;
+
+$fs-slider-thumbs : (
+	sm									: 50px,
+	md									: 75px,
+	lg									: 100px,
+	xl									: 125px
+) !default;
+
+$fs-slider-thumb-gutters				: 4px !default;
+
+$fs-slider-gallery-bg-clr				: $fs-clr-darkest !default;
+$fs-slider-gallery-height				: (400px, 300px, 200px, 150px) !default;
+
+// ==========================================================================
+// Testimonials
+// ==========================================================================
+
+$fs-testimonial-img-radius				: 100% !default;
+
+// Small
+
+$fs-testimonial-sm-radius				: 2px !default;
+$fs-testimonial-sm-spacing				: 30px 35px !default;
+$fs-testimonial-sm-img					: 50px !default;
+$fs-testimonial-sm-img-spacing			: 15px !default;
+$fs-testimonial-sm-triangle				: 5px !default;
+$fs-testimonial-sm-font-size			: $fs-font-size-sm !default;
+
+// Medium
+
+$fs-testimonial-md-radius				: 2px !default;
+$fs-testimonial-md-spacing				: 35px 40px !default;
+$fs-testimonial-md-img					: 75px !default;
+$fs-testimonial-md-triangle				: 15px !default;
+$fs-testimonial-md-font-size			: $fs-font-size-base !default;
+
+// Large
+
+$fs-testimonial-lg-img					: 75px !default;
+$fs-testimonial-lg-spacing				: 0 20px !default;
+$fs-testimonial-lg-font-size			: $fs-font-size-xl + 4px !default;
+
+// ==========================================================================
+// Progress Bars
+// ==========================================================================
+
+$fs-progress-height						: 6px !default;
+$fs-progress-bg							: darken($fs-clr-bg-light, 2%) !default;
+$fs-progress-radius						: 2px !default;
+$fs-progress-label-spacing				: 2.15em !default;
+
+// ==========================================================================
+// Tooltips
+// ==========================================================================
+
+$fs-tooltip-z-index						: $fs-modal-z-index-base + 10 !default;
+$fs-tooltip-opacity						: 1 !default;
+$fs-tooltip-arrow-width					: 5px !default;
+$fs-tooltip-max-width					: 200px !default;
+$fs-tooltip-radius						: 1px !default;
+$fs-tooltip-padding						: 10px 14px !default;
+
+$fs-tooltip-bg							: fs-map-deep-get($fs-clr-branding, secondary, base) !default;
+$fs-tooltip-text						: fs-map-deep-get($fs-clr-branding, secondary, contrast) !default;
+
+// ==========================================================================
+// Dividers
+// ==========================================================================
+
+$fs-divider-height						: 4px !default;
+$fs-divider-radius						: 2px !default;
+
+$fs-divider-sizes : (
+	xs									: 75px,
+	sm									: 25%,
+	md									: 50%,
+	lg									: 75%
+) !default;
+
+// ==========================================================================
+// Section Backgrounds
+// ==========================================================================
+
+$fs-bg-z-index-base						: 0 !default;
+
+// ==========================================================================
+// Loader
+// ==========================================================================
+
+$fs-loader-icon-size					: 14px !default;
+$fs-loader-icon-bdr-size				: 3px !default;
+$fs-loader-icon-clr						: $fs-clr-white !default;
+
+$fs-loader-clr							: rgba($fs-clr-black, 0.25) !default;
+$fs-loader-radius						: 2px !default;
+$fs-loader-shadow						: 0 1px 2px rgba($fs-clr-black, 0.1) !default;
+$fs-loader-z-index						: $fs-modal-z-index-base - 10 !default;
+$fs-loader-padding						: 20px !default;
+$fs-loader-gutter						: 9px !default;
+
+$fs-loader-width						: ($fs-loader-padding * 2) + ($fs-loader-gutter * 2) + ($fs-loader-icon-size * 3) !default;
+$fs-loader-height						: $fs-loader-width / 2 !default;

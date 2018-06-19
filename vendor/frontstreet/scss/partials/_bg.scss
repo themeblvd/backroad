@@ -1,0 +1,166 @@
+// --------------------------------------------------
+// Sections and Backgrounds
+// --------------------------------------------------
+
+//
+// Base Structure
+//
+
+.fs-section,
+.has-bg-slider,
+.has-bg-parallax,
+.has-bg-video {
+    overflow: hidden;
+    position: relative;
+}
+.fs-element {
+    position: relative;
+    z-index: $fs-bg-z-index-base + 4;
+}
+
+//
+// Loader
+//
+
+.fs-section .fs-loader {
+    z-index: $fs-bg-z-index-base + 1;
+}
+
+//
+// Background Shade
+//
+
+.fs-bg-shade {
+    margin: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $fs-bg-z-index-base + 2;
+
+    &.shade-05 {
+        opacity: 0.05;
+    }
+    &.shade-15 {
+        opacity: 0.15;
+    }
+    &.shade-25 {
+        opacity: 0.25;
+    }
+    &.shade-50 {
+        opacity: 0.5;
+    }
+    &.shade-75 {
+        opacity: 0.75;
+    }
+    &.shade-85 {
+        opacity: 0.85;
+    }
+    &.shade-95 {
+        opacity: 0.95;
+    }
+}
+
+//
+// Background Sliders
+//
+
+.fs-bg-slider {
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.25s ease-in-out;
+    z-index: $fs-bg-z-index-base;
+
+    &.in {
+        opacity: 1;
+    }
+    img {
+        max-width: none;
+        max-height: none;
+        min-width: 100%;
+        min-height: 100%;
+        // opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        transition: opacity 0.25s ease-in-out;
+
+        &.fade {
+            transition: opacity 1s ease-in-out;
+        }
+    }
+}
+
+//
+// Background Parallax
+//
+
+.fs-bg-parallax {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $fs-bg-z-index-base;
+
+    @include fs-min-width(md) {
+        img,
+        .img {
+            display: block;
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            max-width: none;
+            max-height: none;
+            min-width: 100%;
+            min-height: 120%;
+            transform: translate3d(-50%, 0, 0);
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease-in-out;
+        }
+        .img {
+            height: 150%;
+        }
+        &.in img,
+        &.in .img {
+            opacity: 1;
+        }
+    }
+    @include fs-max-width(md) {
+        img,
+        .img {
+            // Use 101% x 101% to make sure that the browser never
+            // can round 1px smaller than the calculated height.
+            min-width: 101%;
+            min-height: 101%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) !important;
+        }
+        img {
+            object-fit: cover;
+        }
+        .img {
+            height: 101%;
+        }
+    }
+}
+
+//
+// Background Video
+//
+
+.fs-bg-video {
+    z-index: $fs-bg-z-index-base;
+}

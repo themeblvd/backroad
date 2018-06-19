@@ -1,0 +1,58 @@
+// --------------------------------------------------
+// Close Icon
+// --------------------------------------------------
+
+.fs-close {
+    background-color: transparent;
+    border: none;
+    @include fs-background-close($fs-clr-svg);
+    background-size: (map-get($fs-btn-close, md) / 2)
+        (map-get($fs-btn-close, md) / 2);
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    outline: none !important;
+    width: map-get($fs-btn-close, md);
+    height: map-get($fs-btn-close, md);
+
+    @include fs-hide-text;
+
+    &:hover,
+    &:focus {
+        background-color: transparent; // Override default <button> styling.
+        @include fs-background-close($fs-clr-svg-hover);
+    }
+}
+.text-light .fs-close,
+.fs-close.close-light {
+    @include fs-background-close($fs-clr-svg-inv);
+    border: none;
+
+    &:hover,
+    &:focus {
+        @include fs-background-close($fs-clr-svg-inv-hover);
+    }
+}
+@each $size, $val in $fs-btn-close {
+    @include fs-min-width(sm) {
+        .fs-close.close-#{$size} {
+            background-size: ($val / 2) ($val / 2);
+            width: $val;
+            height: $val;
+        }
+    }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+button.close {
+    background-color: transparent !important;
+    border: 0;
+    box-shadow: none; // Override possible generic form stylings.
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+}

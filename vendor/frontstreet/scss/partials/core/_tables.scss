@@ -1,0 +1,231 @@
+// --------------------------------------------------
+// Tables
+// --------------------------------------------------
+
+//
+// Reset
+//
+
+table {
+    background-color: $fs-table-bg;
+}
+caption,
+th {
+    @if ($direction == "rtl") {
+        text-align: right;
+    } @else {
+        text-align: left;
+    }
+}
+caption {
+    padding-top: $fs-table-cell-padding;
+    padding-bottom: $fs-table-cell-padding;
+    color: $fs-clr-text-lighten;
+}
+
+//
+// Base Table
+//
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin: $fs-margin-table;
+    background-color: $fs-table-bg; // Reset for nesting within parents with `background-color`.
+
+    @include fs-margin-vert-flush;
+
+    th {
+        color: $fs-clr-text-darken;
+        font-weight: $fs-font-weight-bold;
+    }
+    th,
+    td {
+        padding: $fs-table-cell-padding;
+        vertical-align: top;
+        border-top: $fs-table-border-width solid $fs-table-border-color;
+    }
+    thead th {
+        vertical-align: bottom;
+        border-bottom: (2 * $fs-table-border-width) solid $fs-table-border-color;
+    }
+    tbody + tbody {
+        border-top: (2 * $fs-table-border-width) solid $fs-table-border-color;
+    }
+    table {
+        background-color: $fs-clr-bg-body;
+    }
+}
+
+//
+// Condensed Table
+//
+// Note: .table-condensed for backwards compat.
+//
+
+.table-sm,
+.table-condensed {
+    font-size: $fs-table-sm-font-size;
+
+    th,
+    td {
+        padding: $fs-table-sm-cell-padding;
+    }
+}
+
+//
+// Bordered Table
+//
+// Add borders all around the table and between all
+// the columns.
+//
+
+.table-bordered {
+    border: $fs-table-border-width solid $fs-table-border-color;
+
+    th,
+    td {
+        border: $fs-table-border-width solid $fs-table-border-color;
+    }
+    thead {
+        th,
+        td {
+            border-bottom-width: (2 * $fs-table-border-width);
+        }
+    }
+}
+
+//
+// Zebra-Striped Table
+//
+// Default zebra-stripe styles (alternating gray and
+// transparent backgrounds).
+//
+
+.table-striped {
+    tbody tr:nth-of-type(odd) {
+        background-color: $fs-table-bg-accent;
+    }
+}
+
+//
+// Hover effect
+//
+// Placed here since it has to come after the potential
+// zebra striping.
+//
+
+.table-hover {
+    tbody tr {
+        &:hover {
+            background-color: $fs-table-bg-hover;
+        }
+    }
+}
+
+//
+// Table Backgrounds
+//
+// Exact selectors below required to override `.table-striped` and prevent
+// inheritance to nested tables.
+//
+
+@include fs-table-row-variant(active, $fs-table-bg-active);
+
+@each $name, $map in $fs-clr-contextual {
+    @include fs-table-row-variant(#{$name}, map-get($map, base));
+}
+
+//
+// Inverted Tables
+//
+// Same table markup, but inverted color scheme: dark background and
+// light text.
+//
+
+.table-inverse {
+    color: $fs-clr-text-inv-base;
+    background-color: $fs-table-inv-bg;
+
+    th,
+    td,
+    thead th {
+        border-color: $fs-table-border-inv-color;
+        color: $fs-clr-text-inv-darken;
+    }
+    &.table-bordered {
+        border-color: $fs-table-border-inv-color;
+    }
+}
+
+//
+// Responsive Tables
+//
+// Wrap table like:
+// <div class="table-responsive"><table>...</table></div>
+//
+
+.table-responsive {
+    overflow-x: auto;
+    margin: $fs-margin-table;
+    min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+
+    @include fs-max-width(sm) {
+        width: 100%;
+        // margin-bottom: ($line-height-computed * 0.75);
+        overflow-y: hidden;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid $fs-table-border-color;
+
+        // Tighten up spacing
+        > table {
+            margin-bottom: 0;
+
+            // Ensure the content doesn't wrap
+            > thead,
+            > tbody,
+            > tfoot {
+                > tr {
+                    > th,
+                    > td {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        // Special overrides for the bordered tables
+        > .table-bordered {
+            border: 0;
+
+            // Nuke the appropriate borders so that the parent can handle them
+            > thead,
+            > tbody,
+            > tfoot {
+                > tr {
+                    > th:first-child,
+                    > td:first-child {
+                        border-left: 0;
+                    }
+                    > th:last-child,
+                    > td:last-child {
+                        border-right: 0;
+                    }
+                }
+            }
+
+            // Only nuke the last row's bottom-border in `tbody` and `tfoot` since
+            // chances are there will be only one `tr` in a `thead` and that would
+            // remove the border altogether.
+            > tbody,
+            > tfoot {
+                > tr:last-child {
+                    > th,
+                    > td {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+// --------------------------------------------------
+// Utilities
+// --------------------------------------------------
+
+//
+// Floats and Alignment
+//
+// Note: We're using alignright and alignleft because
+// this is the standard WordPress convention that we'll
+// be working with when this framework is used there.
+//
+// But we also need pull-right and pull-left for some
+// older Theme Blvd compat. Use alignright and
+// alignleft, instead.
+//
+
+.clearfix {
+    @include fs-clearfix;
+}
+.aligncenter,
+.align-center,
+.alignleft,
+.align-left,
+.pull-left,
+.lignright,
+.align-right,
+.pull-right {
+    margin: $fs-margin-figure;
+
+    @include fs-margin-vert-flush;
+    @include fs-aligncenter;
+}
+@include fs-min-width(xs) {
+    .alignleft,
+    .align-left,
+    .pull-left {
+        @include fs-alignleft;
+    }
+    .alignright,
+    .align-right,
+    .pull-right {
+        @include fs-alignright;
+    }
+}
+
+//
+// Toggling content
+//
+
+@include fs-hide(".hide");
+
+@include fs-show-block(".show-block");
+
+@include fs-show-flex(".show-flex");
+
+@include fs-invisible(".invisible");
+
+@include fs-visible(".visible");
+
+@include fs-hide(".hidden");
+
+//
+// Hide Text
+//
+
+.text-hide {
+    @include fs-hide-text;
+}
+
+//
+// Text Alignment
+//
+
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.text-justify {
+    text-align: justify;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+
+//
+// Text Transformation
+//
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+//
+// Borders
+//
+
+@each $name, $map in $fs-border-utils {
+    .border-#{$name} {
+        border: map-get($map, width) map-get($map, style) map-get($map, color);
+    }
+}

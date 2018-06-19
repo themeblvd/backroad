@@ -1,0 +1,469 @@
+// --------------------------------------------------
+// Modal Core
+// --------------------------------------------------
+
+//
+// This replaces the need for including MagnificPopup
+// styling, as this is our modified version of it.
+//
+
+//
+// General styles
+//
+
+.fs-modal {
+    &.mfp-bg {
+        background: $fs-modal-overlay-color;
+        opacity: $fs-modal-overlay-opacity;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: $fs-modal-z-index-base + 2;
+    }
+    &.mfp-wrap {
+        -webkit-backface-visibility: hidden; // fixes webkit bug that can cause "false" scrollbar
+        outline: none !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: $fs-modal-z-index-base + 3;
+    }
+    .mfp-container {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding: 0 $fs-padding-modal-bg;
+        box-sizing: border-box;
+    }
+    .mfp-container.mfp-inline-holder {
+        padding: $fs-padding-modal-bg;
+    }
+
+    // Vertical centerer helper
+    .mfp-container {
+        &:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+    }
+
+    // Remove vertical centering when popup has class `mfp-align-top`
+    &.mfp-align-top {
+        .mfp-container {
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    // Popup content holder
+    .mfp-content {
+        display: inline-block;
+        margin: 0 auto;
+        position: relative;
+        @if ($direction == "rtl") {
+            text-align: right;
+        } @else {
+            text-align: left;
+        }
+        vertical-align: middle;
+        z-index: $fs-modal-z-index-base + 5;
+    }
+    .mfp-inline-holder,
+    .mfp-ajax-holder {
+        .mfp-content {
+            width: 100%;
+            cursor: auto;
+        }
+    }
+
+    // Cursors
+    .mfp-ajax-cur {
+        cursor: progress;
+    }
+    .mfp-zoom-out-cur {
+        &,
+        .mfp-image-holder .mfp-close {
+            cursor: -moz-zoom-out;
+            cursor: -webkit-zoom-out;
+            cursor: zoom-out;
+        }
+    }
+    .mfp-zoom {
+        cursor: pointer;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+        cursor: zoom-in;
+    }
+    .mfp-auto-cursor {
+        .mfp-content {
+            cursor: auto;
+        }
+    }
+    .mfp-close,
+    .mfp-arrow,
+    .mfp-preloader,
+    .mfp-counter {
+        user-select: none;
+    }
+
+    // Hide the image during the loading
+    .mfp-loading {
+        &.mfp-figure {
+            display: none;
+        }
+    }
+
+    // Helper class that hides stuff
+    .mfp-hide {
+        display: none !important;
+    }
+} // .fs-modal
+
+//
+// Animation
+//
+
+.fs-modal-fade,
+.fs-modal-slide {
+    &.mfp-bg {
+        opacity: 0;
+        transition: opacity 0.15s ease-out;
+    }
+    &.mfp-bg.mfp-ready {
+        opacity: $fs-modal-overlay-opacity;
+    }
+    &.mfp-bg.mfp-removing {
+        opacity: 0;
+    }
+}
+
+.fs-modal-fade {
+    &.mfp-wrap {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 0;
+            transition: opacity 0.15s ease-out;
+        }
+    }
+    &.mfp-wrap.mfp-ready {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 1;
+        }
+    }
+    &.mfp-wrap.mfp-removing {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 0;
+        }
+    }
+}
+
+.fs-modal-slide {
+    &.mfp-wrap {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 0;
+            transform: translate(0, -20px);
+            transition: all 0.15s ease-out;
+        }
+    }
+    &.mfp-wrap.mfp-ready {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+    &.mfp-wrap.mfp-removing {
+        .mfp-content,
+        .mfp-figure > button,
+        .mfp-iframe-scaler > button {
+            opacity: 0;
+            transform: translate(0, -20px);
+        }
+    }
+}
+
+//
+// Appearance
+//
+
+.fs-modal {
+    .mfp-preloader {
+        color: $fs-modal-controls-text-color;
+        margin-top: -0.8em;
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        right: 8px;
+        text-align: center;
+        width: auto;
+        z-index: $fs-modal-z-index-base + 4;
+
+        a {
+            color: $fs-modal-controls-text-color;
+
+            &:hover {
+                color: $fs-modal-controls-text-color-hover;
+            }
+        }
+    }
+    .mfp-s-ready {
+        .mfp-preloader {
+            display: none;
+        }
+    }
+    .mfp-s-error {
+        .mfp-content {
+            display: none;
+        }
+    }
+    button {
+        &.mfp-close,
+        &.mfp-arrow {
+            overflow: visible;
+            -webkit-appearance: none;
+            z-index: $fs-modal-z-index-base + 6;
+            touch-action: manipulation;
+        }
+        &::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+    }
+    .mfp-close {
+        background-size: $fs-modal-close-btn-size $fs-modal-close-btn-size;
+        position: absolute;
+        right: 0;
+        top: 10px;
+
+        &:active {
+            transform: translate(0, 1px);
+        }
+    }
+
+    // "1 of X" counter
+    .mfp-counter {
+        color: $fs-modal-caption-text-color;
+        font-size: $fs-modal-caption-font-size;
+        line-height: $fs-font-lh-base;
+        position: absolute;
+        top: $fs-modal-caption-spacing;
+        @if ($direction == "rtl") {
+            left: $fs-modal-caption-spacing;
+        } @else {
+            right: $fs-modal-caption-spacing;
+        }
+        white-space: nowrap;
+    }
+
+    // Navigation arrows
+    .mfp-arrow {
+        background-color: transparent;
+        background-size: $fs-modal-arrow-btn-img-size;
+        border: none;
+        margin: 0;
+        padding: 0;
+        outline: none !important;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: $fs-modal-arrow-btn-size * 2;
+        height: $fs-modal-arrow-btn-size * 2;
+
+        &:active {
+            margin-top: 1px;
+        }
+    }
+    .mfp-arrow-left {
+        @if ($direction == "rtl") {
+            @include fs-background-chevron("right", $fs-clr-svg-inv);
+            right: 10px;
+
+            &:hover,
+            &:focus {
+                @include fs-background-chevron("right", $fs-clr-svg-inv-hover);
+            }
+        } @else {
+            @include fs-background-chevron("left", $fs-clr-svg-inv);
+            left: 10px;
+
+            &:hover,
+            &:focus {
+                @include fs-background-chevron("left", $fs-clr-svg-inv-hover);
+            }
+        }
+    }
+    .mfp-arrow-right {
+        @if ($direction == "rtl") {
+            @include fs-background-chevron("left", $fs-clr-svg-inv);
+            left: 10px;
+
+            &:hover,
+            &:focus {
+                @include fs-background-chevron("left", $fs-clr-svg-inv-hover);
+            }
+        } @else {
+            @include fs-background-chevron("right", $fs-clr-svg-inv);
+            right: 10px;
+
+            &:hover,
+            &:focus {
+                @include fs-background-chevron("right", $fs-clr-svg-inv-hover);
+            }
+        }
+    }
+    .mfp-iframe-holder {
+        padding-top: $fs-modal-iframe-spacing;
+        padding-bottom: $fs-modal-iframe-spacing;
+
+        .mfp-content {
+            line-height: 0;
+            max-width: $fs-modal-iframe-width;
+            width: 100%;
+        }
+        .mfp-close {
+            top: -40px;
+        }
+    }
+    .mfp-iframe-scaler {
+        padding-top: $fs-modal-iframe-ratio * 100%;
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+
+        iframe {
+            background: $fs-modal-iframe-bg;
+            box-shadow: $fs-modal-shadow;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    img {
+        &.mfp-img {
+            box-sizing: border-box;
+            display: block;
+            line-height: 0;
+            margin: 0 auto;
+            padding: $fs-modal-img-spacing 0;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+    }
+    .mfp-figure {
+        line-height: 0;
+
+        &:after {
+            content: "";
+            background: $fs-modal-img-bg;
+            box-shadow: $fs-modal-shadow;
+            display: block;
+            position: absolute;
+            top: $fs-modal-img-spacing;
+            right: 0;
+            bottom: $fs-modal-img-spacing;
+            left: 0;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+        small {
+            color: $fs-modal-caption-text-color;
+            display: block;
+            font-size: $fs-modal-caption-font-size;
+            line-height: $fs-font-lh-base;
+        }
+        figure {
+            margin: 0;
+        }
+    }
+    .mfp-bottom-bar {
+        cursor: auto;
+        margin-top: -$fs-modal-img-spacing + 4;
+        padding: $fs-modal-caption-spacing;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+    .mfp-iframe-holder .mfp-bottom-bar {
+        margin-top: 4px;
+    }
+    .mfp-title {
+        color: $fs-modal-caption-text-color;
+        font-size: $fs-modal-caption-font-size;
+        @if ($direction == "rtl") {
+            padding-left: 36px; // leave some space for counter at left side
+        } @else {
+            padding-right: 36px; // leave some space for counter at right side
+        }
+        line-height: $fs-font-lh-base;
+        text-align: if($direction == "rtl", right, left);
+        word-wrap: break-word;
+    }
+    .mfp-image-holder .mfp-content {
+        max-width: 100%;
+    }
+    .mfp-gallery .mfp-image-holder .mfp-figure {
+        cursor: pointer;
+    }
+} // .fs-modal
+
+//
+// Smaller device styling.
+//
+
+@include fs-max-width("sm") {
+    .fs-modal {
+        .mfp-arrow {
+            background-color: rgba(0, 0, 0, 0.25);
+            transform: scale(0.5) translate(0, -75%);
+        }
+        .mfp-arrow-left {
+            @if ($direction == "rtl") {
+                @include fs-background-chevron("right", $fs-clr-text-inv-base);
+                right: $fs-modal-arrow-btn-size / -3;
+            } @else {
+                @include fs-background-chevron("left", $fs-clr-text-inv-base);
+                left: $fs-modal-arrow-btn-size / -3;
+            }
+        }
+        .mfp-arrow-right {
+            @if ($direction == "rtl") {
+                @include fs-background-chevron("left", $fs-clr-text-inv-base);
+                left: $fs-modal-arrow-btn-size / -3;
+            } @else {
+                @include fs-background-chevron("right", $fs-clr-text-inv-base);
+                right: $fs-modal-arrow-btn-size / -3;
+            }
+        }
+        .mfp-container {
+            padding: 0 $fs-padding-modal-bg-mobile;
+        }
+        .mfp-container.mfp-inline-holder {
+            padding: $fs-padding-modal-bg;
+        }
+    }
+}

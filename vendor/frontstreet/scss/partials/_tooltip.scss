@@ -1,0 +1,69 @@
+// --------------------------------------------------
+// Tooltips
+// --------------------------------------------------
+
+.fs-tooltip {
+    @include fs-text-reset;
+    font-size: $fs-font-size-tooltip;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    z-index: $fs-tooltip-z-index;
+
+    &.in {
+        opacity: $fs-tooltip-opacity;
+    }
+    &.top {
+        margin-top: -3px;
+        padding: $fs-tooltip-arrow-width 0;
+    }
+    &.bottom {
+        margin-top: 3px;
+        padding: $fs-tooltip-arrow-width 0;
+    }
+    .tooltip-inner {
+        background-color: $fs-tooltip-bg;
+        border-radius: $fs-tooltip-radius;
+        color: $fs-tooltip-text;
+        max-width: $fs-tooltip-max-width;
+        padding: $fs-tooltip-padding;
+        text-align: center;
+    }
+    .tooltip-arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    &.top .tooltip-arrow {
+        bottom: 0;
+        left: 50%;
+        margin-left: -$fs-tooltip-arrow-width;
+        border-width: $fs-tooltip-arrow-width $fs-tooltip-arrow-width 0;
+        border-top-color: $fs-tooltip-bg;
+    }
+    &.right .tooltip-arrow {
+        top: 50%;
+        left: 0;
+        margin-top: -$fs-tooltip-arrow-width;
+        border-width: $fs-tooltip-arrow-width $fs-tooltip-arrow-width
+            $fs-tooltip-arrow-width 0;
+        border-right-color: $fs-tooltip-bg;
+    }
+    &.left .tooltip-arrow {
+        top: 50%;
+        right: 0;
+        margin-top: -$fs-tooltip-arrow-width;
+        border-width: $fs-tooltip-arrow-width 0 $fs-tooltip-arrow-width
+            $fs-tooltip-arrow-width;
+        border-left-color: $fs-tooltip-bg;
+    }
+    &.bottom .tooltip-arrow {
+        top: 0;
+        left: 50%;
+        margin-left: -$fs-tooltip-arrow-width;
+        border-width: 0 $fs-tooltip-arrow-width $fs-tooltip-arrow-width;
+        border-bottom-color: $fs-tooltip-bg;
+    }
+}

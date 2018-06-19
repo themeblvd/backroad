@@ -1,0 +1,220 @@
+////
+/// Mixins: Navigation
+///
+/// @access public
+/// @group fs-mixins
+/// @author Jason Bobich
+////
+
+///
+/// General horizontal navigation.
+///
+/// @since 1.0.0
+///
+@mixin nav-horz {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+///
+/// Horizontal tabs navigation.
+///
+/// @since 1.0.0
+///
+@mixin nav-tabs-horz {
+    > li > .menu-btn {
+        border-bottom-width: $fs-tabs-border-width;
+        margin-bottom: -$fs-tabs-border-width;
+    }
+    > li.active > .menu-btn {
+        border-bottom-color: transparent;
+    }
+    &.fs-menu > li > ul {
+        border: none;
+        margin-top: $fs-tabs-border-width;
+    }
+}
+
+///
+/// Color styling for tabs, depending on if in a
+/// light or dark background.
+///
+/// @since 1.0.0
+///
+/// @param {String} $style - Style of scenario, `default` or `inverse`.
+///
+@mixin tabs-variant($style: "default") {
+    .submenu-tabs {
+        @if ($style == "inverse") {
+            border-color: $fs-tabs-border-inv-color;
+
+            > li > .menu-btn {
+                background: $fs-tabs-inv-bg;
+                border-color: $fs-tabs-border-inv-color;
+
+                &:hover,
+                &:focus {
+                    background-color: $fs-tabs-hover-inv-bg;
+                }
+            }
+            > li.active,
+            > li.current-menu-item,
+            > li.current-menu-ancestor {
+                > .menu-btn {
+                    background: $fs-tabs-active-inv-bg;
+                }
+            }
+            ul {
+                background: $fs-tabs-active-inv-bg;
+
+                .menu-btn {
+                    color: rgba($fs-clr-text-inv-darken, 0.8);
+
+                    &:hover,
+                    &:focus {
+                        color: $fs-clr-text-inv-darken;
+                    }
+                }
+            }
+            > li > ul {
+                @if ($direction == "rtl") {
+                    border-left-color: $fs-tabs-border-inv-color;
+                } @else {
+                    border-right-color: $fs-tabs-border-inv-color;
+                }
+            }
+        } @else {
+            border-color: $fs-tabs-border-color;
+
+            > li > .menu-btn {
+                background: $fs-tabs-bg;
+                border-color: $fs-tabs-border-color;
+
+                &:hover,
+                &:focus {
+                    background-color: $fs-tabs-hover-bg;
+                }
+            }
+            > li.active,
+            > li.current-menu-item,
+            > li.current-menu-ancestor {
+                > .menu-btn {
+                    background: $fs-tabs-active-bg;
+                }
+            }
+            ul {
+                background: $fs-tabs-active-bg;
+
+                .menu-btn {
+                    color: $fs-clr-text-base;
+
+                    &:hover,
+                    &:focus {
+                        color: $fs-clr-text-darken;
+                    }
+                }
+            }
+            > li > ul {
+                @if ($direction == "rtl") {
+                    border-right-color: $fs-tabs-border-color;
+                } @else {
+                    border-left-color: $fs-tabs-border-color;
+                }
+            }
+        }
+    }
+}
+
+///
+/// Horizontal pills navigation.
+///
+/// @since 1.0.0
+///
+@mixin nav-pills-horz {
+    &.fs-menu ul {
+        background-color: $fs-pills-flyout-bg;
+
+        @if ($direction == "rtl") {
+            margin: $fs-pills-spacing $fs-pills-spacing 0 0;
+        } @else {
+            margin: $fs-pills-spacing 0 0 $fs-pills-spacing;
+        }
+    }
+}
+
+///
+/// Color styling for pills, depending on if in a
+/// light or dark background.
+///
+/// @since 1.0.0
+///
+/// @param {String} $style - Style of scenario, `default` or `inverse`.
+///
+@mixin pills-variant($style: "default") {
+    .submenu-pills {
+        @if ($style == "inverse") {
+            > li > .menu-btn {
+                border-color: $fs-pills-border-inv-color;
+
+                &:hover,
+                &:focus {
+                    background: $fs-pills-hover-inv-bg;
+                }
+            }
+        } @else {
+            > li > .menu-btn {
+                border-color: $fs-pills-border-color;
+
+                &:hover,
+                &:focus {
+                    background: $fs-pills-hover-bg;
+                }
+            }
+        }
+    }
+}
+
+///
+/// Dropdown menu styling.
+///
+/// @since 1.0.0
+///
+@mixin nav-dropdown {
+    ul,
+    .fs-mega {
+        box-shadow: $fs-flyout-shadow;
+        position: absolute;
+    }
+    ul li.menu-item-has-children > .menu-btn:after {
+        @if ($direction == "rtl") {
+            content: "\f104";
+        } @else {
+            content: "\f105";
+        }
+    }
+    ul.reverse li.menu-item-has-children > .menu-btn:after {
+        @if ($direction == "rtl") {
+            content: "\f105";
+        } @else {
+            content: "\f104";
+        }
+    }
+    ul ul {
+        @include fs-list-unstyled;
+    }
+
+    // Mega Menu
+    .fs-mega {
+        padding: $fs-mega-menu-padding;
+
+        ul {
+            // display: block;
+            position: static;
+            box-shadow: none;
+        }
+    }
+    .fs-mega-section {
+        margin-bottom: 0;
+        padding: 0 10px;
+    }
+}

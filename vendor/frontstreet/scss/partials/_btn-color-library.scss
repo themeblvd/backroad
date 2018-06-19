@@ -1,0 +1,15 @@
+// --------------------------------------------------
+// Button Colors
+// --------------------------------------------------
+
+//
+// Color Library
+//
+
+@each $clr, $map in $fs-clr-library {
+    @include fs-button-variant(
+        $clr,
+        map-get($map, contrast),
+        map-get($map, base)
+    );
+}

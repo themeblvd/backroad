@@ -1,0 +1,329 @@
+// --------------------------------------------------
+// Slider
+// --------------------------------------------------
+
+//
+// Owl Carousel adjustments.
+//
+
+.fs-slider {
+    margin: 0;
+
+    // Adjust default fade speed from 1000ms to 500ms.
+    .animated {
+        animation-duration: 500ms;
+    }
+
+    // Enabled for item.page.index to work in JS,
+    // but hidden with CSS.
+    .owl-dots {
+        display: none;
+    }
+}
+
+//
+// Slider standard navigation.
+//
+
+.fs-slider-nav {
+    display: none;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+
+    @include fs-hide-text;
+    @include fs-list-unstyled;
+
+    li {
+        background-color: transparent;
+        border: 2px solid $fs-clr-lighter;
+        border-radius: $fs-slider-nav-btn-size;
+        cursor: pointer;
+        display: block;
+        margin: 1px 2px;
+        width: $fs-slider-nav-btn-size;
+        height: $fs-slider-nav-btn-size;
+    }
+    li.active {
+        background-color: $fs-clr-lighter;
+    }
+}
+
+//
+// Slider Arrows - Next/Prev navigation.
+//
+
+.fs-slider-arrows {
+    display: none;
+    margin: 0;
+
+    @include fs-list-unstyled;
+
+    li {
+        background-size: $fs-slider-arrow-icon-size;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: $fs-slider-arrow-w;
+        height: $fs-slider-arrow-h;
+        z-index: $fs-slider-nav-z-index;
+        @include fs-hide-text;
+    }
+    li.trans {
+        background-color: $fs-slider-arrow-bg;
+
+        &:hover,
+        &:focus {
+            background-color: $fs-slider-arrow-hover-bg;
+        }
+    }
+    .prev {
+        @if ($direction == "rtl") {
+            border-radius: $fs-slider-arrow-radius 0 0 $fs-slider-arrow-radius;
+            right: 0;
+            @include fs-background-chevron("right", $fs-clr-white);
+        } @else {
+            border-radius: 0 $fs-slider-arrow-radius $fs-slider-arrow-radius 0;
+            left: 0;
+            @include fs-background-chevron("left", $fs-clr-white);
+        }
+    }
+    .next {
+        @if ($direction == "rtl") {
+            border-radius: 0 $fs-slider-arrow-radius $fs-slider-arrow-radius 0;
+            left: 0;
+            @include fs-background-chevron("left", $fs-clr-white);
+        } @else {
+            border-radius: $fs-slider-arrow-radius 0 0 $fs-slider-arrow-radius;
+            right: 0;
+            @include fs-background-chevron("right", $fs-clr-white);
+        }
+    }
+}
+
+//
+// Slider thumbnail navigation.
+//
+
+.fs-slider-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 ($fs-slider-thumb-gutters / -2);
+    padding-top: $fs-slider-thumb-gutters;
+
+    @include fs-list-unstyled;
+
+    li {
+        cursor: pointer;
+        padding: 0 ($fs-slider-thumb-gutters / 2);
+    }
+    img {
+        opacity: 0.6;
+        transition: opacity 0.2s ease-in-out;
+    }
+    li:hover img,
+    li:focus img,
+    li.active img {
+        opacity: 1;
+    }
+    @each $size, $val in $fs-slider-thumbs {
+        &.thumbs-#{$size} img {
+            width: $val;
+        }
+    }
+}
+
+//
+// All Slider Types
+//
+
+.fs-simple-slider,
+.fs-gallery-slider,
+.fs-block-slider {
+    margin: $fs-margin-slider;
+    @include fs-margin-vert-flush;
+
+    &.loading {
+        > .wrap {
+            background-color: $fs-slider-loading-clr;
+            height: $fs-slider-loading-height;
+        }
+        .fs-loader {
+            top: $fs-slider-loading-height / 2;
+        }
+    }
+    &.loaded {
+        .fs-slider-arrows {
+            display: block;
+        }
+        .fs-slider-nav,
+        .fs-slider-thumbs {
+            display: flex;
+        }
+    }
+    .fs-slider-arrows li {
+        transition: transform 0.2s ease-in-out, $fs-transition-fade;
+
+        &.next {
+            @if ($direction == "rtl") {
+                transform: translate(-$fs-slider-arrow-w, -50%);
+            } @else {
+                transform: translate($fs-slider-arrow-w, -50%);
+            }
+        }
+        &.prev {
+            @if ($direction == "rtl") {
+                transform: translate($fs-slider-arrow-w, -50%);
+            } @else {
+                transform: translate(-$fs-slider-arrow-w, -50%);
+            }
+        }
+    }
+    &.hovered .fs-slider-arrows li {
+        transform: translate(0, -50%);
+    }
+}
+
+//
+// Simple Slider
+//
+
+.fs-simple-slider {
+    > .wrap {
+        overflow: hidden;
+        position: relative;
+
+        .fs-slider-nav {
+            @include fs-slider-nav-overlaid($fs-slider-nav-bottom-pos);
+        }
+    }
+    .slider-caption {
+        color: $fs-clr-white;
+        font-size: $fs-font-size-slider-caption;
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        right: 20%;
+        padding: $fs-padding-slider-caption;
+        text-align: center;
+        text-shadow: $fs-slider-caption-shadow;
+        transform: translate(0, -50%);
+        z-index: $fs-slider-caption-z-index;
+
+        .slider-heading {
+            color: $fs-clr-white;
+        }
+        .slider-heading,
+        p {
+            margin: $fs-margin-slider-caption-elem;
+            @include fs-margin-vert-flush;
+        }
+    }
+    &.slider-mini {
+        .fs-slider-arrows {
+            display: flex;
+            position: absolute;
+            top: 5px;
+            left: 4px;
+        }
+        .fs-slider-arrows li {
+            background-size: $fs-slider-arrow-mini-icon-size;
+            border-radius: 0;
+            margin: 0 1px;
+            position: static;
+            transform: translate(0, 0);
+            width: $fs-slider-arrow-mini-w;
+            height: $fs-slider-arrow-mini-h;
+        }
+    }
+    &.text-dark {
+        > .wrap .fs-slider-nav {
+            @include fs-slider-nav-overlaid-dark;
+        }
+        .slider-caption,
+        .slider-heading {
+            color: $fs-clr-dark;
+            text-shadow: $fs-slider-caption-inv-shadow;
+        }
+    }
+}
+
+//
+// Gallery Slider
+//
+
+.fs-gallery-slider {
+    > .wrap {
+        overflow: hidden;
+        position: relative;
+
+        .fs-slider-nav {
+            @include fs-slider-nav-overlaid($fs-slider-nav-gallery-bottom-pos);
+
+            @include fs-max-width(md) {
+                bottom: $fs-slider-nav-bottom-pos / 2;
+            }
+            @include fs-max-width(sm) {
+                bottom: $fs-slider-nav-bottom-pos / 3;
+            }
+            @include fs-max-width(xs) {
+                bottom: $fs-slider-nav-bottom-pos / 4;
+            }
+        }
+    }
+    .fs-slider {
+        background-color: $fs-slider-gallery-bg-clr;
+    }
+    .fs-slider,
+    .slider-item {
+        height: nth($fs-slider-gallery-height, 1);
+    }
+    @include fs-max-width(md) {
+        .fs-slider,
+        .slider-item {
+            height: nth($fs-slider-gallery-height, 2);
+        }
+    }
+    @include fs-max-width(sm) {
+        .fs-slider,
+        .slider-item {
+            height: nth($fs-slider-gallery-height, 3);
+        }
+    }
+    @include fs-max-width(xs) {
+        .fs-slider,
+        .slider-item {
+            height: nth($fs-slider-gallery-height, 4);
+        }
+    }
+    .slider-item img {
+        opacity: 0.5 !important;
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.2s ease-out;
+        width: auto !important;
+        height: 100%;
+    }
+    .center .slider-item img {
+        opacity: 1 !important;
+    }
+    &.text-dark {
+        > .wrap .fs-slider-nav {
+            @include fs-slider-nav-overlaid-dark;
+        }
+    }
+}
+
+//
+// Block Slider
+//
+
+.fs-block-slider {
+    > .wrap {
+        overflow: hidden;
+        position: relative;
+
+        .fs-slider-nav {
+            @include fs-slider-nav-overlaid($fs-slider-nav-block-bottom-pos);
+        }
+    }
+}
