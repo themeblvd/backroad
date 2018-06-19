@@ -15,20 +15,15 @@ const userSchema = new Schema({
   role: {
     type: String,
     enum: ['admin', 'editor'],
-    required: true
-  },
-  firstName: {
-    type: String,
-    required: true
-  },
-  lastName: {
-    type: String,
-    required: true
+    required: true,
+    default: 'editor'
   },
   email: {
     type: String,
     required: true
-  }
+  },
+  firstName: String,
+  lastName: String
 });
 
 module.exports = mongoose.model('User', userSchema);
