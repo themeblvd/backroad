@@ -1,0 +1,21 @@
+//
+// Forms
+//
+
+label {
+  font-size: 16px;
+}
+.help-text {
+  display: block;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+//
+// Field Error
+//
+$clr-danger: fs-map-deep-get($fs-clr-contextual, danger, base);
+
+input.error {
+  border-color: darken(adjust-hue($clr-danger, -10), 20%);
+}

@@ -5,18 +5,16 @@
 // Branding Colors
 $fs-clr-branding: (
   primary: (
-    base: #2f88d6,
+    base: #0b486b,
     contrast: #fff
   ),
   secondary: (
-    base: #e4eaec,
-    contrast: #333
+    base: #a8dba8,
+    contrast: #0b486b
   )
 );
 
-// Required setup variables.
-$direction: 'ltr';
-$version: 'core';
+$fs-clr-border-active: fs-map-deep-get($fs-clr-branding, secondary, base);
 
 // ==========================================================================
 // Colors

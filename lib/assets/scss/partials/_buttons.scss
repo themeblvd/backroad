@@ -1,0 +1,8 @@
+//
+// Buttons
+//
+
+.btn.btn-primary:hover {
+  background-color: fs-map-deep-get($fs-clr-branding, secondary, base);
+  color: fs-map-deep-get($fs-clr-branding, secondary, contrast);
+}

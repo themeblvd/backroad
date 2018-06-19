@@ -1,24 +1,23 @@
-//
-// Configuration
-//
+// Required by Front Street
+$direction: 'ltr';
+$version: 'core';
 
-@import 'utils/variables';
-
-//
-// Front Street
-//
-
-// Functions, Variables and Mixins
+// Front Street Functions, Variables and Mixins
 @import '../../../vendor/frontstreet/scss/modules/index';
 
-// Reset
+// Back Road configuration
+@import 'utils/variables';
+
+// Front Street Reset
 @import '../../../vendor/frontstreet/scss/partials/normalize';
 
-// Core Styles
+// Front Street Core Styles
 @import '../../../vendor/frontstreet/scss/partials/core/index';
 
-//
-// Backroad Core
-//
+// Front Street Components
+@import '../../../vendor/frontstreet/scss/partials/alerts';
 
-@import 'partials/notification';
+// Back Road Core
+@import 'partials/buttons';
+@import 'partials/forms';
+@import 'partials/notifications';

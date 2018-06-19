@@ -2,7 +2,7 @@
 // Colors
 //
 
-$clr-success: fs-map-deep-get($fs-clr-contextual, success, base);
+$clr-success: fs-map-deep-get($fs-clr-branding, secondary, base);
 $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
 
 //
@@ -15,6 +15,7 @@ $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   font-size: 20px;
+  font-weight: $fs-font-weight-bold;
   opacity: 0;
   padding: 30px 40px;
   position: fixed;
@@ -33,19 +34,17 @@ $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
     opacity: 0;
     transform: translate(-50%, 10px);
   }
-
   &.success {
-    background-color: rgba(lighten($clr-success, 60%), 0.95);
+    background-color: rgba(lighten($clr-success, 20%), 0.95);
     border-color: $clr-success;
-    color: $clr-success;
+    color: darken($clr-success, 20%);
 
     p {
       margin: 0 0 20px 0;
     }
   }
-
   &.error {
-    background-color: rgba(lighten($clr-error, 50%), 0.95);
+    background-color: rgba(darken($clr-error, 20%), 0.95);
     border-color: $clr-error;
     color: $clr-error;
   }
