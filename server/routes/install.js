@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
 const Setting = require('../models/setting');
 const User = require('../models/user');
 

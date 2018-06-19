@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const createAdminRouter = require('./routes/admin');
 const createInstallRouter = require('./routes/install');
