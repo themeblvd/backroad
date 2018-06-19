@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
+  "dependencies": {
+    "dotenv": "^6.0.0"
+  }
 }
