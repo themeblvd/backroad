@@ -1,0 +1,24 @@
+//
+// Configuration
+//
+
+@import 'utils/variables';
+
+//
+// Front Street
+//
+
+// Functions, Variables and Mixins
+@import '../../../vendor/frontstreet/scss/modules/index';
+
+// Reset
+@import '../../../vendor/frontstreet/scss/partials/normalize';
+
+// Core Styles
+@import '../../../vendor/frontstreet/scss/partials/core/index';
+
+//
+// Backroad Core
+//
+
+@import 'partials/notification';
