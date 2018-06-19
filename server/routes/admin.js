@@ -9,7 +9,7 @@ const User = require('../models/user');
  * @param {Object} options
  * @return {Object} Express.Router() instance.
  */
-function createAdminRouter(options) {
+function adminRouter(options) {
   const router = express.Router();
   const { installEndpoint } = options;
 
@@ -42,4 +42,4 @@ function createAdminRouter(options) {
 /**
  * Export factory function.
  */
-module.exports = createAdminRouter;
+module.exports = adminRouter;

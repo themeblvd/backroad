@@ -10,7 +10,7 @@ const User = require('../models/user');
  * @param {Object} options
  * @return {Object} Express.Router() instance.
  */
-function createInstallRouter(options) {
+function installRouter(options) {
   const router = express.Router();
   const { adminEndpoint } = options;
 
@@ -77,4 +77,4 @@ function createInstallRouter(options) {
 /**
  * Export factory function.
  */
-module.exports = createInstallRouter;
+module.exports = installRouter;
