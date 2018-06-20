@@ -17,13 +17,15 @@ module.exports = {
      */
     new MiniCssExtractPlugin({
       filename: './assets/css/main.css'
+      // outputPath: '/assets/css/main.css'
     }),
     /*
      * Generate index.html page for the app.
      */
     new HtmlWebpackPlugin({
       title: 'Backroad Admin',
-      template: path.resolve(__dirname, 'src/index.html')
+      template: path.resolve(__dirname, 'src/index.html'),
+      inject: false
     })
   ],
   module: {
