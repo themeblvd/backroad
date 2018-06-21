@@ -16,7 +16,7 @@ module.exports = {
      * the final build.
      */
     new MiniCssExtractPlugin({
-      filename: './assets/css/main.css'
+      filename: './assets/css/install.css'
     }),
     /*
      * Generate index.html page for the app.

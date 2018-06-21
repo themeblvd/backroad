@@ -1,4 +1,4 @@
-import '../scss/main.scss';
+import '../scss/login.scss';
 import axios from 'axios';
 import { timeoutPromise } from '../../../../lib/utils/timing';
 
