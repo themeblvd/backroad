@@ -30,7 +30,10 @@
     z-index: 2;
   }
   .bg-random {
-    opacity: 0.05;
+    opacity: 0.5;
     z-index: 1;
+  }
+  .bg-random img {
+    filter: blur(50px);
   }
 }
