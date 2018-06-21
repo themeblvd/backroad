@@ -1,16 +1,54 @@
 import React, { Component } from 'react';
-import './assets/scss/main.scss';
+
+// Routing
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import PrivateRoute from './containers/PrivateRoute';
+
+// Store
+import { connect } from 'react-redux';
+import { verify } from './store/auth';
+
+// Components
+import Notice from './components/elements/Notice';
+import Admin from './containers/Admin';
+import Login from './containers/Login';
 
 class App extends Component {
+  /**
+   * When component mounts, determine if
+   * user is logged-in and if that token
+   * is still valid.
+   */
+  componentDidMount() {
+    this.props.verify();
+  }
+
+  /**
+   * Render component.
+   *
+   * @return {Component}
+   */
   render() {
+    const { isLoading, hasNotice } = this.props;
     return (
-      <div className="app">
-        <header>
-          <h1>Admin Panel</h1>
-        </header>
+      <div className="backroad-admin">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <Switch>
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/" component={Admin} />
+          </Switch>
+        )}
+        {hasNotice && <Notice />}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(
+  connect(
+    state => ({ isLoading: state.auth.isLoading, hasNotice: state.notice.hasNotice }),
+    { verify }
+  )(App)
+);

@@ -1,0 +1,14 @@
+//
+// Sidebar
+//
+
+.app-sidebar {
+  background: $admin-clr-bg-sidebar;
+  overflow: scroll;
+  position: fixed;
+  top: $admin-header-height;
+  left: 0;
+  bottom: 0;
+  width: $admin-sidebar-width;
+  z-index: $z-index-sidebar;
+}

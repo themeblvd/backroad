@@ -1,35 +1,103 @@
-// ==========================================================================
-// Front Street
-// ==========================================================================
-
-// Branding Colors
-$fs-clr-branding: (
-  primary: (
-    base: #0b486b,
-    contrast: #fff
-  ),
-  secondary: (
-    base: #a8dba8,
-    contrast: #0b486b
-  )
-);
-
-$fs-clr-border-active: fs-map-deep-get($fs-clr-branding, secondary, base);
-
-// ==========================================================================
+// ============================================
 // Colors
-// ==========================================================================
+// ============================================
 
-// ...
+//
+// Branding
+//
 
-// ==========================================================================
+$clr-primary: #1abc9c !default;
+$clr-accent: #3498db !default;
+
+$clr-bg: #fafcfd !default;
+$clr-bg-darken: #edf1f2 !default;
+$clr-bg-inverse: #2c343f !default;
+
+//
+// Text
+//
+
+$clr-text: #58666e;
+$clr-text-lighten: #8b99a1;
+$clr-text-darken: #101010;
+$clr-text-inverse: #fff;
+
+//
+// Admin UI
+//
+
+$admin-clr-bg-body: $clr-bg;
+$admin-clr-bg-logo: darken($clr-bg-inverse, 5%);
+$admin-clr-bg-sidebar: $clr-bg-inverse;
+
+//
+// Login UI
+//
+
+$login-clr-bg-body: $clr-bg-inverse;
+$login-clr-bg-form: $clr-bg;
+
+//
+// Install UI
+//
+
+$install-clr-bg-body: $clr-bg-inverse;
+
+//
 // Shadows
-// ==========================================================================
+//
 
 $shadow-card: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
 
-// ==========================================================================
-// Top-Level Z-Indexing
-// ==========================================================================
+// ============================================
+// Layout
+// ============================================
 
-$z-index-notification: 100;
+//
+// Forms
+//
+
+$field-radius: 4px;
+
+//
+// Login UI
+//
+
+//
+// Admin UI
+//
+
+$admin-header-height: 65px;
+$admin-sidebar-width: 230px;
+
+//
+// Z-Index
+//
+
+$z-index-header: 100;
+$z-index-user-menu: 200;
+$z-index-sidebar: 300;
+$z-index-notification: 400;
+
+// ============================================
+// Front Street Overrides
+// ============================================
+
+//
+// Colors
+//
+
+$fs-clr-branding: (
+  primary: (
+    base: $clr-primary,
+    contrast: #fff
+  ),
+  secondary: (
+    base: $clr-accent,
+    contrast: #fff
+  )
+);
+
+$fs-clr-text-base: $clr-text;
+$fs-clr-text-lighten: $clr-text-lighten;
+$fs-clr-text-darken: $clr-text-darken;

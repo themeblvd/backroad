@@ -1,0 +1,57 @@
+//
+// User Menu
+//
+
+.app-user-menu {
+  box-shadow: none;
+  background: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  padding: 10px 0;
+  position: fixed;
+  top: -9999px;
+  right: 10px;
+  transform: scale(0);
+  transform-origin: 80% 0%;
+  transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  width: 150px;
+  z-index: $z-index-user-menu;
+
+  /*
+    li:last-child {
+      border-top: 1px solid $clr-border;
+      margin-top: 5px;
+      padding-top: 5px;
+    }
+    */
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: $clr-text;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    background-color: $clr-bg-darken;
+    color: $clr-text-darken;
+  }
+  .svg-inline--fa {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    width: 1.2em;
+  }
+}
+.user-menu-on .app-user-menu {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  top: $admin-header-height - 5px;
+  transform: scale(1);
+}

@@ -1,0 +1,36 @@
+//
+// Login Page
+//
+
+.login-page {
+  background: $clr-bg-inverse;
+  min-height: 100vh;
+
+  > .wrap {
+    margin: 0 auto;
+    max-width: 450px;
+    padding: 40px 0 0 0;
+  }
+  .login-logo {
+    padding: 40px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+  .login-logo .logo {
+    fill: #fff;
+    width: 160px;
+  }
+  .login-form {
+    background: $login-clr-bg-form;
+    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .bg-random {
+    opacity: 0.05;
+    z-index: 1;
+  }
+}

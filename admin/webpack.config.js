@@ -60,7 +60,7 @@ module.exports = {
             options: {
               outputPath: './assets/img',
               name: '[name].[ext]',
-              publicPath: '/assets/img'
+              publicPath: '/admin/assets/img'
             }
           }
         ]

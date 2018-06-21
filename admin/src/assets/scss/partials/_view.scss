@@ -1,0 +1,17 @@
+//
+// View
+//
+
+.app-view {
+  position: fixed;
+  top: $admin-header-height;
+  right: 0;
+  bottom: 0;
+  left: $admin-sidebar-width;
+
+  > .wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+}

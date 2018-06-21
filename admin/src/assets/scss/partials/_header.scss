@@ -1,0 +1,98 @@
+//
+// Header
+//
+
+.app-header {
+  background-color: #fff;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  height: $admin-header-height;
+  padding: 0 20px 0 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-index-header;
+}
+
+//
+// Logo
+//
+
+.app-logo {
+  background: $admin-clr-bg-logo;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  overflow: hidden;
+  position: relative;
+  width: $admin-sidebar-width;
+  height: $admin-header-height;
+
+  .logo {
+    fill: $clr-text-inverse;
+    width: 90px;
+  }
+  span {
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0 0 0 8px;
+  }
+}
+
+//
+// Search
+//
+
+.app-search {
+  margin: 0 0 0 20px;
+  position: relative;
+
+  .svg-inline--fa {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    transform: translate(0, -50%);
+  }
+  input {
+    background-color: $fs-clr-bg-body;
+    border-color: transparent;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+//
+// User Menu Toggle
+//
+
+.user-menu-trigger {
+  color: $clr-text;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    color: $clr-text-darken;
+  }
+  img {
+    box-shadow: $shadow-card;
+    border-radius: 50%;
+    width: 40px;
+    height: auto;
+  }
+  .svg-inline--fa {
+    display: block;
+    margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+    width: 10px;
+  }
+}
+.user-menu-on .user-menu-trigger .svg-inline--fa {
+  transform: rotate(180deg);
+}
