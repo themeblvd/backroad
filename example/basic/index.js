@@ -9,13 +9,9 @@ app.addContentType({
   endpoint: 'pages',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      default: '' // optional
-    },
-    {
       name: 'content',
-      type: 'markdown'
+      type: 'markdown',
+      default: 'Some optional default content...'
     }
   ]
 });
