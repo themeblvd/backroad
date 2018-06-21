@@ -1,8 +1,7 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import Users from '../components/views/Users';
 import Home from '../components/views/Home';
+import NotFound from '../components/views/NotFound';
 import Footer from '../components/layout/Footer';
 
 const View = () => {
@@ -10,8 +9,8 @@ const View = () => {
     <div className="app-view">
       <div className="wrap">
         <Switch>
-          <Route path="/users" component={Users} />
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route path="/" component={NotFound} />
         </Switch>
       </div>
       {/*<Footer /> @TODO*/}
