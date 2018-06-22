@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const outputPath = process.env.NODE_ENV === 'development' ? 'public' : '../dist/admin'; // prettier-ignore
 
@@ -17,14 +16,6 @@ module.exports = {
      */
     new MiniCssExtractPlugin({
       filename: './assets/css/admin.css'
-    }),
-    /*
-     * Generate index.html page for the app.
-     */
-    new HtmlWebpackPlugin({
-      title: 'Backroad Admin',
-      template: path.resolve(__dirname, 'src/index.html'),
-      inject: false
     })
   ],
   module: {

@@ -4,17 +4,12 @@ import { timeoutPromise } from '../../../../lib/utils/timing';
 
 const endpoint = window.location.pathname;
 const form = document.getElementById('register-form');
-const fields = ['projectName', 'username', 'password', 'email'];
+const fields = ['username', 'password', 'email'];
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  if (
-    !event.target.projectName.value ||
-    !event.target.username.value ||
-    !event.target.password.value ||
-    !event.target.email.value
-  ) {
+  if (!event.target.username.value || !event.target.password.value || !event.target.email.value) {
     removeFieldErrors();
     fields.forEach(function(field) {
       if (!event.target[field].value) {
@@ -35,7 +30,6 @@ form.addEventListener('submit', function(event) {
   document.getElementById('btn-submit').classList.add('loading');
 
   const data = {
-    projectName: event.target.projectName.value,
     username: event.target.username.value,
     password: event.target.password.value,
     email: event.target.email.value
