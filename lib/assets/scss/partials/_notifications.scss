@@ -2,8 +2,10 @@
 // Colors
 //
 
-$clr-success: fs-map-deep-get($fs-clr-branding, secondary, base);
+$clr-success: fs-map-deep-get($fs-clr-contextual, success, base);
+$clr-success-contrast: fs-map-deep-get($fs-clr-contextual, success, contrast);
 $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
+$clr-error-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast);
 
 //
 // Notification
@@ -12,7 +14,7 @@ $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
 .notification {
   background: #fff;
   border-bottom: 5px solid transparent;
-  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   font-size: 20px;
   font-weight: $fs-font-weight-bold;
@@ -35,18 +37,18 @@ $clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
     transform: translate(-50%, 10px);
   }
   &.success {
-    background-color: rgba(lighten($clr-success, 20%), 0.95);
-    border-color: $clr-success;
-    color: darken($clr-success, 20%);
+    background-color: rgba($clr-success, 0.95);
+    border-color: darken(adjust-hue($clr-success, -10), 50%);
+    color: $clr-success-contrast;
 
     p {
       margin: 0 0 20px 0;
     }
   }
   &.error {
-    background-color: rgba(darken($clr-error, 20%), 0.95);
-    border-color: $clr-error;
-    color: $clr-error;
+    background-color: rgba($clr-error, 0.95);
+    border-color: darken(adjust-hue($clr-error, -10), 50%);
+    color: $clr-error-contrast;
   }
 }
 
@@ -59,7 +61,7 @@ $check-height: $loader-size/2;
 $check-width: $check-height/2;
 $check-left: ($loader-size/6 + $loader-size/12);
 $check-thickness: 3px;
-$check-color: $clr-success;
+$check-color: darken(adjust-hue($clr-success, -10), 50%);
 
 .notification {
   .circle {
