@@ -7,6 +7,7 @@ import PrivateRoute from './containers/PrivateRoute';
 // Store
 import { connect } from 'react-redux';
 import { verify } from './store/auth';
+import { loadConfig } from './store/config';
 
 // Components
 import Notice from './components/elements/Notice';
@@ -21,6 +22,7 @@ class App extends Component {
    */
   componentDidMount() {
     this.props.verify();
+    this.props.loadConfig();
   }
 
   /**
@@ -49,6 +51,6 @@ class App extends Component {
 export default withRouter(
   connect(
     state => ({ isLoading: state.auth.isLoading, hasNotice: state.notice.hasNotice }),
-    { verify }
+    { verify, loadConfig }
   )(App)
 );

@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import auth from './auth';
 import notice from './notice';
+import config from './config';
 
 const reducer = combineReducers({
   auth,
-  notice
+  notice,
+  config
 });
 
 var store;
