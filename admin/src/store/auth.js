@@ -1,12 +1,5 @@
 import axios from 'axios';
-
-const authorizedAxios = axios.create();
-
-authorizedAxios.interceptors.request.use(function(config) {
-  const token = localStorage.getItem('token');
-  config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
+import authorized from '../utils/authorized';
 
 // Intial State
 
@@ -102,7 +95,7 @@ export function verify() {
       return;
     }
 
-    authorizedAxios
+    authorized
       .get('/api/v1/auth/verify')
       .then(response => {
         const { user } = response.data;
