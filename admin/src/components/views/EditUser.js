@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import Form from '../elements/Form';
-import UserForm from '../elements/UserForm';
+import Form from '../forms/Form';
+import UserForm from '../forms/UserForm';
 
 class EditUser extends Component {
   render() {

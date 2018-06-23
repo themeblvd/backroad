@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../components/elements/Logo';
-import LoginForm from '../components/elements/LoginForm';
+import LoginForm from '../components/forms/LoginForm';
 import RandomBackground from '../components/elements/RandomBackground';
 
 const Login = () => {

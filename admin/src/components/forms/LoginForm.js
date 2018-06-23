@@ -3,14 +3,17 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { login } from '../../store/auth';
 import { addNotice } from '../../store/notice';
-import Alert from './Alert';
-import Button from './Button';
+import Alert from '../elements/Alert';
+import Button from '../elements/Button';
 import Input from '../fields/Input';
 
 /**
  * Login Form.
  */
 class LoginForm extends Component {
+  /**
+   * Class constructor.
+   */
   constructor(props) {
     super(props);
     this.state = {

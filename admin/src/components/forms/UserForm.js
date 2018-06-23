@@ -1,6 +1,6 @@
 import React from 'react';
-import Alert from './Alert';
-import Button from './Button';
+import Alert from '../elements/Alert';
+import Button from '../elements/Button';
 
 const UserForm = props => {
   const { handleSubmit, handleChange, inputs, isSubmitting, errorOnSubmit } = props;

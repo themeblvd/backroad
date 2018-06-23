@@ -5,7 +5,7 @@ import { addNotice } from '../../store/notice';
 import authorized from '../../utils/authorized';
 import { getUserInputs, cleanUserData } from '../../utils/data';
 import { timeoutPromise } from '../../../../lib/utils/timing';
-import Alert from './Alert';
+import Alert from '../elements/Alert';
 
 /**
  * Form to edit a document.
