@@ -185,6 +185,7 @@ class Form extends Component {
 
     return this.props.render({
       context: this.state.context,
+      type: this.props.type,
       handleSubmit: this.handleSubmit,
       handleChange: this.handleChange,
       inputs: this.state.inputs,
