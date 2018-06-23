@@ -24,6 +24,7 @@ const Button = props => {
     'btn-xxxl': size === 'xxxl',
     'has-loader': true,
     'btn-primary': isPrimary,
+    'has-loader': true,
     loading: isLoading
   });
 
