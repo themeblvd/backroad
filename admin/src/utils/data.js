@@ -39,7 +39,8 @@ export function isValidContentType(endpoint) {
  * @param {String} endpoint Content type endpoings like `pages`.
  * @return {String} Singular title.
  */
-export function getSingularTitle(endpoint) {
+export function singularTitle(endpoint) {
+  if (endpoint === 'users') return 'User';
   const type = getContentType(endpoint);
   if (type && type.name) return type.name;
   return '';
@@ -51,7 +52,7 @@ export function getSingularTitle(endpoint) {
  * @param {String} endpoint Content type endpoings like `pages`.
  * @return {String} Plural title.
  */
-export function getPluralTitle(endpoint) {
+export function pluralTitle(endpoint) {
   const type = getContentType(endpoint);
   if (type && type.pluralName) return type.pluralName;
   return '';
