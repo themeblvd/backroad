@@ -3,6 +3,7 @@
 //
 
 .app-view {
+  overflow: scroll;
   position: fixed;
   top: $admin-header-height;
   right: 0;
