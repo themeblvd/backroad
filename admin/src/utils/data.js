@@ -69,6 +69,7 @@ export function getUserInputs() {
     last_name: '',
     username: '',
     email: '',
+    bio: '',
     password: '',
     password_confirm: ''
   };
@@ -81,7 +82,7 @@ export function getUserInputs() {
  * @return {Object} Sanitized data.
  */
 export function cleanUserData(data) {
-  const { first_name, last_name, email, password, password_confirm } = data;
+  const { first_name, last_name, email, password, password_confirm, bio } = data;
 
   if (!email) {
     return 'You must have an email address.';
@@ -91,7 +92,7 @@ export function cleanUserData(data) {
     return 'Both password fields must match when creating a new password.';
   }
 
-  const clean = { first_name, last_name, email }; // @TODO validate email
+  const clean = { first_name, last_name, email, bio }; // @TODO validate email
 
   if (password) {
     clean.password = password;

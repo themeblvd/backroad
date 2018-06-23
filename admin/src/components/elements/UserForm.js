@@ -35,7 +35,9 @@ const UserForm = props => {
       </fieldset>
       <div className="row">
         <p className="col col-md-6">
-          <label>Username</label>
+          <label>
+            Username<span class="required">*</span>
+          </label>
           <input
             type="text"
             name="username"
@@ -47,7 +49,9 @@ const UserForm = props => {
           <span className="help-text">Your username cannot be changed.</span>
         </p>
         <p className="col col-md-6">
-          <label>Email</label>
+          <label>
+            Email<span class="required">*</span>
+          </label>
           <input
             name="email"
             type="email"
@@ -59,6 +63,11 @@ const UserForm = props => {
           <span className="help-text">Enter a valid email address.</span>
         </p>
       </div>
+      <p>
+        <label>Bio</label>
+        <textarea name="bio" value={inputs.bio} onChange={handleChange} rows="10" />
+        <span className="help-text">Write a bit about yourself.</span>
+      </p>
       <fieldset>
         <legend>New Password</legend>
         <div className="row">
