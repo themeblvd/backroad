@@ -61,7 +61,7 @@ class LoginForm extends Component {
       const status = this.props.status;
 
       if (status === 400 || status === 401) {
-        this.setState({ error: 'Username or password was not correct.' });
+        this.setState({ error: 'Username or password was not correct.', isLoading: false });
         return;
       }
 
