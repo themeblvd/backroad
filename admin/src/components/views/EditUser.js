@@ -5,6 +5,11 @@ import Form from '../forms/Form';
 import UserForm from '../forms/UserForm';
 
 class EditUser extends Component {
+  /**
+   * Render component.
+   *
+   * @return {Component}
+   */
   render() {
     const { username } = this.props.match.params;
 

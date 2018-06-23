@@ -26,6 +26,7 @@ class Form extends Component {
    * in componentWillReceiveProps().
    */
   initialState = () => ({
+    context: 'edit', // `edit` or `new`
     errorOnLoad: '',
     errorOnSubmit: '',
     isLoading: true,
@@ -35,8 +36,20 @@ class Form extends Component {
 
   /**
    * Load data for the document.
+   *
+   * NOTE: When the context of the form is
+   * adding a new item, there's no data to
+   * retrieve for the form.
    */
   loadData = (type, slug) => {
+    if (slug === 'new') {
+      this.setState({
+        context: 'new',
+        isLoading: false
+      });
+      return;
+    }
+
     authorized
       .get(`/api/v1/${type}/${slug}`)
       .then(response => {
@@ -56,6 +69,8 @@ class Form extends Component {
   /**
    * Fetch existing data for document, that
    * the user will be editing.
+   *
+   * Also, before
    */
   componentDidMount() {
     const { type, slug } = this.props;
@@ -102,8 +117,9 @@ class Form extends Component {
     event.preventDefault();
 
     const { type } = this.props;
+    const { context, inputs } = this.state;
     const { _id } = this.state.inputs;
-    const data = cleanUserData({ ...this.state.inputs }); // @TODO Will clean with a different function for content type.
+    const data = type === 'users' ? cleanUserData({ ...inputs }, context) : { ...inputs }; // @TODO clean function for general document.
 
     if (typeof data === 'string') {
       // String means error message from cleanUserData().
@@ -116,8 +132,13 @@ class Form extends Component {
 
     this.setState({ isSubmitting: true });
 
-    authorized
-      .put(`/api/v1/${type}/${_id}`, data)
+    const options = {
+      method: context === 'new' ? 'post' : 'put',
+      url: context === 'new' ? `/api/v1/${type}` : `/api/v1/${type}/${_id}`,
+      data
+    };
+
+    authorized(options)
       .then(response => {
         return timeoutPromise(1000); // Force at least 1 second delay in response.
       })
@@ -163,6 +184,7 @@ class Form extends Component {
     }
 
     return this.props.render({
+      context: this.state.context,
       handleSubmit: this.handleSubmit,
       handleChange: this.handleChange,
       inputs: this.state.inputs,

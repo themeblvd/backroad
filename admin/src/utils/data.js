@@ -79,14 +79,35 @@ export function getUserInputs() {
 /**
  * Sanitize user to save.
  *
- * @param {Object} data Data to be sanitized.
+ * @param {Object} data    Data to be sanitized.
+ * @param {String} context Context of data clean, `edit` or `new`.
  * @return {Object} Sanitized data.
  */
-export function cleanUserData(data) {
-  const { first_name, last_name, email, password, password_confirm, bio } = data;
+export function cleanUserData(data, context = 'edit') {
+  const { username, first_name, last_name, email, password, password_confirm, bio } = data;
+
+  if (context === 'new' && username === 'new') {
+    return 'The word "new" is reserved and can\'t be used for a username.';
+  }
+
+  if (context === 'new' && !username) {
+    return 'You must enter a username.';
+  }
 
   if (!email) {
-    return 'You must have an email address.';
+    return 'You must enter a valid email address.';
+  }
+
+  if (context === 'new' && !username) {
+    return 'You must enter a username.';
+  }
+
+  if (context === 'new' && !password) {
+    return 'You must enter a password.';
+  }
+
+  if (password && password.length < 8) {
+    return 'Your password must be at least 8 characters.';
   }
 
   if (password && password !== password_confirm) {
@@ -94,6 +115,10 @@ export function cleanUserData(data) {
   }
 
   const clean = { first_name, last_name, email, bio }; // @TODO validate email
+
+  if (context === 'new') {
+    clean.username = username;
+  }
 
   if (password) {
     clean.password = password;

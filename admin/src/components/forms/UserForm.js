@@ -3,11 +3,10 @@ import Alert from '../elements/Alert';
 import Button from '../elements/Button';
 
 const UserForm = props => {
-  const { handleSubmit, handleChange, inputs, isSubmitting, errorOnSubmit } = props;
+  const { context, handleSubmit, handleChange, inputs, isSubmitting, errorOnSubmit } = props;
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
       <fieldset>
         <legend>Name</legend>
         <div className="row">
@@ -44,7 +43,7 @@ const UserForm = props => {
             value={inputs.username}
             placeholder="Enter Name"
             onChange={handleChange}
-            disabled
+            disabled={context !== 'new'}
           />
           <span className="help-text">Your username cannot be changed.</span>
         </p>
@@ -93,8 +92,9 @@ const UserForm = props => {
           </p>
         </div>
       </fieldset>
+      {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
       <Button isPrimary isLoading={props.isSubmitting}>
-        Update Profile
+        {context === 'new' ? 'Add New User' : 'Update User'}
       </Button>
     </form>
   );
