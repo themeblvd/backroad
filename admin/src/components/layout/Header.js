@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { gravatar } from '../../utils/user';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faChevronDown from '@fortawesome/fontawesome-free-solid/faChevronDown';
 import Logo from '../elements/Logo';
@@ -20,7 +21,7 @@ class Header extends Component {
    * @return {Component}
    */
   render() {
-    const { username, avatar } = this.props;
+    const { username, email } = this.props;
 
     return (
       <div className="app-header">
@@ -31,7 +32,7 @@ class Header extends Component {
         <Search />
         <a href="#user-menu" className="user-menu-trigger" onClick={this.toggleUserMenu}>
           <FontAwesomeIcon icon={faChevronDown} />
-          <img src={avatar} alt={`Avatar for ${username}`} />
+          <img src={gravatar(email)} alt={`Avatar for ${username}`} />
         </a>
       </div>
     );
