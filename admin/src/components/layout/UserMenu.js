@@ -32,7 +32,7 @@ class UserMenu extends Component {
       <div className="app-user-menu">
         <ul>
           <li>
-            <Link to="/users" onClick={this.closeUserMenu}>
+            <Link to={`/users/${this.props.username}`} onClick={this.closeUserMenu}>
               <FontAwesomeIcon icon={faUser} />Edit Profile
             </Link>
           </li>
@@ -47,4 +47,4 @@ class UserMenu extends Component {
   }
 }
 
-export default UserMenu;
+export default connect(state => ({ username: state.auth.username }))(UserMenu);
