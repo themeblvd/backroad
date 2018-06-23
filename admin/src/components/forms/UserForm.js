@@ -36,7 +36,7 @@ const UserForm = props => {
       <div className="row">
         <p className="col col-md-6">
           <label>
-            Username<span class="required">*</span>
+            Username<span className="required">*</span>
           </label>
           <input
             type="text"
@@ -50,7 +50,7 @@ const UserForm = props => {
         </p>
         <p className="col col-md-6">
           <label>
-            Email<span class="required">*</span>
+            Email<span className="required">*</span>
           </label>
           <input
             name="email"

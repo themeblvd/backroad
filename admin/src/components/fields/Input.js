@@ -14,16 +14,22 @@ import React from 'react';
  * @return {Component}
  */
 const Input = props => {
-  const { onChange, title, name, type, placeholder, help, hasError } = props;
+  const { onChange, title, name, type, placeholder, help, hasError, isRequired } = props;
 
   return (
     <p className={hasError && 'field-error'}>
-      {title && <label>{title}</label>}
+      {title && (
+        <label>
+          {title}
+          {isRequired && <span className="required">*</span>}
+        </label>
+      )}
       <input
         type={type ? type : 'text'}
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        required={isRequired}
       />
       {help && <span className="help-text">{help}</span>}
     </p>
