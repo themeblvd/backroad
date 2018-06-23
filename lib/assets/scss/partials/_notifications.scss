@@ -26,6 +26,7 @@ $clr-error-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast);
   text-align: center;
   transform: translate(-50%, -10px);
   transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+  width: 250px;
   z-index: $z-index-notification;
 
   &.show {
