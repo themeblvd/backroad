@@ -53,6 +53,7 @@ export function singularTitle(endpoint) {
  * @return {String} Plural title.
  */
 export function pluralTitle(endpoint) {
+  if (endpoint === 'users') return 'Users';
   const type = getContentType(endpoint);
   if (type && type.pluralName) return type.pluralName;
   return '';
@@ -125,4 +126,30 @@ export function cleanUserData(data, context = 'edit') {
   }
 
   return clean;
+}
+
+/**
+ * Get the base path of a pathname.
+ *
+ * @param {String} path Pathname, like `/foo/bar/`.
+ * @return {String} Base path, like `foo`.
+ */
+export function getPathBase(path) {
+  path = path.replace(/^\//, '');
+  path = path.replace(/\/$/, '');
+  path = path.split('/');
+  return path[0];
+}
+
+/**
+ * Get the item being editing in a pathname.
+ *
+ * @param {String} path Pathname, like `/foo/bar/`.
+ * @return {String} Item path, like `bar`.
+ */
+export function getPathItem(path) {
+  path = path.replace(/^\//, '');
+  path = path.replace(/\/$/, '');
+  path = path.split('/');
+  return path.length > 1 ? path[1] : '';
 }

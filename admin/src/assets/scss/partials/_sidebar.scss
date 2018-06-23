@@ -5,10 +5,84 @@
 .app-sidebar {
   background: $admin-clr-bg-sidebar;
   overflow: scroll;
+  padding: 30px;
   position: fixed;
   top: $admin-header-height;
   left: 0;
   bottom: 0;
   width: $admin-sidebar-width;
   z-index: $z-index-sidebar;
+}
+
+//
+// Navigation
+//
+
+.app-nav {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  > ul {
+    margin-bottom: 20px;
+  }
+
+  // Headings
+  .nav-title {
+    color: $clr-text-inverse;
+    display: block;
+    font-size: 13px;
+    margin: 0 0 10px 0;
+  }
+  .nav-title .icon {
+    margin-right: 8px;
+  }
+
+  // All Links
+  a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+  }
+  a:hover {
+    color: #fff;
+  }
+
+  // Level 1
+  > ul > li {
+    padding: 1px 0;
+  }
+  .active-item {
+    margin: 5px 0;
+    position: relative;
+  }
+  .active-item > a {
+    color: #fff;
+    font-weight: $fs-font-weight-bold;
+  }
+  .active-item:before {
+    content: '';
+    background: rgba($clr-primary, 0.8);
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    left: -30px;
+    width: 5px;
+  }
+
+  // Level 2
+  .child-menu {
+    display: none;
+    padding: 5px 0 10px 10px;
+  }
+  .child-menu li {
+    padding: 1px 0;
+  }
+  .active-item .child-menu {
+    display: block;
+  }
+  .active-child a {
+    color: #fff;
+  }
 }

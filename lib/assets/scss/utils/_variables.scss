@@ -27,7 +27,7 @@ $clr-text-inverse: #fff;
 //
 
 $admin-clr-bg-body: $clr-bg;
-$admin-clr-bg-logo: darken($clr-bg-inverse, 5%);
+$admin-clr-bg-logo: $clr-bg-inverse;
 $admin-clr-bg-sidebar: $clr-bg-inverse;
 
 //
@@ -68,7 +68,7 @@ $field-radius: 4px;
 //
 
 $admin-header-height: 65px;
-$admin-sidebar-width: 230px;
+$admin-sidebar-width: 260px;
 
 //
 // Z-Index
