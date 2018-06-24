@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { getConfig } from '../../utils/data';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faFileAlt from '@fortawesome/fontawesome-free-solid/faFileAlt';
@@ -14,7 +15,7 @@ import NavItem from './NavItem';
  * @return {Component}
  */
 const PrimaryNav = props => {
-  const { location } = props;
+  const { location, isAdmin } = props;
   const contentTypes = getConfig('contentTypes');
 
   return (
@@ -39,10 +40,10 @@ const PrimaryNav = props => {
         <FontAwesomeIcon icon={faCog} className="icon" />Configure
       </span>
       <ul>
-        <NavItem endpoint="users" currentPath={location.pathname} type="users" />
+        {isAdmin && <NavItem endpoint="users" currentPath={location.pathname} type="users" />}
       </ul>
     </div>
   );
 };
 
-export default withRouter(PrimaryNav);
+export default withRouter(connect(state => ({ isAdmin: state.auth.role === 'admin' }))(PrimaryNav));
