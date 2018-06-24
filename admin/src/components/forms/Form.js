@@ -69,8 +69,6 @@ class Form extends Component {
   /**
    * Fetch existing data for document, that
    * the user will be editing.
-   *
-   * Also, before
    */
   componentDidMount() {
     const { type, slug } = this.props;
