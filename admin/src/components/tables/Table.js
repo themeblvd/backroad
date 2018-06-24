@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
 import { pluralTitle, singularTitle, apiUrl } from '../../utils/data';
 import authorized from '../../utils/authorized';
-import Search from '../elements/Search';
 
 /**
  * Table for managing users and
@@ -68,7 +67,10 @@ class Table extends Component {
         </div>
         <div className="table-container">
           <div className="table-top">
-            <Search />
+            <select className="field-xs">
+              <option value="newest">Newest</option>
+              <option value="mcdavid">Oldest</option>
+            </select>
             <span className="stats">
               {items.length} {pluralTitle(type)}
             </span>
