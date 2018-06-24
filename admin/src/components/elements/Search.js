@@ -16,7 +16,7 @@ class Search extends Component {
   };
   render() {
     const className = classNames({
-      'app-search': true,
+      search: true,
       'field-icon': true,
       'field-icon-sm': true,
       active: this.state.active

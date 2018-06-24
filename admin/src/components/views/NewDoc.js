@@ -14,9 +14,11 @@ const NewDoc = props => {
   const { type } = props.match.params;
   const title = 'New ' + singularTitle(type);
   return (
-    <div className="edit-document-view">
-      <h1 className="view-title">{title}</h1>
-      <Form type={type} slug="new" render={props => <DocForm {...props} />} />
+    <div className="new-doc-view">
+      <div className="wrap">
+        <h1 className="view-title">{title}</h1>
+        <Form type={type} slug="new" render={props => <DocForm {...props} />} />
+      </div>
     </div>
   );
 };

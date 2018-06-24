@@ -4,7 +4,7 @@
 
 .app-header {
   background-color: #fff;
-  box-shadow: $shadow-card;
+  box-shadow: $shadow-light;
   display: flex;
   align-items: center;
   height: $admin-header-height;
@@ -44,35 +44,6 @@
 }
 
 //
-// Search
-//
-
-.app-search {
-  height: 38px;
-  margin: 0 0 0 20px;
-  position: relative;
-
-  .svg-inline--fa {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 1em;
-    margin-top: -7px;
-    width: 14px;
-    height: 14px;
-    z-index: 1;
-  }
-  &.active .svg-inline--fa {
-    transform: translate(0, -1px);
-  }
-  input {
-    background-color: $fs-clr-bg-body;
-    border-color: transparent;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  }
-}
-
-//
 // User Menu Toggle
 //
 
@@ -88,7 +59,7 @@
     color: $clr-text-darken;
   }
   img {
-    box-shadow: $shadow-card;
+    box-shadow: $shadow-light;
     border-radius: 50%;
     width: 40px;
     height: auto;

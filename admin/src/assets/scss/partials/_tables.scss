@@ -1,0 +1,105 @@
+//
+// Table Wrap
+//
+
+.manage-users-table,
+.manage-docs-table {
+  background: #fff;
+  box-shadow: $shadow-dark;
+
+  .table-title {
+    border-bottom: 1px solid $clr-border;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+  }
+  .table-title h1 {
+    font-size: 18px;
+    line-height: 65px;
+    margin: 0;
+  }
+  .table-container {
+    padding: 30px;
+  }
+  .table-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 0;
+  }
+  .table-top span {
+    color: $clr-text-lighten;
+    display: inline-block;
+    font-weight: $fs-font-weight-bold;
+  }
+  .search {
+    max-width: 200px;
+  }
+}
+
+//
+// Tables
+//
+
+table {
+  thead {
+    background-color: darken($clr-bg, 1%);
+  }
+  thead th {
+    border: none;
+    color: $fs-clr-text-base;
+    font-size: 14px;
+  }
+  td {
+    border: none;
+    vertical-align: middle;
+  }
+  tr:nth-child(even) {
+    background: $clr-bg;
+  }
+}
+
+//
+// Users Table
+//
+.manage-users-table {
+  .role-label {
+    &.admin {
+      background-color: $clr-admin;
+      color: darken($clr-admin, 60%);
+    }
+    &.editor {
+      background-color: $clr-editor;
+      color: darken($clr-editor, 60%);
+    }
+  }
+}
+
+//
+// Action Menu
+//
+
+.actions-menu {
+  display: flex;
+
+  li {
+    margin: 0 2px;
+  }
+  a {
+    border-radius: 50%;
+    display: block;
+    background-color: #f6fafc;
+    color: $clr-text;
+    font-size: 12px;
+    line-height: 3em;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    width: 3em;
+    height: 3em;
+  }
+  a:hover {
+    background: $clr-primary;
+    color: #fff;
+  }
+}

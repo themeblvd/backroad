@@ -10,9 +10,11 @@ import UserForm from '../forms/UserForm';
  */
 const newUser = props => {
   return (
-    <div className="edit-document-view">
-      <h1 className="view-title">New {singularTitle('users')}</h1>
-      <Form type="users" slug="new" render={props => <UserForm {...props} />} />
+    <div className="new-user-view">
+      <div className="wrap">
+        <h1 className="view-title">New {singularTitle('users')}</h1>
+        <Form type="users" slug="new" render={props => <UserForm {...props} />} />
+      </div>
     </div>
   );
 };

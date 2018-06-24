@@ -9,10 +9,31 @@
   right: 0;
   bottom: 0;
   left: $admin-sidebar-width;
+}
 
+//
+// Narrow Views
+//
+
+.new-user-view,
+.edit-user-view,
+.new-doc-view,
+.edit-doc-view,
+.not-found-view {
   > .wrap {
     max-width: 1000px;
     margin: 0 auto;
     padding: 50px;
   }
+}
+
+//
+// Wide Views
+//
+
+.manage-users-view,
+.manage-docs-view {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px;
 }

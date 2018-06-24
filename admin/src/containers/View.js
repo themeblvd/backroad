@@ -5,6 +5,7 @@ import AdminRoute from './AdminRoute';
 import Home from '../components/views/Home';
 import NewUser from '../components/views/NewUser';
 import EditUser from '../components/views/EditUser';
+import ManageUsers from '../components/views/ManageUsers';
 import NewDoc from '../components/views/NewDoc';
 import EditDoc from '../components/views/EditDoc';
 import NotFound from '../components/views/NotFound';
@@ -26,6 +27,7 @@ const View = props => {
           <Route path={`/users/${currentUser}`} component={EditUser} />
           <AdminRoute path="/users/new" component={NewUser} />
           <AdminRoute path="/users/:username" component={EditUser} />
+          <AdminRoute path="/users" component={ManageUsers} />
           <Route path="/:type/new" component={NewDoc} />
           <Route path="/:type/:slug" component={EditDoc} />
           <Route path="/404" component={NotFound} />
