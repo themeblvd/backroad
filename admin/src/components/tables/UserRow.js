@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
+import { apiUrl } from '../../utils/data';
 import authorized from '../../utils/authorized';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
@@ -39,7 +40,7 @@ class UserRow extends Component {
     const { id, addNotice } = this.props;
 
     authorized
-      .delete(`/api/v1/users/${id}`)
+      .delete(apiUrl('delete', 'users', id))
       .then(response => {
         this.setState({ isDeleted: true });
         addNotice('User deleted!', 'success');

@@ -153,3 +153,27 @@ export function getPathItem(path) {
   path = path.split('/');
   return path.length > 1 ? path[1] : '';
 }
+
+/**
+ * Build API url for axios request.
+ *
+ * @param {String} method   Request method, `get`, `post`, `put`, or `delete`.
+ * @param {String} resource The type of resource, like `users` or `pages`.
+ * @param {String} item     Slug or ID of item. Should be slug only for get requests.
+ * @return {String} URL, like `/api/v1/foo`.
+ */
+export function apiUrl(method = 'get', resource = '', item = '') {
+  // Default
+  if (!resource) return '/api/v1/articles';
+
+  // Users
+  if (resource === 'users' && item) return `/api/v1/users/${item}`;
+  if (resource === 'users') return '/api/v1/users';
+
+  // Single Articles
+  if (item && method === 'get') return `/api/v1/articles?slug=${item}`; // GET - item should be slug.
+  if (item) return `/api/v1/articles/${item}`; // PUT, DELETE - item should be _id.
+
+  // GET of all articles of type, or POST new article of type.
+  return `/api/v1/articles?content_type=${resource}`;
+}

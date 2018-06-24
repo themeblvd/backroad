@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
+import { getUserInputs, cleanUserData, apiUrl } from '../../utils/data';
 import authorized from '../../utils/authorized';
-import { getUserInputs, cleanUserData } from '../../utils/data';
 import { timeoutPromise } from '../../../../lib/utils/timing';
 import Alert from '../elements/Alert';
 
@@ -55,7 +55,7 @@ class EditForm extends Component {
     }
 
     authorized
-      .get(`/api/v1/${type}/${slug}`)
+      .get(apiUrl('get', type, slug))
       .then(response => {
         this.setState({
           inputs: { ...this.state.inputs, ...response.data },
@@ -136,7 +136,7 @@ class EditForm extends Component {
 
     const options = {
       method: context === 'new' ? 'post' : 'put',
-      url: context === 'new' ? `/api/v1/${type}` : `/api/v1/${type}/${_id}`,
+      url: context === 'new' ? apiUrl('post', type) : apiUrl('put', type, _id),
       data
     };
 

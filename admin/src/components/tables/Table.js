@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
-import { pluralTitle, singularTitle } from '../../utils/data';
+import { pluralTitle, singularTitle, apiUrl } from '../../utils/data';
 import authorized from '../../utils/authorized';
 import Search from '../elements/Search';
 
@@ -30,7 +30,7 @@ class Table extends Component {
     const { type } = this.props;
 
     authorized
-      .get(`/api/v1/${type}`)
+      .get(apiUrl('get', type))
       .then(response => {
         this.setState({
           items: response.data,
