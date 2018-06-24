@@ -39,8 +39,6 @@ legend {
 // Field Error
 //
 
-$clr-danger: fs-map-deep-get($fs-clr-contextual, danger, base);
-
 .field-error {
   input {
     border-color: darken(adjust-hue($clr-danger, -10), 20%);

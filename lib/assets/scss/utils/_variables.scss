@@ -14,6 +14,22 @@ $clr-bg-darken: #edf1f2 !default;
 $clr-bg-inverse: #2c343f !default;
 
 //
+// Contextual
+//
+
+$clr-success: fs-map-deep-get($fs-clr-contextual, success, base) !default;
+$clr-success-contrast: fs-map-deep-get($fs-clr-contextual, success, contrast) !default;
+
+$clr-info: fs-map-deep-get($fs-clr-contextual, info, base) !default;
+$clr-info-contrast: fs-map-deep-get($fs-clr-contextual, info, contrast) !default;
+
+$clr-warning: fs-map-deep-get($fs-clr-contextual, warning, base) !default;
+$clr-warning-contrast: fs-map-deep-get($fs-clr-contextual, warning, contrast) !default;
+
+$clr-danger: fs-map-deep-get($fs-clr-contextual, danger, base) !default;
+$clr-danger-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast) !default;
+
+//
 // Text
 //
 

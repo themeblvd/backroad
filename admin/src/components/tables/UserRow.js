@@ -87,12 +87,12 @@ class UserRow extends Component {
         <td>
           <ul className="actions-menu list-unstyled">
             <li>
-              <Link to={`/users/${username}`} title={`Edit ${username}`}>
+              <Link to={`/users/${username}`} className="edit-item" title={`Edit ${username}`}>
                 <FontAwesomeIcon icon={faUserEdit} />
               </Link>
             </li>
             <li>
-              <a href="#delete" title={`Delete ${username}`} onClick={this.handleDelete}>
+              <a title={`Delete ${username}`} className="delete-item" onClick={this.handleDelete}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </a>
             </li>

@@ -1,13 +1,4 @@
 //
-// Colors
-//
-
-$clr-success: fs-map-deep-get($fs-clr-contextual, success, base);
-$clr-success-contrast: fs-map-deep-get($fs-clr-contextual, success, contrast);
-$clr-error: fs-map-deep-get($fs-clr-contextual, danger, base);
-$clr-error-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast);
-
-//
 // Notification
 //
 
@@ -47,9 +38,9 @@ $clr-error-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast);
     }
   }
   &.error {
-    background-color: rgba($clr-error, 0.95);
-    border-color: darken(adjust-hue($clr-error, -10), 50%);
-    color: $clr-error-contrast;
+    background-color: rgba($clr-danger, 0.95);
+    border-color: darken(adjust-hue($clr-danger, -10), 50%);
+    color: $clr-danger-contrast;
   }
 }
 

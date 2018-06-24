@@ -98,6 +98,7 @@ table {
     display: block;
     background-color: #f6fafc;
     color: $clr-text;
+    cursor: pointer;
     font-size: 12px;
     line-height: 3em;
     text-align: center;
@@ -108,5 +109,8 @@ table {
   a:hover {
     background: $clr-primary;
     color: #fff;
+  }
+  .delete-item:hover {
+    background-color: darken(adjust-hue($clr-danger, -5), 35%);
   }
 }
