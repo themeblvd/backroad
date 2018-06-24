@@ -43,7 +43,7 @@
 
   // All Links
   a {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba($clr-text-inverse, 0.75);
     font-weight: 500;
   }
   a:hover {
@@ -82,10 +82,17 @@
     font-size: 14px;
     padding: 2px 0;
   }
+  .child-menu a {
+    border-bottom: 2px solid transparent;
+    display: inline-block;
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease-in-out;
+  }
   .active-item .child-menu {
     display: block;
   }
   .active-child a {
+    border-bottom-color: rgba($clr-text-inverse, 0.25);
     color: #fff;
   }
 }
