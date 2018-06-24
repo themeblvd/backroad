@@ -3,9 +3,8 @@ import { singularTitle } from '../../utils/data';
 import Alert from '../elements/Alert';
 import Button from '../elements/Button';
 
-function DocForm(props) {
+function ArticleForm(props) {
   const { context, type, handleSubmit, handleChange, inputs, isSubmitting, errorOnSubmit } = props;
-  console.log(type);
   const btnText =
     context === 'new' ? 'Add New ' + singularTitle(type) : 'Update ' + singularTitle(type);
 
@@ -20,4 +19,4 @@ function DocForm(props) {
   );
 }
 
-export default DocForm;
+export default ArticleForm;

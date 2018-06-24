@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { singularTitle, getPathBase } from '../../utils/data';
 import EditForm from '../forms/EditForm';
-import DocForm from '../forms/DocForm';
+import ArticleForm from '../forms/ArticleForm';
 
 /**
  * Add a new document (of any content
@@ -17,7 +17,7 @@ const NewDoc = props => {
     <div className="new-doc-view">
       <div className="wrap">
         <h1 className="view-title">{title}</h1>
-        <EditForm type={type} slug="new" render={props => <DocForm {...props} />} />
+        <EditForm type={type} slug="new" render={props => <ArticleForm {...props} />} />
       </div>
     </div>
   );
