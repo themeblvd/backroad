@@ -11,21 +11,24 @@ import { singularTitle, pluralTitle, getPathBase, getPathItem } from '../../util
  * @return {Component}
  */
 const NavItem = props => {
-  const { endpoint, currentPath } = props;
+  const { endpoint, currentPath, hasChildren } = props;
   const base = getPathBase(currentPath);
   const item = getPathItem(currentPath);
+  const parentName = endpoint ? pluralTitle(endpoint) : 'Home';
 
   return (
     <li className={base === endpoint ? 'active-item' : ''}>
-      <Link to={`/${endpoint}`}>{pluralTitle(endpoint)}</Link>
-      <ul className="child-menu">
-        <li className={base === endpoint && !item ? 'active-child' : ''}>
-          <Link to={`/${endpoint}`}>Manage {pluralTitle(endpoint)}</Link>
-        </li>
-        <li className={base === endpoint && item === 'new' ? 'active-child' : ''}>
-          <Link to={`/${endpoint}/new`}>New {singularTitle(endpoint)}</Link>
-        </li>
-      </ul>
+      <Link to={`/${endpoint}`}>{parentName}</Link>
+      {hasChildren && (
+        <ul className="child-menu">
+          <li className={base === endpoint && !item ? 'active-child' : ''}>
+            <Link to={`/${endpoint}`}>Manage {pluralTitle(endpoint)}</Link>
+          </li>
+          <li className={base === endpoint && item === 'new' ? 'active-child' : ''}>
+            <Link to={`/${endpoint}/new`}>New {singularTitle(endpoint)}</Link>
+          </li>
+        </ul>
+      )}
     </li>
   );
 };

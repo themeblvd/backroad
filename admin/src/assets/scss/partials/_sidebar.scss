@@ -25,18 +25,20 @@
     padding: 0;
   }
   > ul {
-    margin-bottom: 20px;
+    margin: 0 0 20px 3px;
   }
 
   // Headings
   .nav-title {
-    color: $clr-text-inverse;
+    color: rgba($clr-text-inverse, 0.6);
     display: block;
     font-size: 13px;
     margin: 0 0 10px 0;
   }
   .nav-title .icon {
     margin-right: 8px;
+    text-align: center;
+    width: 1.2em;
   }
 
   // All Links
@@ -66,7 +68,7 @@
     display: block;
     position: absolute;
     top: 0;
-    bottom: 5px;
+    bottom: 0;
     left: -30px;
     width: 5px;
   }
@@ -74,7 +76,7 @@
   // Level 2
   .child-menu {
     display: none;
-    padding: 5px 0 10px 10px;
+    padding: 5px 0 0 16px;
   }
   .child-menu li {
     font-size: 14px;

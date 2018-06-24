@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getConfig } from '../../utils/data';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faTachometerAlt from '@fortawesome/fontawesome-free-solid/faTachometerAlt';
 import faFileAlt from '@fortawesome/fontawesome-free-solid/faFileAlt';
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import NavItem from './NavItem';
@@ -20,6 +21,12 @@ const PrimaryNav = props => {
 
   return (
     <div className="app-nav">
+      <span className="nav-title heading-sm">
+        <FontAwesomeIcon icon={faTachometerAlt} className="icon" />Dashboard
+      </span>
+      <ul>
+        <NavItem endpoint="" currentPath={location.pathname} />
+      </ul>
       {contentTypes && (
         <React.Fragment>
           <span className="nav-title heading-sm">
@@ -31,6 +38,7 @@ const PrimaryNav = props => {
                 key={type.endpoint}
                 endpoint={type.endpoint}
                 currentPath={location.pathname}
+                hasChildren
               />
             ))}
           </ul>
@@ -40,7 +48,9 @@ const PrimaryNav = props => {
         <FontAwesomeIcon icon={faCog} className="icon" />Configure
       </span>
       <ul>
-        {isAdmin && <NavItem endpoint="users" currentPath={location.pathname} type="users" />}
+        {isAdmin && (
+          <NavItem endpoint="users" currentPath={location.pathname} type="users" hasChildren />
+        )}
       </ul>
     </div>
   );
