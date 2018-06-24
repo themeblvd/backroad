@@ -17,8 +17,8 @@
 
 .new-user-view,
 .edit-user-view,
-.new-doc-view,
-.edit-doc-view,
+.new-article-view,
+.edit-article-view,
 .not-found-view {
   > .wrap {
     max-width: 1000px;
@@ -32,7 +32,7 @@
 //
 
 .manage-users-view,
-.manage-docs-view {
+.manage-articles-view {
   max-width: 1400px;
   margin: 0 auto;
   padding: 50px;

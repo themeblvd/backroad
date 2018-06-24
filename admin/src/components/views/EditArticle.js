@@ -19,7 +19,7 @@ const EditDoc = props => {
   }
 
   return (
-    <div className="edit-doc-view">
+    <div className="edit-article-view">
       <div className="wrap">
         <h1 className="view-title">Edit {singularTitle(type)}</h1>
         <BackButton to={`/${type}`} />

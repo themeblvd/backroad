@@ -14,7 +14,7 @@ const NewDoc = props => {
   const { type } = props.match.params;
   const title = 'New ' + singularTitle(type);
   return (
-    <div className="new-doc-view">
+    <div className="new-article-view">
       <div className="wrap">
         <h1 className="view-title">{title}</h1>
         <EditForm type={type} slug="new" render={props => <ArticleForm {...props} />} />
