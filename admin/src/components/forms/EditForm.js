@@ -8,9 +8,13 @@ import { timeoutPromise } from '../../../../lib/utils/timing';
 import Alert from '../elements/Alert';
 
 /**
- * Form to edit a document.
+ * Edit Form
+ *
+ * This is an HOC that handles all the data
+ * when adding or editing users or articles,
+ * of any content type.
  */
-class Form extends Component {
+class EditForm extends Component {
   /**
    * Class constructor.
    */
@@ -114,7 +118,7 @@ class Form extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { type } = this.props;
+    const { type, history } = this.props;
     const { context, inputs } = this.state;
     const { _id } = this.state.inputs;
     const data = type === 'users' ? cleanUserData({ ...inputs }, context) : { ...inputs }; // @TODO clean function for general document.
@@ -140,18 +144,33 @@ class Form extends Component {
       .then(response => {
         return timeoutPromise(1000); // Force at least 1 second delay in response.
       })
-      .then(() => {
+      .then(response => {
         this.props.addNotice('Saved!', 'success');
-        this.setState(prevState => ({
-          ...prevState,
-          errorOnSubmit: '',
-          isSubmitting: false,
-          inputs: {
-            ...prevState.inputs,
-            password: '',
-            password_confirm: ''
+        if (context === 'new') {
+          if (type === 'users') {
+            // When saving a new user, forward back to Manage
+            // Users page.
+            history.push('/users');
+          } else {
+            // When saving a new document, forward to the
+            // Edit view of it, which will now exist.
+            history.push(`/${type}/${response.data.slug}`);
           }
-        }));
+        } else {
+          // When saving an existing user or document,
+          // adjust state and stay in the current component
+          // for further editing.
+          this.setState(prevState => ({
+            ...prevState,
+            errorOnSubmit: '',
+            isSubmitting: false,
+            inputs: {
+              ...prevState.inputs,
+              password: '',
+              password_confirm: ''
+            }
+          }));
+        }
       })
       .catch(err => {
         var errorMessage = 'An error occurred.';
@@ -193,7 +212,9 @@ class Form extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addNotice }
-)(Form);
+export default withRouter(
+  connect(
+    null,
+    { addNotice }
+  )(EditForm)
+);

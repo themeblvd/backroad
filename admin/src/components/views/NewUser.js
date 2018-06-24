@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { singularTitle } from '../../utils/data';
 import BackButton from '../elements/BackButton';
-import Form from '../forms/Form';
+import EditForm from '../forms/EditForm';
 import UserForm from '../forms/UserForm';
 
 /**
@@ -15,7 +15,7 @@ const newUser = props => {
       <div className="wrap">
         <h1 className="view-title">New {singularTitle('users')}</h1>
         <BackButton to="/users" />
-        <Form type="users" slug="new" render={props => <UserForm {...props} />} />
+        <EditForm type="users" slug="new" render={props => <UserForm {...props} />} />
       </div>
     </div>
   );

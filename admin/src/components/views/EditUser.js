@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { singularTitle } from '../../utils/data';
-import Form from '../forms/Form';
+import EditForm from '../forms/EditForm';
 import BackButton from '../elements/BackButton';
 import UserForm from '../forms/UserForm';
 
@@ -19,7 +19,7 @@ const EditUser = props => {
       <div className="wrap">
         <h1 className="view-title">Edit {singularTitle('users')}</h1>
         <BackButton to="/users" />
-        <Form type="users" slug={username} render={props => <UserForm {...props} />} />
+        <EditForm type="users" slug={username} render={props => <UserForm {...props} />} />
       </div>
     </div>
   );

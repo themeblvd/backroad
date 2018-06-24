@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { singularTitle, getPathBase } from '../../utils/data';
-import Form from '../forms/Form';
+import EditForm from '../forms/EditForm';
 import DocForm from '../forms/DocForm';
 
 /**
@@ -17,7 +17,7 @@ const NewDoc = props => {
     <div className="new-doc-view">
       <div className="wrap">
         <h1 className="view-title">{title}</h1>
-        <Form type={type} slug="new" render={props => <DocForm {...props} />} />
+        <EditForm type={type} slug="new" render={props => <DocForm {...props} />} />
       </div>
     </div>
   );
