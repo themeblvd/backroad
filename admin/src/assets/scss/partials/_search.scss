@@ -3,7 +3,6 @@
 //
 
 .search {
-  height: 38px;
   margin: 0;
   position: relative;
 
@@ -16,9 +15,6 @@
     width: 14px;
     height: 14px;
     z-index: 1;
-  }
-  &.active .svg-inline--fa {
-    transform: translate(0, -1px);
   }
   input {
     background-color: $fs-clr-bg-body;

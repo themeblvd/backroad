@@ -7,20 +7,27 @@
   border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(212, 212, 212, 0.9);
+  color: $clr-text-darken;
   transition: box-shadow 0.1s ease-in, transform 0.1s ease-in;
 
+  &:disabled {
+    background: #f5f5f5;
+    color: lighten($clr-text-lighten, 10%);
+    font-style: italic;
+  }
   &:focus {
-    box-shadow: 0 2px 10px rgba(212, 212, 212, 0.9);
-    transform: translate(0, -1px);
+    box-shadow: 0 2px 10px rgba(185, 185, 185, 0.9);
   }
 }
 
 //
-// Labels
+// Labels/Legends
 //
 
-label {
+label,
+legend {
   font-size: 16px;
+  margin: 0 4px 15px 4px;
 }
 .help-text {
   display: block;
