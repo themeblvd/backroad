@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from '../tables/Table';
+import ManageTable from '../tables/ManageTable';
 import UsersTable from '../tables/UsersTable';
 
 /**
@@ -11,7 +11,7 @@ const ManageUsers = props => {
   return (
     <div className="manage-users-view">
       <div className="wrap">
-        <Table type="users" render={props => <UsersTable {...props} />} />
+        <ManageTable type="users" render={props => <UsersTable {...props} />} />
       </div>
     </div>
   );

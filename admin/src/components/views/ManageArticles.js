@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { getPathBase, isValidContentType } from '../../utils/data';
 import NotFound from './NotFound';
-import Table from '../tables/Table';
+import ManageTable from '../tables/ManageTable';
 import ArticlesTable from '../tables/ArticlesTable';
 
 /**
@@ -21,7 +21,7 @@ const ManageArticles = props => {
   return (
     <div className="manage-articles-view">
       <div className="wrap">
-        <Table type={type} render={props => <ArticlesTable {...props} />} />
+        <ManageTable type={type} render={props => <ArticlesTable {...props} />} />
       </div>
     </div>
   );
