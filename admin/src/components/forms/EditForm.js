@@ -230,7 +230,7 @@ class EditForm extends Component {
     const { isLoading, errorOnLoad } = this.state;
 
     if (isLoading) {
-      return <p>Loading...</p>;
+      return <p className="hide">Loading...</p>;
     }
 
     if (errorOnLoad) {

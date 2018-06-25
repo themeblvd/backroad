@@ -95,7 +95,7 @@ class Table extends Component {
     const { type } = this.props;
 
     if (isLoading) {
-      return <p>Loading...</p>;
+      return <p className="hide">Loading...</p>;
     }
 
     return (

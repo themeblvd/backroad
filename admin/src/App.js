@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="backroad-admin">
         {isLoading ? (
-          <p>Loading...</p>
+          <p className="hide">Loading...</p>
         ) : (
           <Switch>
             <Route path="/login" component={Login} />
