@@ -1,22 +1,46 @@
 import React from 'react';
-import { singularTitle } from '../../utils/data';
+import { singularTitle, getContentType } from '../../utils/data';
+import Fields from '../fields/Fields';
+import Input from '../fields/Input';
 import Alert from '../elements/Alert';
 import Button from '../elements/Button';
 
-function ArticleForm(props) {
-  const { context, type, handleSubmit, handleChange, inputs, isSubmitting, errorOnSubmit } = props;
+const ArticleForm = props => {
+  const {
+    context,
+    type,
+    handleSubmit,
+    handleChange,
+    title,
+    inputs,
+    isSubmitting,
+    errorOnSubmit
+  } = props;
+  const { fields } = getContentType(type);
   const btnText =
     context === 'new' ? 'Add New ' + singularTitle(type) : 'Update ' + singularTitle(type);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Use {'<Fields />'} here...</p>
+    <form onSubmit={handleSubmit} noValidate>
+      {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
+      <div className="title-field">
+        <Input
+          value={title}
+          onChange={handleChange}
+          name="title"
+          placeholder="Enter Title"
+          help={`Your ${singularTitle(type).toLowerCase()} must have a title.`}
+          isRequired={true}
+          className="field-xxxl"
+        />
+      </div>
+      <Fields fields={fields} values={inputs} handleChange={handleChange} />
       {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
       <Button isPrimary isLoading={props.isSubmitting}>
         {btnText}
       </Button>
     </form>
   );
-}
+};
 
 export default ArticleForm;

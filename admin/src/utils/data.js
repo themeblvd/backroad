@@ -63,6 +63,45 @@ export function pluralTitle(endpoint) {
  * Get initial inputs for editing
  * a user.
  *
+ * @param {String} endpoint Content type endpoings like `pages`.
+ * @return {Object}
+ */
+export function getContentTypeInputs(endpoint) {
+  const type = getContentType(endpoint);
+  const inputs = {};
+  type.fields.forEach(function(field) {
+    const { id, type, options } = field;
+    inputs[field.id] = field.default ? field.default : fieldDefault(type, options);
+  });
+  return inputs;
+}
+
+/**
+ * Get a default, blank starting value,
+ * depending on the type of field.
+ *
+ * @param {String} type    Field type, like `text`, `textarea`, 'checkbox', etc.
+ * @param {Array}  options Options when relevant, like with a <select> menu.
+ * @return {String|Array}
+ */
+export function fieldDefault(type, options) {
+  switch (type) {
+    case 'select':
+    case 'radio':
+      return options[0];
+    case 'checkbox':
+      return false;
+    case 'checkbox-group':
+      return [];
+    default:
+      return '';
+  }
+}
+
+/**
+ * Get initial inputs for editing
+ * a user.
+ *
  * @return {Object}
  */
 export function getUserInputs() {
@@ -80,12 +119,12 @@ export function getUserInputs() {
 /**
  * Sanitize user to save.
  *
- * @param {Object} data    Data to be sanitized.
+ * @param {Object} data    A copy of caseomponent state to pull data from.
  * @param {String} context Context of data clean, `edit` or `new`.
  * @return {Object} Sanitized data.
  */
 export function cleanUserData(data, context = 'edit') {
-  const { username, first_name, last_name, email, password, password_confirm, bio } = data;
+  const { username, first_name, last_name, email, password, password_confirm, bio } = data.inputs;
 
   if (context === 'new' && username === 'new') {
     return 'The word "new" is reserved and can\'t be used for a username.';
@@ -126,6 +165,26 @@ export function cleanUserData(data, context = 'edit') {
   }
 
   return clean;
+}
+
+/**
+ * Sanitize article to save.
+ *
+ * @param {Object} data    A copy of caseomponent state to pull data from.
+ * @param {String} context Context of data clean, `edit` or `new`.
+ * @return {Object} Sanitized data.
+ */
+export function cleanArticleData(data, context) {
+  const { title, inputs } = data;
+
+  if (!title) {
+    return 'You must enter a title.';
+  }
+
+  return {
+    title,
+    fields: inputs // @TODO Actual sanitization of fields.
+  };
 }
 
 /**
@@ -175,5 +234,6 @@ export function apiUrl(method = 'get', resource = '', item = '') {
   if (item) return `/api/v1/articles/${item}`; // PUT, DELETE - item should be _id.
 
   // GET of all articles of type, or POST new article of type.
-  return `/api/v1/articles?content_type=${resource}`;
+  const contentType = getContentType(resource);
+  return `/api/v1/articles?content_type=${contentType.id}`;
 }

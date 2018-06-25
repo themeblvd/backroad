@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
-import { getUserInputs, cleanUserData, apiUrl } from '../../utils/data';
+import {
+  getUserInputs,
+  getContentTypeInputs,
+  cleanUserData,
+  cleanArticleData,
+  apiUrl
+} from '../../utils/data';
 import authorized from '../../utils/authorized';
 import { timeoutPromise } from '../../../../lib/utils/timing';
 import Alert from '../elements/Alert';
@@ -20,7 +26,7 @@ class EditForm extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = this.initialState();
+    this.state = this.initialState(props);
   }
 
   /**
@@ -29,17 +35,23 @@ class EditForm extends Component {
    * This is helpful in resetting the state
    * in componentWillReceiveProps().
    */
-  initialState = () => ({
-    context: 'edit', // `edit` or `new`
-    errorOnLoad: '',
-    errorOnSubmit: '',
-    isLoading: true,
-    isSubmitting: false,
-    inputs: getUserInputs() // @TODO this.props.type === 'users' ? getUserInputs() : getContentTypeInputs(this.props.type)
-  });
+  initialState = props => {
+    const { type, slug } = props;
+
+    return {
+      context: slug === 'new' ? 'new' : 'edit',
+      errorOnLoad: '',
+      errorOnSubmit: '',
+      isLoading: true,
+      isSubmitting: false,
+      title: '', // Not used with users.
+      _id: '',
+      inputs: type === 'users' ? getUserInputs() : getContentTypeInputs(type)
+    };
+  };
 
   /**
-   * Load data for the document.
+   * Load data for the item.
    *
    * NOTE: When the context of the form is
    * adding a new item, there's no data to
@@ -57,8 +69,14 @@ class EditForm extends Component {
     authorized
       .get(apiUrl('get', type, slug))
       .then(response => {
+        // If we're editing an article data stored in fields,
+        // and with user's it's stored directly in response.data.
+        const inputs = response.data.fields ? response.data.fields : response.data;
+
         this.setState({
-          inputs: { ...this.state.inputs, ...response.data },
+          _id: response.data._id,
+          title: response.data.title && response.data.title,
+          inputs: { ...this.state.inputs, ...inputs },
           isLoading: false
         });
       })
@@ -71,7 +89,7 @@ class EditForm extends Component {
   };
 
   /**
-   * Fetch existing data for document, that
+   * Fetch existing data for item, that
    * the user will be editing.
    */
   componentDidMount() {
@@ -84,7 +102,7 @@ class EditForm extends Component {
    *
    * Every time we navigate to a route using
    * this component, we want to make sure and
-   * reset everything for the new document.
+   * reset everything for the new item.
    *
    * NOTE: We need to be careful to only update
    * when the type or slug changes.
@@ -92,7 +110,7 @@ class EditForm extends Component {
   componentWillReceiveProps(newProps) {
     const { type, slug } = newProps;
     if (type !== this.props.type || slug !== this.props.slug) {
-      this.setState(this.initialState(), () => {
+      this.setState(this.initialState(newProps), () => {
         this.loadData(type, slug);
       });
     }
@@ -103,7 +121,13 @@ class EditForm extends Component {
    * changes.
    */
   handleChange = event => {
-    const { name, value, checked, type } = event.target;
+    const { name, value, type, checked } = event.target;
+
+    if (name === 'title') {
+      this.setState({ title: value });
+      return;
+    }
+
     this.setState(prevState => ({
       inputs: {
         ...prevState.inputs,
@@ -119,9 +143,12 @@ class EditForm extends Component {
     event.preventDefault();
 
     const { type, history } = this.props;
-    const { context, inputs } = this.state;
-    const { _id } = this.state.inputs;
-    const data = type === 'users' ? cleanUserData({ ...inputs }, context) : { ...inputs }; // @TODO clean function for general document.
+    const { context, _id, inputs } = this.state;
+
+    const data =
+      type === 'users'
+        ? cleanUserData({ ...this.state }, context)
+        : cleanArticleData({ ...this.state }, context);
 
     if (typeof data === 'string') {
       // String means error message from cleanUserData().
@@ -142,22 +169,24 @@ class EditForm extends Component {
 
     authorized(options)
       .then(response => {
-        return timeoutPromise(1000); // Force at least 1 second delay in response.
+        return timeoutPromise(1000, response); // Force at least 1 second delay in response.
       })
       .then(response => {
+        // Add global notice.
         this.props.addNotice('Saved!', 'success');
+
         if (context === 'new') {
           if (type === 'users') {
             // When saving a new user, forward back to Manage
             // Users page.
             history.push('/users');
           } else {
-            // When saving a new document, forward to the
+            // When saving a new article, forward to the
             // Edit view of it, which will now exist.
             history.push(`/${type}/${response.data.slug}`);
           }
         } else {
-          // When saving an existing user or document,
+          // When saving an existing user or article,
           // adjust state and stay in the current component
           // for further editing.
           this.setState(prevState => ({
@@ -173,6 +202,7 @@ class EditForm extends Component {
         }
       })
       .catch(err => {
+        console.dir(err);
         var errorMessage = 'An error occurred.';
         if (err.response && err.response.data && err.response.data.message) {
           errorMessage = err.response.data.message;
@@ -201,6 +231,7 @@ class EditForm extends Component {
     }
 
     return this.props.render({
+      title: this.state.title, // Only used with articles.
       context: this.state.context,
       type: this.props.type,
       handleSubmit: this.handleSubmit,
