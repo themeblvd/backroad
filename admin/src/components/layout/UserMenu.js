@@ -37,7 +37,7 @@ class UserMenu extends Component {
             </Link>
           </li>
           <li>
-            <LogoutLink>
+            <LogoutLink closeUserMenu={this.closeUserMenu}>
               <FontAwesomeIcon icon={faSignOutAlt} />Log Out
             </LogoutLink>
           </li>

@@ -5,6 +5,7 @@ import { logout } from '../../store/auth';
 class LogoutLink extends Component {
   handleClick = event => {
     event.preventDefault();
+    this.props.closeUserMenu();
     this.props.logout();
   };
 
