@@ -79,7 +79,6 @@ class RecentContentTable extends Component {
                 </Link>
               );
             })}
-          {/*<span className="stats">{types.length} Content Types</span>*/}
         </div>
         <div className="table-container">
           {articles.length ? (
@@ -89,7 +88,7 @@ class RecentContentTable extends Component {
                   <tr>
                     <th>Title</th>
                     <th width="17%">Created</th>
-                    <th width="17%">Author</th>
+                    <th width="17%">Created By</th>
                     <th width="17%">Type</th>
                     <th width="8%">Action</th>
                   </tr>
@@ -102,7 +101,11 @@ class RecentContentTable extends Component {
                     const time = timestamp(article.created_at);
                     return (
                       <tr key={article._id}>
-                        <td>{article.title}</td>
+                        <td>
+                          <Link to={`/${endpoint}/${article.slug}`} title={`Edit ${article.title}`}>
+                            {article.title}
+                          </Link>
+                        </td>
                         <td>{time}</td>
                         <td>{article.created_by}</td>
                         <td>{singular}</td>

@@ -15,7 +15,7 @@ const ArticlesTable = props => {
         <tr>
           <th width="50%">Title</th>
           <th width="20%">Created</th>
-          <th width="20%">Author</th>
+          <th width="20%">Created By</th>
           <th width="10%">Actions</th>
         </tr>
       </thead>
