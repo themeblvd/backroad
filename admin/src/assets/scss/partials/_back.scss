@@ -5,9 +5,9 @@
 .btn-back.btn-default {
   background: #fff;
   box-shadow: $shadow-dark;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed;
+  top: $admin-header-height + 20px;
+  left: $admin-sidebar-width + 20px;
 
   &:hover {
     background: $clr-primary;
