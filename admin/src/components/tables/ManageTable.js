@@ -35,8 +35,14 @@ class Table extends Component {
    * Load data for the table.
    */
   loadData = type => {
+    var url = apiUrl('get', type);
+
+    if (type === 'users') {
+      url += '?order_by=role&order=asc'; // Show those awesome admins first.
+    }
+
     authorized
-      .get(apiUrl('get', type))
+      .get(url)
       .then(response => {
         this.setState({
           items: response.data,
