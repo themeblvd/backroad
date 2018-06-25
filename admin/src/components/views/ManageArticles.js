@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { getPathBase } from '../../utils/data';
+import { getPathBase, isValidContentType } from '../../utils/data';
+import NotFound from './NotFound';
 import Table from '../tables/Table';
 import ArticlesTable from '../tables/ArticlesTable';
 
@@ -11,14 +12,16 @@ import ArticlesTable from '../tables/ArticlesTable';
  */
 const ManageArticles = props => {
   const { location } = props;
+  const type = getPathBase(location.pathname);
+
+  if (!isValidContentType(type)) {
+    return <NotFound />;
+  }
 
   return (
     <div className="manage-articles-view">
       <div className="wrap">
-        <Table
-          type={getPathBase(location.pathname)}
-          render={props => <ArticlesTable {...props} />}
-        />
+        <Table type={type} render={props => <ArticlesTable {...props} />} />
       </div>
     </div>
   );
