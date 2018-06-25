@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import { addNotice } from '../../store/notice';
-import { singularTitle, apiUrl } from '../../utils/data';
+import { singularTitle, timestamp, apiUrl } from '../../utils/data';
 import authorized from '../../utils/authorized';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
@@ -66,12 +65,6 @@ class ArticleRow extends Component {
 
     if (isDeleted) return null;
 
-    var timeAgo = moment(new Date(createdAt))
-      .startOf('hour')
-      .fromNow();
-
-    timeAgo = timeAgo.charAt(0).toUpperCase() + timeAgo.substr(1); // Capitalize 1st letter, if not number.
-
     return (
       <tr>
         <td>
@@ -79,7 +72,7 @@ class ArticleRow extends Component {
             {title}
           </Link>
         </td>
-        <td>{timeAgo}</td>
+        <td>{timestamp(createdAt)}</td>
         <td>{createdBy}</td>
         <td>
           <ul className="actions-menu list-unstyled">
