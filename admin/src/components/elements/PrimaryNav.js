@@ -25,7 +25,7 @@ const PrimaryNav = props => {
         <FontAwesomeIcon icon={faTachometerAlt} className="icon" />Dashboard
       </span>
       <ul>
-        <NavItem endpoint="" currentPath={location.pathname} />
+        <NavItem text="Home" endpoint="" currentPath={location.pathname} />
       </ul>
       {contentTypes && (
         <React.Fragment>
@@ -48,9 +48,8 @@ const PrimaryNav = props => {
         <FontAwesomeIcon icon={faCog} className="icon" />Configure
       </span>
       <ul>
-        {isAdmin && (
-          <NavItem endpoint="users" currentPath={location.pathname} type="users" hasChildren />
-        )}
+        {isAdmin && <NavItem endpoint="users" currentPath={location.pathname} hasChildren />}
+        <NavItem text="Settings" endpoint="settings" currentPath={location.pathname} />
       </ul>
     </div>
   );
