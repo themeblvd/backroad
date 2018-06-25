@@ -11,7 +11,7 @@ import ArticleForm from '../forms/ArticleForm';
  *
  * @return {Component}
  */
-const EditDoc = props => {
+const EditArticle = props => {
   const { type, slug } = props.match.params;
 
   if (!isValidContentType(type)) {
@@ -29,4 +29,4 @@ const EditDoc = props => {
   );
 };
 
-export default withRouter(EditDoc);
+export default withRouter(EditArticle);
