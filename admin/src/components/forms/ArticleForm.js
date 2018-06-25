@@ -29,7 +29,6 @@ const ArticleForm = props => {
           onChange={handleChange}
           name="title"
           placeholder="Enter Title"
-          help={`Your ${singularTitle(type).toLowerCase()} must have a title.`}
           isRequired={true}
           className="field-xxxl"
         />
