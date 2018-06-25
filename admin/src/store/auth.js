@@ -28,6 +28,8 @@ const STOP_LOADING = 'STOP_LOADING';
 
 const LOGOUT = 'LOGOUT';
 
+const UPDATE_USER = 'UPDATE_USER';
+
 // Reducer
 
 export default function reducer(state = initialState, action) {
@@ -62,6 +64,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...initialState,
         isLoading: false
+      };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        ...action.user
       };
 
     default:
@@ -144,5 +152,12 @@ export function logout() {
   localStorage.removeItem('token');
   return {
     type: LOGOUT
+  };
+}
+
+export function updateUser(user) {
+  return {
+    type: UPDATE_USER,
+    user
   };
 }

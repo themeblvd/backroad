@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
+import { updateUser } from '../../store/auth';
 import {
   getUserInputs,
   getContentTypeInputs,
@@ -142,7 +143,7 @@ class EditForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { type, history } = this.props;
+    const { type, history, updateUser, currentUserId } = this.props;
     const { context, _id, inputs } = this.state;
 
     const data =
@@ -199,6 +200,12 @@ class EditForm extends Component {
               password_confirm: ''
             }
           }));
+
+          // When a user saves their own data, also dispatch
+          // to the store.
+          if (type === 'users' && currentUserId === _id) {
+            updateUser(response.data);
+          }
         }
       })
       .catch(err => {
@@ -245,7 +252,7 @@ class EditForm extends Component {
 
 export default withRouter(
   connect(
-    null,
-    { addNotice }
+    state => ({ currentUserId: state.auth._id }),
+    { addNotice, updateUser }
   )(EditForm)
 );
