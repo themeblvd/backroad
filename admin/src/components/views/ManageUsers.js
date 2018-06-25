@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { singularTitle } from '../../utils/data';
 import Table from '../tables/Table';
 import UsersTable from '../tables/UsersTable';
 
