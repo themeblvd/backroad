@@ -7,6 +7,7 @@ const UserForm = props => {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
+      {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
       <fieldset>
         <legend>Name</legend>
         <div className="row">
