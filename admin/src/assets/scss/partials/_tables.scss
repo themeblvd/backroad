@@ -3,7 +3,8 @@
 //
 
 .manage-users-table,
-.manage-articles-table {
+.manage-articles-table,
+.recent-content-table {
   background: #fff;
   box-shadow: $shadow-dark;
 
@@ -11,13 +12,14 @@
     border-bottom: 1px solid $clr-border;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 30px;
   }
-  .table-title h1 {
+  .table-title h1,
+  .table-title h2 {
     font-size: 18px;
     line-height: 65px;
-    margin: 0;
+    margin: 0 auto 0 0;
   }
   .table-container {
     padding: 30px;
@@ -71,11 +73,16 @@ table {
   tr:nth-child(even) {
     background: $clr-bg;
   }
+  // th:last-child,
+  // td:last-child {
+  //   text-align: center;
+  // }
 }
 
 //
 // Users Table
 //
+
 .manage-users-table {
   .role-label {
     &.admin {
@@ -95,6 +102,7 @@ table {
 
 .actions-menu {
   display: flex;
+  // justify-content: center;
 
   li {
     margin: 0 2px;
@@ -118,5 +126,23 @@ table {
   }
   .delete-item:hover {
     background-color: darken(adjust-hue($clr-danger, -5), 35%);
+  }
+}
+
+//
+// Recent Content Table Wrap
+// (extends above)
+//
+
+.recent-content-table {
+  .table-title .btn {
+    margin-left: 5px;
+  }
+  th:last-child,
+  td:last-child {
+    text-align: center;
+  }
+  .actions-menu {
+    justify-content: center;
   }
 }

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /**
  * Get Backroad configuration.
  *
@@ -34,6 +36,27 @@ export function isValidContentType(endpoint) {
 }
 
 /**
+ * Get content type endpoint.
+ *
+ * Most components throughout the app tend
+ * to have the endpoint available for a content
+ * type and so most of our helper functions
+ * here use that.
+ *
+ * So this function is helpful for the few
+ * scenarios where you have the actual ID of
+ * the content type and you want access to
+ * these other helper functions.
+ *
+ * @param {String} id Content type ID.
+ * @return {String} Content type endpoint.
+ */
+export function contentTypeEndpoint(id) {
+  const contentTypes = getConfig('contentTypes');
+  return contentTypes.find(type => type.id === id).endpoint;
+}
+
+/**
  * Get the singular title for a content type.
  *
  * @param {String} endpoint Content type endpoings like `pages`.
@@ -57,6 +80,20 @@ export function pluralTitle(endpoint) {
   const type = getContentType(endpoint);
   if (type && type.pluralName) return type.pluralName;
   return '';
+}
+
+/**
+ * Format the create_at attribute from an article.
+ *
+ * @param {String} time Timestamp from Mongoose.
+ * @return {String} Formatted time.
+ */
+export function timestamp(time) {
+  var timestamp = moment(new Date(time))
+    .startOf('hour')
+    .fromNow();
+
+  return timestamp.charAt(0).toUpperCase() + timestamp.substr(1); // Capitalize 1st letter, if not number.
 }
 
 /**
@@ -234,6 +271,11 @@ export function apiUrl(method = 'get', resource = '', item = '') {
   if (item) return `/api/v1/articles/${item}`; // PUT, DELETE - item should be _id.
 
   // GET of all articles of type, or POST new article of type.
-  const contentType = getContentType(resource);
-  return `/api/v1/articles?content_type=${contentType.id}`;
+  if (resource) {
+    const contentType = getContentType(resource);
+    return `/api/v1/articles?content_type=${contentType.id}`;
+  }
+
+  // GET all articles, of all content types.
+  return '/api/v1/articles';
 }
