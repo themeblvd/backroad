@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { singularTitle, getPathBase } from '../../utils/data';
+import BackButton from '../elements/BackButton';
 import EditForm from '../forms/EditForm';
 import ArticleForm from '../forms/ArticleForm';
 
@@ -17,6 +18,7 @@ const NewDoc = props => {
     <div className="new-article-view">
       <div className="wrap">
         <h1 className="view-title">{title}</h1>
+        <BackButton to={`/${type}`} />
         <EditForm type={type} slug="new" render={props => <ArticleForm {...props} />} />
       </div>
     </div>
