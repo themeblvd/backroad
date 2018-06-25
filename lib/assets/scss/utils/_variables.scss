@@ -33,10 +33,10 @@ $clr-danger-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast) !def
 // Text
 //
 
-$clr-text: #58666e;
-$clr-text-lighten: #8b99a1;
-$clr-text-darken: $clr-bg-inverse;
-$clr-text-inverse: #fff;
+$clr-text: #58666e !default;
+$clr-text-lighten: #8b99a1 !default;
+$clr-text-darken: $clr-bg-inverse !default;
+$clr-text-inverse: #fff !default;
 
 //
 // Links
@@ -49,42 +49,42 @@ $clr-link-hover: $clr-primary !default;
 // Roles
 //
 
-$clr-admin: #dff0d8;
-$clr-editor: #d9edf7;
+$clr-admin: #dff0d8 !default;
+$clr-editor: #d9edf7 !default;
 
 //
 // Borders
 //
 
-$clr-border: lighten($clr-text, 54%);
+$clr-border: lighten($clr-text, 54%) !default;
 
 //
 // Admin UI
 //
 
-$admin-clr-bg-body: $clr-bg;
-$admin-clr-bg-logo: $clr-bg-inverse;
-$admin-clr-bg-sidebar: $clr-bg-inverse;
+$admin-clr-bg-body: $clr-bg !default;
+$admin-clr-bg-logo: $clr-bg-inverse !default;
+$admin-clr-bg-sidebar: $clr-bg-inverse !default;
 
 //
 // Login UI
 //
 
-$login-clr-bg-body: $clr-bg-inverse;
-$login-clr-bg-form: $clr-bg;
+$login-clr-bg-body: $clr-bg-inverse !default;
+$login-clr-bg-form: $clr-bg !default;
 
 //
 // Install UI
 //
 
-$install-clr-bg-body: $clr-bg;
+$install-clr-bg-body: $clr-bg !default;
 
 //
 // Shadows
 //
 
-$shadow-light: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-$shadow-dark: 0 0 10px rgba(100, 100, 100, 0.15);
+$shadow-light: 0 1px 1px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-dark: 0 0 10px rgba(100, 100, 100, 0.15) !default;
 
 // ============================================
 // Layout
@@ -94,7 +94,7 @@ $shadow-dark: 0 0 10px rgba(100, 100, 100, 0.15);
 // Forms
 //
 
-$field-radius: 4px;
+$field-radius: 4px !default;
 
 //
 // Login UI
@@ -104,17 +104,17 @@ $field-radius: 4px;
 // Admin UI
 //
 
-$admin-header-height: 65px;
-$admin-sidebar-width: 260px;
+$admin-header-height: 65px !default;
+$admin-sidebar-width: 260px !default;
 
 //
 // Z-Index
 //
 
-$z-index-header: 100;
-$z-index-user-menu: 200;
-$z-index-sidebar: 300;
-$z-index-notification: 400;
+$z-index-header: 100 !default;
+$z-index-user-menu: 200 !default;
+$z-index-sidebar: 300 !default;
+$z-index-notification: 400 !default;
 
 // ============================================
 // Front Street Overrides
