@@ -15,19 +15,26 @@ class Table extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      items: [],
-      isLoading: true
-    };
+    this.state = this.initialState();
   }
 
   /**
-   * Fetch existing data to populate
-   * table.
+   * Initial state.
+   *
+   * This is helpful in resetting the state
+   * in componentWillReceiveProps().
    */
-  componentDidMount() {
-    const { type } = this.props;
+  initialState = () => {
+    return {
+      items: [],
+      isLoading: true
+    };
+  };
 
+  /**
+   * Load data for the table.
+   */
+  loadData = type => {
     authorized
       .get(apiUrl('get', type))
       .then(response => {
@@ -42,6 +49,34 @@ class Table extends Component {
           isLoading: false
         });
       });
+  };
+
+  /**
+   * Fetch existing data to populate
+   * table.
+   */
+  componentDidMount() {
+    const { type } = this.props;
+    this.loadData(type);
+  }
+
+  /**
+   * Reset state and re-fetch data.
+   *
+   * Every time we navigate to a route using
+   * this component, we want to make sure and
+   * reset everything for the new item.
+   *
+   * NOTE: We need to be careful to only update
+   * when the type or slug changes.
+   */
+  componentWillReceiveProps(newProps) {
+    const { type } = newProps;
+    if (type !== this.props.type) {
+      this.setState(this.initialState(), () => {
+        this.loadData(type);
+      });
+    }
   }
 
   /**
@@ -76,10 +111,16 @@ class Table extends Component {
             </span>
           </div>
           <div className="table-responsive">
-            {this.props.render({
-              type,
-              items
-            })}
+            {items.length ? (
+              this.props.render({
+                type,
+                items
+              })
+            ) : (
+              <p className="no-articles">
+                You haven't created any {pluralTitle(type).toLowerCase()} yet.
+              </p>
+            )}
           </div>
         </div>
       </div>

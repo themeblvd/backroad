@@ -8,6 +8,7 @@ import EditUser from '../components/views/EditUser';
 import ManageUsers from '../components/views/ManageUsers';
 import NewArticle from '../components/views/NewArticle';
 import EditArticle from '../components/views/EditArticle';
+import ManageArticles from '../components/views/ManageArticles';
 import NotFound from '../components/views/NotFound';
 import Footer from '../components/layout/Footer';
 
@@ -30,6 +31,7 @@ const View = props => {
           <AdminRoute path="/users" component={ManageUsers} />
           <Route path="/:type/new" component={NewArticle} />
           <Route path="/:type/:slug" component={EditArticle} />
+          <Route path="/:type" component={ManageArticles} />
           <Route path="/404" component={NotFound} />
           <Route path="/" component={NotFound} />
         </Switch>

@@ -43,6 +43,11 @@
   .table-responsive {
     margin: 0;
   }
+  .no-articles {
+    color: $clr-text-lighten;
+    font-style: italic;
+    padding: 20px 5px;
+  }
 }
 
 //

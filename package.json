@@ -50,6 +50,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^3.10.1",
     "md5": "^2.2.1",
+    "moment": "^2.22.2",
     "mongoose": "^5.1.5",
     "mongoose-slug-hero": "^1.1.1",
     "morgan": "^1.9.0",
