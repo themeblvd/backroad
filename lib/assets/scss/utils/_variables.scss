@@ -77,7 +77,8 @@ $login-clr-bg-form: $clr-bg !default;
 // Install UI
 //
 
-$install-clr-bg-body: $clr-bg !default;
+$install-clr-bg-body: $clr-bg-inverse !default;
+$install-clr-bg-inner: $clr-bg-darken;
 
 //
 // Shadows
