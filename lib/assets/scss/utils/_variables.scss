@@ -39,6 +39,13 @@ $clr-text-darken: $clr-bg-inverse;
 $clr-text-inverse: #fff;
 
 //
+// Links
+//
+
+$clr-link: $clr-accent !default;
+$clr-link-hover: $clr-primary !default;
+
+//
 // Roles
 //
 
@@ -131,3 +138,6 @@ $fs-clr-branding: (
 $fs-clr-text-base: $clr-text;
 $fs-clr-text-lighten: $clr-text-lighten;
 $fs-clr-text-darken: $clr-text-darken;
+
+$fs-clr-link: $clr-link;
+$fs-clr-link-hover: $clr-link-hover;
