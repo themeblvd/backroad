@@ -78,7 +78,11 @@ class UserRow extends Component {
 
     return (
       <tr>
-        <td>{username}</td>
+        <td>
+          <Link to={`/users/${username}`} title={`Edit ${username}`}>
+            {username}
+          </Link>
+        </td>
         <td>{name}</td>
         <td>{email}</td>
         <td>
