@@ -41,21 +41,21 @@ After that, the application is installed, and you can log in.
 
 ![Sreenshot](https://raw.githubusercontent.com/themeblvd/backroad/master/screenshot-2.jpg)
 
-Upon logging in, you're presented with this dashboard. Currently, this is just an overview all created content from all content types. In the future, hopefully this dashboard can be made to more useful.
+Upon logging in, you're presented with this dashboard. Currently, this is just an overview all created content from all content types. In the future, hopefully this dashboard can be made more useful.
 
 ![Sreenshot](https://raw.githubusercontent.com/themeblvd/backroad/master/screenshot-3.jpg)
 
-All content types need to be added via the API methods of the framework. You can see in this example, we've got Posts, Pages, Books, and Movies. Each content type the developer adds can be managed separately.
+All content types need to be added via the API methods of the framework. You can see in this example, we've got Posts, Pages, Books, and Movies. Each content type the developer adds can then be managed separately by the user.
 
 ![Sreenshot](https://raw.githubusercontent.com/themeblvd/backroad/master/screenshot-4.jpg)
 
-When the user adds new content or edits content of a certain type, they're presented with the options set up by the developer for that content type.
+When the user adds or edits content of a certain type, they're presented with the specific fields set up by the developer for that content type.
 
 ![Sreenshot](https://raw.githubusercontent.com/themeblvd/backroad/master/screenshot-5.jpg)
 
 And you can see below that the example content type, Movie, has different fields set up for it.
 
-The code example above had the content type configuration objects tucked away in another file to keep things clean. But here's an example, of what the code to make the "Movie" content type looks like.
+The code example above had the content type configuration objects tucked away in another file to keep things clean. But here's an example, of what the code to make the "Movie" content type looks like, in full.
 
 ```
 app.contentTypes.add({
