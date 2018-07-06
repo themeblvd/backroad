@@ -2,11 +2,11 @@
 
 Back Road is a headless CMS framework built with the MERN stack (MongoDB, Express, React, and NodeJS).
 
-My ultimate goal with this project is to create a framework that helps developers give their clients an admin interface to manage content. That content is then served to a public API which can be can consumed by whatever technology the developer wants to use on the frontend.
+My ultimate goal with this project is to create a framework that helps developers give their clients an admin interface to manage content. That content is then served to a public API which can be consumed by whatever technology the developer wants to use on the front-end.
 
 ## Current Progress
 
-Although it's still very much a work in progress, check out the screenshots below that explain it's current functionality, to this point.
+Although it's still very much a work in progress, check out the screenshots below that explain its current functionality, to this point.
 
 Here's the implementation code powering the example used in the screenshots.
 
