@@ -47,6 +47,7 @@
     "express-jwt": "^5.3.1",
     "find-root": "^1.1.0",
     "handlebars": "^4.0.11",
+    "immutable": "^3.8.2",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^3.10.1",
     "md5": "^2.2.1",
@@ -54,10 +55,14 @@
     "mongoose": "^5.1.5",
     "mongoose-slug-hero": "^1.1.1",
     "morgan": "^1.9.0",
+    "prismjs": "^1.15.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slate": "^0.34.2",
+    "slate-html-serializer": "^0.6.8",
+    "slate-react": "^0.12.11"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.3",

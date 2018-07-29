@@ -4,6 +4,8 @@ import TextArea from '../fields/TextArea';
 import SelectMenu from '../fields/SelectMenu';
 import Checkbox from '../fields/Checkbox';
 import RadioGroup from '../fields/RadioGroup';
+import MarkdownEditor from '../fields/MarkdownEditor';
+import RichTextEditor from '../fields/RichTextEditor';
 
 /**
  * Render set of form fields.
@@ -15,7 +17,7 @@ import RadioGroup from '../fields/RadioGroup';
  * @return {Component}
  */
 const Fields = props => {
-  const { fields, values, handleChange } = props;
+  const { fields, values, handleChange, handleEditorChange } = props;
 
   return fields.map(field => {
     switch (field.type) {
@@ -66,6 +68,30 @@ const Fields = props => {
             placeholder={field.placeholder}
             help={field.desc}
             isRequired={field.required ? true : false}
+          />
+        );
+      case 'markdown':
+        return (
+          <MarkdownEditor
+            key={field.id}
+            value={values[field.id]}
+            onChange={handleEditorChange}
+            title={field.name}
+            name={field.id}
+            placeholder={field.placeholder}
+            help={field.desc}
+          />
+        );
+      case 'rich-text':
+        return (
+          <RichTextEditor
+            key={field.id}
+            value={values[field.id]}
+            onChange={handleEditorChange}
+            title={field.name}
+            name={field.id}
+            placeholder={field.placeholder}
+            help={field.desc}
           />
         );
       default:

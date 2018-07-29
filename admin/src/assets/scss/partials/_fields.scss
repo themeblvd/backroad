@@ -5,6 +5,53 @@
 .new-article-view,
 .edit-article-view {
   .title-field {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+  }
+}
+
+//
+// Editors
+//
+
+.markdown-editor,
+.rich-text-editor {
+  > .wrap {
+    background-color: $field-bg-color;
+    border-radius: $field-radius;
+    box-shadow: $field-shadow;
+    padding: 30px;
+    margin-bottom: $fs-spacing-element;
+  }
+  .editor {
+    min-height: 200px;
+  }
+}
+
+.rich-text-editor {
+  .toolbar-menu {
+    border-bottom: 2px solid #eee;
+    margin: 0 -20px;
+    margin-bottom: 20px;
+    padding: 1px 18px 17px;
+    position: relative;
+
+    .button {
+      color: lighten($clr-text-lighten, 15%);
+      cursor: pointer;
+      display: inline-block;
+      font-size: 18px;
+    }
+    .button:hover {
+      color: $clr-text-lighten;
+    }
+    .button[data-active='true'] {
+      color: $clr-text-darken;
+    }
+    .button span {
+      margin-left: 15px;
+    }
+    .button:first-child span {
+      margin-left: 0;
+    }
   }
 }

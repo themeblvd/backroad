@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+
+// Router
 import { withRouter } from 'react-router-dom';
+
+// Store
 import { connect } from 'react-redux';
 import { addNotice } from '../../store/notice';
 import { updateUser } from '../../store/auth';
+
+// Utilities
 import {
   getUserInputs,
   getContentTypeInputs,
@@ -12,6 +18,8 @@ import {
 } from '../../utils/data';
 import authorized from '../../utils/authorized';
 import { timeoutPromise } from '../../../../lib/utils/timing';
+
+// Components
 import Alert from '../elements/Alert';
 
 /**
@@ -138,6 +146,19 @@ class EditForm extends Component {
   };
 
   /**
+   * Handle changes from Slate content
+   * editors.
+   */
+  handleEditorChange = (name, value) => {
+    this.setState(prevState => ({
+      inputs: {
+        ...prevState.inputs,
+        [name]: value
+      }
+    }));
+  };
+
+  /**
    * Handle form submission.
    */
   handleSubmit = event => {
@@ -243,6 +264,7 @@ class EditForm extends Component {
       type: this.props.type,
       handleSubmit: this.handleSubmit,
       handleChange: this.handleChange,
+      handleEditorChange: this.handleEditorChange,
       inputs: this.state.inputs,
       isSubmitting: this.state.isSubmitting,
       errorOnSubmit: this.state.errorOnSubmit

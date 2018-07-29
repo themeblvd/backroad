@@ -11,6 +11,7 @@ const ArticleForm = props => {
     type,
     handleSubmit,
     handleChange,
+    handleEditorChange,
     title,
     inputs,
     isSubmitting,
@@ -33,7 +34,12 @@ const ArticleForm = props => {
           className="field-xxxl"
         />
       </div>
-      <Fields fields={fields} values={inputs} handleChange={handleChange} />
+      <Fields
+        fields={fields}
+        values={inputs}
+        handleChange={handleChange}
+        handleEditorChange={handleEditorChange}
+      />
       {errorOnSubmit && <Alert text={errorOnSubmit} status="danger" />}
       <Button isPrimary isLoading={props.isSubmitting}>
         {btnText}
