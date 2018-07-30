@@ -1,5 +1,5 @@
 body {
-  background: $install-clr-bg-body;
+  background: $install-body-bg-color;
 }
 
 .install-page {
@@ -18,7 +18,7 @@ body {
     width: 180px;
   }
   form {
-    background: $install-clr-bg-inner;
+    background: $install-inner-bg-color;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
     padding: 60px 80px;

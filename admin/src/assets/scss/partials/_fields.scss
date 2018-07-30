@@ -20,7 +20,7 @@
     border-radius: $field-radius;
     box-shadow: $field-shadow;
     padding: 30px;
-    margin-bottom: $fs-spacing-element;
+    margin-bottom: $fs-element-spacing;
   }
   .editor {
     min-height: 200px;
@@ -36,16 +36,16 @@
     position: relative;
 
     .button {
-      color: lighten($clr-text-lighten, 15%);
+      color: lighten($text-color-lighten, 15%);
       cursor: pointer;
       display: inline-block;
       font-size: 18px;
     }
     .button:hover {
-      color: $clr-text-lighten;
+      color: $text-color-lighten;
     }
     .button[data-active='true'] {
-      color: $clr-text-darken;
+      color: $text-color-darken;
     }
     .button span {
       margin-left: 15px;

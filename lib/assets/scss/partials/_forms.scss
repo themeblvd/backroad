@@ -7,12 +7,12 @@
   border: none;
   border-radius: 4px;
   box-shadow: $field-shadow;
-  color: $clr-text-darken;
+  color: $text-color-darken;
   transition: box-shadow 0.1s ease-in, transform 0.1s ease-in;
 
   &:disabled {
     background: #f5f5f5;
-    color: lighten($clr-text-lighten, 10%);
+    color: lighten($text-color-lighten, 10%);
     font-style: italic;
   }
   &:focus {
@@ -45,9 +45,9 @@ legend {
 
 .field-error {
   input {
-    border-color: darken(adjust-hue($clr-danger, -10), 20%);
+    border-color: darken(adjust-hue($danger-color, -10), 20%);
   }
 }
 input.error {
-  border-color: darken(adjust-hue($clr-danger, -10), 20%);
+  border-color: darken(adjust-hue($danger-color, -10), 20%);
 }

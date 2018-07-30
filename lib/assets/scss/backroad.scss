@@ -3,20 +3,16 @@ $direction: 'ltr';
 $version: 'core';
 
 // Front Street Functions, Variables and Mixins
-@import '../../../vendor/frontstreet/scss/modules/index';
+@import '~frontstreet/src/scss/utils/index';
 
 // Back Road configuration
 @import 'utils/variables';
 
-// Front Street Reset
-@import '../../../vendor/frontstreet/scss/partials/normalize';
+// Front Street Core
+@import '~frontstreet/src/scss/core/index';
 
-// Front Street Core Styles
-@import '../../../vendor/frontstreet/scss/partials/core/index';
-@import '../../../vendor/frontstreet/scss/partials/utilities';
-
-// Front Street Components
-@import '../../../vendor/frontstreet/scss/partials/alerts';
+// Front Street Blocks
+@import '~frontstreet/src/scss/blocks/alert';
 
 // Back Road Core
 @import 'partials/buttons';

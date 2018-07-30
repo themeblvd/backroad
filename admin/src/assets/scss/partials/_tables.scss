@@ -9,7 +9,7 @@
   box-shadow: $shadow-dark;
 
   .table-title {
-    border-bottom: 1px solid $clr-border;
+    border-bottom: 1px solid $border-color;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -36,7 +36,7 @@
     max-width: 200px;
   }
   .table-top .stats {
-    color: $clr-text-lighten;
+    color: $text-color-lighten;
     display: inline-block;
     font-size: 14px;
     font-weight: $fs-font-weight-bold;
@@ -46,7 +46,7 @@
     margin: 0;
   }
   .no-articles {
-    color: $clr-text-lighten;
+    color: $text-color-lighten;
     font-style: italic;
     padding: 20px 5px;
   }
@@ -58,11 +58,11 @@
 
 table {
   thead {
-    background-color: darken($clr-bg, 1%);
+    background-color: darken($bg-color, 1%);
   }
   thead th {
     border: none;
-    color: $fs-clr-text-base;
+    color: $text-color;
     font-size: 14px;
     text-shadow: 1px 1px 0 #fff;
   }
@@ -71,7 +71,7 @@ table {
     vertical-align: middle;
   }
   tr:nth-child(even) {
-    background: $clr-bg;
+    background: $bg-color;
   }
   // th:last-child,
   // td:last-child {
@@ -86,12 +86,12 @@ table {
 .manage-users-table {
   .role-label {
     &.admin {
-      background-color: $clr-admin;
-      color: darken($clr-admin, 60%);
+      background-color: $role-color-admin;
+      color: darken($role-color-admin, 60%);
     }
     &.editor {
-      background-color: $clr-editor;
-      color: darken($clr-editor, 60%);
+      background-color: $role-color-editor;
+      color: darken($role-color-editor, 60%);
     }
   }
 }
@@ -111,7 +111,7 @@ table {
     border-radius: 50%;
     display: block;
     background-color: #f6fafc;
-    color: $clr-text;
+    color: $text-color;
     cursor: pointer;
     font-size: 12px;
     line-height: 3em;
@@ -121,11 +121,11 @@ table {
     height: 3em;
   }
   a:hover {
-    background: $clr-primary;
+    background: $primary-color;
     color: #fff;
   }
   .delete-item:hover {
-    background-color: darken(adjust-hue($clr-danger, -5), 35%);
+    background-color: darken(adjust-hue($danger-color, -5), 35%);
   }
 }
 

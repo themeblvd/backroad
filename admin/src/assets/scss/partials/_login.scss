@@ -3,7 +3,7 @@
 //
 
 .login-page {
-  background: $clr-bg-inverse;
+  background: $bg-color-inverse;
   min-height: 100vh;
 
   > .wrap {
@@ -22,7 +22,7 @@
     width: 160px;
   }
   .login-form {
-    background: $login-clr-bg-form;
+    background: $login-form-bg-color;
     border-radius: 4px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
     padding: 50px;

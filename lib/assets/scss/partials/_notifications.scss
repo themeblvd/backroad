@@ -18,7 +18,7 @@
   transform: translate(-50%, -10px);
   transition: opacity 0.2s ease-in, transform 0.2s ease-in;
   width: 250px;
-  z-index: $z-index-notification;
+  z-index: $notification-z-index;
 
   &.show {
     opacity: 1;
@@ -29,18 +29,18 @@
     transform: translate(-50%, 10px);
   }
   &.success {
-    background-color: rgba($clr-success, 0.95);
-    border-color: darken(adjust-hue($clr-success, -10), 50%);
-    color: $clr-success-contrast;
+    background-color: rgba($success-color, 0.95);
+    border-color: darken(adjust-hue($success-color, -10), 50%);
+    color: $success-color-contrast;
 
     p {
       margin: 0 0 20px 0;
     }
   }
   &.error {
-    background-color: rgba($clr-danger, 0.95);
-    border-color: darken(adjust-hue($clr-danger, -10), 50%);
-    color: $clr-danger-contrast;
+    background-color: rgba($danger-color, 0.95);
+    border-color: darken(adjust-hue($danger-color, -10), 50%);
+    color: $danger-color-contrast;
   }
 }
 
@@ -53,7 +53,7 @@ $check-height: $loader-size/2;
 $check-width: $check-height/2;
 $check-left: ($loader-size/6 + $loader-size/12);
 $check-thickness: 3px;
-$check-color: darken(adjust-hue($clr-success, -10), 50%);
+$check-color: darken(adjust-hue($success-color, -10), 50%);
 
 .notification {
   .circle {

@@ -15,11 +15,11 @@
   transform-origin: 80% 0%;
   transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
   width: 150px;
-  z-index: $z-index-user-menu;
+  z-index: $user-menu-z-index;
 
   /*
     li:last-child {
-      border-top: 1px solid $clr-border;
+      border-top: 1px solid $border-color;
       margin-top: 5px;
       padding-top: 5px;
     }
@@ -30,7 +30,7 @@
     padding: 0;
   }
   a {
-    color: $clr-text;
+    color: $text-color;
     display: block;
     font-size: 14px;
     line-height: 30px;
@@ -39,8 +39,8 @@
   }
   a:hover,
   a:focus {
-    background-color: $clr-bg-darken;
-    color: $clr-text-darken;
+    background-color: $bg-color-darken;
+    color: $text-color-darken;
   }
   .svg-inline--fa {
     display: inline-block;

@@ -3,7 +3,7 @@
 //
 
 .app-sidebar {
-  background: $admin-clr-bg-sidebar;
+  background: $admin-sidebar-bg-color;
   overflow: scroll;
   padding: 30px;
   position: fixed;
@@ -11,7 +11,7 @@
   left: 0;
   bottom: 0;
   width: $admin-sidebar-width;
-  z-index: $z-index-sidebar;
+  z-index: $sidebar-z-index;
 }
 
 //
@@ -30,7 +30,7 @@
 
   // Headings
   .nav-title {
-    color: rgba($clr-text-inverse, 0.6);
+    color: rgba($text-color-inverse, 0.6);
     display: block;
     font-size: 13px;
     margin: 0 0 10px 0;
@@ -43,7 +43,7 @@
 
   // All Links
   a {
-    color: rgba($clr-text-inverse, 0.75);
+    color: rgba($text-color-inverse, 0.75);
     font-weight: 500;
   }
   a:hover {
@@ -63,7 +63,7 @@
   }
   .active-item:before {
     content: '';
-    background: rgba($clr-primary, 0.8);
+    background: rgba($primary-color, 0.8);
     display: block;
     position: absolute;
     top: 0;
@@ -91,7 +91,7 @@
     display: block;
   }
   .active-child a {
-    border-bottom-color: rgba($clr-text-inverse, 0.25);
+    border-bottom-color: rgba($text-color-inverse, 0.25);
     color: #fff;
   }
 }

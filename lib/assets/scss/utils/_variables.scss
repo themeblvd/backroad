@@ -6,79 +6,79 @@
 // Branding
 //
 
-$clr-primary: #1abc9c !default;
-$clr-accent: #3498db !default;
+$primary-color: #1abc9c !default;
+$accent-color: #3498db !default;
 
-$clr-bg: #fafcfd !default;
-$clr-bg-darken: #edf1f2 !default;
-$clr-bg-inverse: #2c343f !default;
+$bg-color: #fafcfd !default;
+$bg-color-darken: #edf1f2 !default;
+$bg-color-inverse: #2c343f !default;
 
 //
 // Contextual
 //
 
-$clr-success: fs-map-deep-get($fs-clr-contextual, success, base) !default;
-$clr-success-contrast: fs-map-deep-get($fs-clr-contextual, success, contrast) !default;
+$success-color: fs-map-deep-get($fs-contextual-colors, success, base) !default;
+$success-color-contrast: fs-map-deep-get($fs-contextual-colors, success, contrast) !default;
 
-$clr-info: fs-map-deep-get($fs-clr-contextual, info, base) !default;
-$clr-info-contrast: fs-map-deep-get($fs-clr-contextual, info, contrast) !default;
+$info-color: fs-map-deep-get($fs-contextual-colors, info, base) !default;
+$info-color-contrast: fs-map-deep-get($fs-contextual-colors, info, contrast) !default;
 
-$clr-warning: fs-map-deep-get($fs-clr-contextual, warning, base) !default;
-$clr-warning-contrast: fs-map-deep-get($fs-clr-contextual, warning, contrast) !default;
+$warning-color: fs-map-deep-get($fs-contextual-colors, warning, base) !default;
+$warning-color-contrast: fs-map-deep-get($fs-contextual-colors, warning, contrast) !default;
 
-$clr-danger: fs-map-deep-get($fs-clr-contextual, danger, base) !default;
-$clr-danger-contrast: fs-map-deep-get($fs-clr-contextual, danger, contrast) !default;
+$danger-color: fs-map-deep-get($fs-contextual-colors, danger, base) !default;
+$danger-color-contrast: fs-map-deep-get($fs-contextual-colors, danger, contrast) !default;
 
 //
 // Text
 //
 
-$clr-text: #58666e !default;
-$clr-text-lighten: #8b99a1 !default;
-$clr-text-darken: $clr-bg-inverse !default;
-$clr-text-inverse: #fff !default;
+$text-color: #58666e !default;
+$text-color-lighten: #8b99a1 !default;
+$text-color-darken: $bg-color-inverse !default;
+$text-color-inverse: #fff !default;
 
 //
 // Links
 //
 
-$clr-link: $clr-accent !default;
-$clr-link-hover: $clr-primary !default;
+$link-color: $accent-color !default;
+$link-color-hover: $primary-color !default;
 
 //
 // Roles
 //
 
-$clr-admin: #dff0d8 !default;
-$clr-editor: #d9edf7 !default;
+$role-color-admin: #dff0d8 !default;
+$role-color-editor: #d9edf7 !default;
 
 //
 // Borders
 //
 
-$clr-border: lighten($clr-text, 54%) !default;
+$border-color: lighten($text-color, 54%) !default;
 
 //
 // Admin UI
 //
 
-$admin-clr-bg-body: $clr-bg !default;
-$admin-clr-bg-logo: $clr-bg-inverse !default;
-$admin-clr-bg-sidebar: $clr-bg-inverse !default;
+$admin-body-bg-color: $bg-color !default;
+$admin-logo-bg-color: $bg-color-inverse !default;
+$admin-sidebar-bg-color: $bg-color-inverse !default;
 
 //
 // Login UI
 //
 
-$login-clr-bg-body: $clr-bg-inverse !default;
-$login-clr-bg-form: $clr-bg !default;
+$login-body-bg-color: $bg-color-inverse !default;
+$login-form-bg-color: $bg-color !default;
 
 //
 // Install UI
 //
 
-$install-clr-bg-body: $clr-bg-inverse !default;
-$install-clr-bg-inner: $clr-bg-darken;
+$install-body-bg-color: $bg-color-inverse !default;
+$install-inner-bg-color: $bg-color-darken;
 
 //
 // Shadows
@@ -115,10 +115,10 @@ $admin-sidebar-width: 260px !default;
 // Z-Index
 //
 
-$z-index-header: 100 !default;
-$z-index-user-menu: 200 !default;
-$z-index-sidebar: 300 !default;
-$z-index-notification: 400 !default;
+$header-z-index: 100 !default;
+$user-menu-z-index: 200 !default;
+$sidebar-z-index: 300 !default;
+$notification-z-index: 400 !default;
 
 // ============================================
 // Front Street Overrides
@@ -128,23 +128,23 @@ $z-index-notification: 400 !default;
 // Colors
 //
 
-$fs-clr-branding: (
+$fs-branding-colors: (
   primary: (
-    base: $clr-primary,
+    base: $primary-color,
     contrast: #fff
   ),
   secondary: (
-    base: $clr-accent,
+    base: $accent-color,
     contrast: #fff
   )
 );
 
-$fs-clr-text-base: $clr-text;
-$fs-clr-text-lighten: $clr-text-lighten;
-$fs-clr-text-darken: $clr-text-darken;
+$fs-color-text-base: $text-color;
+$fs-color-text-lighten: $text-color-lighten;
+$fs-color-text-darken: $text-color-darken;
 
-$fs-clr-link: $clr-link;
-$fs-clr-link-hover: $clr-link-hover;
+$fs-link-color: $link-color;
+$fs-link-color-hover: $link-color-hover;
 
 //
 // Forms

@@ -13,7 +13,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: $z-index-header;
+  z-index: $header-z-index;
 }
 
 //
@@ -21,7 +21,7 @@
 //
 
 .app-logo {
-  background: $admin-clr-bg-logo;
+  background: $admin-logo-bg-color;
   display: flex;
   align-items: center;
   padding: 30px 0 0 30px;
@@ -31,7 +31,7 @@
   height: $admin-header-height;
 
   .logo {
-    fill: $clr-text-inverse;
+    fill: $text-color-inverse;
     width: 90px;
   }
   span {
@@ -62,7 +62,7 @@
     z-index: 1;
   }
   input {
-    background-color: $fs-clr-bg-body;
+    background-color: $fs-body-bg-color;
     border-color: transparent;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
@@ -73,7 +73,7 @@
 //
 
 .user-menu-trigger {
-  color: $clr-text;
+  color: $text-color;
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -81,7 +81,7 @@
 
   &:hover,
   &:focus {
-    color: $clr-text-darken;
+    color: $text-color-darken;
   }
   img {
     box-shadow: $shadow-light;
