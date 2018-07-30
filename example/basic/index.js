@@ -1,19 +1,20 @@
 const env = require('dotenv').config();
 const backroad = require('../..'); // require('backroad')
+const { post, page, book } = require('./content-types');
 
-const app = backroad(); // Creates new instance.
+/**
+ * Create new application.
+ */
+const app = backroad();
 
-app.addContentType({
-  name: 'Page',
-  pluralName: 'Pages',
-  endpoint: 'pages',
-  fields: [
-    {
-      name: 'content',
-      type: 'markdown',
-      default: 'Some optional default content...'
-    }
-  ]
-});
+/**
+ * Add custom content types.
+ */
+app.contentTypes.add(post);
+app.contentTypes.add(page);
+app.contentTypes.add(book);
 
+/**
+ * Run the application!
+ */
 app.start();
