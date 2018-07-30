@@ -1,7 +1,7 @@
 {
   "name": "backroad",
-  "version": "0.1.0",
-  "description": "Headless NodeJS CMS",
+  "version": "1.0.0",
+  "description": "Headless CMS framework, built on the MERN stack.",
   "main": "index.js",
   "bin": {
     "backroad": "backroad.js"
@@ -12,7 +12,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "nodemon ./example/basic/index.js backroadDev",
+    "start": "concurrently 'npm run server' 'npm run watch:admin' 'npm run watch:install'",
+    "server": "nodemon ./example/basic/index.js backroadDev",
     "watch:admin": "NODE_ENV=development webpack --config ./admin/webpack.config.js --watch",
     "build:admin": "NODE_ENV=development webpack --config ./admin/webpack.config.js",
     "build:admin:prod": "NODE_ENV=production webpack --config ./admin/webpack.config.js",
@@ -73,6 +74,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.1",
+    "concurrently": "^3.6.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-react-app": "^2.1.0",
